@@ -43,14 +43,14 @@ class Canvas extends React.Component {
           let y = 60*i;
 
           if (i % 2 == 0 & j % 2 == 0) {
-            //drawImage(ctx,x,y,'whiteg.png');
+            drawImage(ctx,x,y,'whiteg.png');
           }
           else if (i % 2 == 1 & j % 2 == 1) {
-            //drawImage(ctx,x,y,'whiteg.png');
-            drawImageFig(ctx, 0, 0, 0, 0, 'chessfig.png');
+            drawImage(ctx,x,y,'whiteg.png');
+            drawImageFig(ctx, i*130, 0, x, 0, 'chessfig.png');
           }
           else {
-            drawImage(ctx,x,y,'blackg.png');
+            drawImage(ctx,x,y,'greyg.png');
           }
 
         }
