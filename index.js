@@ -29,6 +29,17 @@ let gamearr = [
   ['wr', 'wk', 'wb', 'wq', 'wki', 'wb', 'wk', 'wr'],
 ];
 
+let boardarr = [
+  [1, 0, 1, 0, 1, 0, 1, 0],
+  [0, 1, 0, 1, 0, 1, 0, 1],
+  [1, 0, 1, 0, 1, 0, 1, 0],
+  [0, 1, 0, 1, 0, 1, 0, 1],
+  [1, 0, 1, 0, 1, 0, 1, 0],
+  [0, 1, 0, 1, 0, 1, 0, 1],
+  [1, 0, 1, 0, 1, 0, 1, 0],
+  [0, 1, 0, 1, 0, 1, 0, 1],
+];
+
 
 
 // First I load the Image
@@ -59,14 +70,21 @@ class Canvas extends React.Component {
           let x = 60*j;
           let y = 60*i;
 
-          if (i % 2 == 0 & j % 2 == 0) {
-            drawImage(ctx,x,y,'whiteg.png');
-          }
-          else if (i % 2 == 1 & j % 2 == 1) {
-            drawImage(ctx,x,y,'whiteg.png');
-          }
-          else {
+          // if (i % 2 == 0 & j % 2 == 0) {
+          //   drawImage(ctx,x,y,'whiteg.png');
+          // }
+          // else if (i % 2 == 1 & j % 2 == 1) {
+          //   drawImage(ctx,x,y,'whiteg.png');
+          // }
+          // else {
+          //   drawImage(ctx,x,y,'greyg.png');
+          // }
+
+          if (boardarr[i][j] == 0) {
             drawImage(ctx,x,y,'greyg.png');
+          }
+          else if (boardarr[i][j] == 1) {
+            drawImage(ctx,x,y,'whiteg.png');
           }
 
           if (gamearr[i][j] != 0) {
@@ -77,7 +95,7 @@ class Canvas extends React.Component {
         }
         //ctx.strokeText(Maze[i].charAt(j), x+16, y+16);
     }
-    canvas.onclick = function(){doSth()};
+    canvas.onclick = function(){click(event)};
     
   }
   render() {
@@ -89,9 +107,23 @@ class Canvas extends React.Component {
   }
 }
 
-function doSth(){
-  this.g.preLoad();
+function click(){
+  //this.g.preLoad();
   console.log("sss");
+  let x = event.offsetX;
+  let y = event.offsetY;
+  // guessX = x;
+  // guessY = y;
+  //console.log("x coords: " + x + ", y coords: " + y);
+
+  //console.log("x coords: " + Math.floor(x/cWidth*8) + ", y coords: " + Math.floor(y/cHeight*8));
+
+  let lx = Math.floor(x/cWidth*8);
+  let ly = Math.floor(y/cWidth*8);
+  console.log("x coords: " + lx + ", y coords: " + ly);
+
+  
+
 }
 
 static function drawImage(ctx,x,y,src){
