@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-//import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom';
 import Hello from './Hello';
 import './style.css';
 
@@ -16,7 +16,7 @@ let spriteWH = 130;
 
 let g = Game;
 
-let gamercolor = 'b'; //w or b
+let gamercolor = 'w'; //w or b
 
 
 let figarr = {
@@ -191,13 +191,13 @@ function click(event) {
   gamearr[lx][ly] = 'bp';
   //console.log(gamearr[lx][ly]);
 
-  //ReactDOM.render(<Canvas/>, document.getElementById('root'));
+  //ReactDOM.render(<Canvas/>, document.getElementById('canvas')); //-> this
 
-  //render(<Canvas/>, document.getElementById('root'));
+  /render(<Canvas/>, document.getElementById('canvas'));
 
   let canvas = document.getElementById('canvas');
   let ctx = canvas.getContext('2d');
-  ctx.test();
+  //ctx.test();
 
   //Canvas.test();
   //updateCanvas();
@@ -225,7 +225,6 @@ static function drawImageFig(ctx, dx, dy, figure) {
       name: 'React'
     };
   }
-
   render() {
     return (
       <div>
