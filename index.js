@@ -18,7 +18,6 @@ let g = Game;
 
 let gamercolor = 'w'; //w or b
 
-
 let figarr = {
   bp: [0, 0], bk: [130, 0], bb: [260, 0], br: [390, 0], bq: [520, 0], bki: [650, 0],
   wp: [0, 130], wk: [130, 130], wb: [260, 130], wr: [390, 130], wq: [520, 130], wki: [650, 130]
@@ -60,6 +59,11 @@ let boardarr = [
 
 
 class Canvas extends React.Component {
+
+  // constructor(props) {
+  //   super(props);
+  //   this.myCanvas = React.createRef();
+  // }
 
   componentDidMount() {
     this.updateCanvas();
