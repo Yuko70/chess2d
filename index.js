@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
+//import ReactDOM from 'react-dom';
 import Hello from './Hello';
 import './style.css';
 
@@ -27,7 +28,7 @@ let gamearr = [
   ['br', 'bk', 'bb', 'bq', 'bki', 'bb', 'bk', 'br'],
   ['bp', 'bp', 'bp', 'bp', 'bp', 'bp', 'bp', 'bp'],
   [0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 'bq', 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0, 0],
   ['wp', 'wp', 'wp', 'wp', 'wp', 'wp', 'wp', 'wp'],
@@ -59,10 +60,19 @@ let boardarr = [
 
 
 class Canvas extends React.Component {
+
   componentDidMount() {
+    this.updateCanvas();
+  }
+
+  test() {
+    console.log('CANVAS');
+  }
+
+  updateCanvas() {
     const canvas = document.getElementById('canvas')
     const ctx = canvas.getContext("2d")
-    ctx.fillStyle = "#FF0000";
+    ctx.fillStyle = "#FFF000";
     ctx.fillRect(0, 0, 480, 480);
     //ctx.fillStyle = "blue";
 
@@ -86,6 +96,7 @@ class Canvas extends React.Component {
           let x = 60 * jj;
           let y = 60 * ii;
         }
+
         //console.log(ii,jj);
         
         
@@ -112,6 +123,10 @@ class Canvas extends React.Component {
         else if (boardarr[i][j] == 3) {
           drawImage(ctx, x, y, 'lightblueg.png');
         }
+        else if (boardarr[i][j] == 4) {
+          drawImage(ctx, x, y, 'redg.png');
+        }
+        console.log('kresliiiiiiiiiiii');
 
         if (gamearr[i][j] != 0) {
           // if (gamercolor == 'b') {
@@ -143,9 +158,9 @@ class Canvas extends React.Component {
   }
 }
 
-function click() {
+function click(event) {
   //this.g.preLoad();
-  console.log("sss");
+  //console.log("sss");
   let x = event.offsetX;
   let y = event.offsetY;
   // guessX = x;
@@ -162,19 +177,32 @@ function click() {
     let lx = Math.floor( (cWidth - x) / cWidth * 8 );
     let ly = Math.floor( (cHeight - y) / cHeight * 8 );
   }
-  // let lx = Math.floor(x / cWidth * 8);
-  // let ly = Math.floor(y / cWidth * 8);
 
+  //let lx = Math.floor(x / cWidth * 8);
+  //let ly = Math.floor(y / cWidth * 8);
 
 
   console.log("x coords: " + lx + ", y coords: " + ly);
 
   boardarr[lx][ly] = 2;
+  //updateCanvas();
 
-  render(<Canvas />, document.getElementById('root'));
+  //console.log(gamearr[lx][ly]);
+  gamearr[lx][ly] = 'bp';
+  //console.log(gamearr[lx][ly]);
 
-  console.log(boardarr)
-}
+  //ReactDOM.render(<Canvas/>, document.getElementById('root'));
+
+  //render(<Canvas/>, document.getElementById('root'));
+
+  // let canvas = document.getElementById('canvas');
+  // let ctx = canvas.getContext('2d');
+  //canvas.test();
+
+  //React.Component.Canvas.test();
+  //thiss.updateCanvas();
+  //console.log(boardarr)
+ }
 
 static function drawImage(ctx, x, y, src) {
   let img = new Image();
