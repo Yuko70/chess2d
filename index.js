@@ -87,7 +87,7 @@ class Canvas extends React.Component {
             drawImage(ctx,x,y,'whiteg.png');
           }
           else if (boardarr[i][j] == 2) {
-            drawImage(ctx,x,y,'blueg.png');
+            drawImage(ctx,x,y,'lightblueg.png');
           }
 
           if (gamearr[i][j] != 0) {
@@ -119,7 +119,7 @@ function click(){
   // guessY = y;
   //console.log("x coords: " + x + ", y coords: " + y);
 
-  //console.log("x coords: " + Math.floor(x/cWidth*8) + ", y coords: " + Math.floor(y/cHeight*8));
+  console.log("x coords: " + Math.floor(x/cWidth*8) + ", y coords: " + Math.floor(y/cHeight*8));
 
   let lx = Math.floor(x/cWidth*8);
   let ly = Math.floor(y/cWidth*8);
@@ -127,6 +127,9 @@ function click(){
 
   boardarr[lx][ly] = 2;
 
+  render(<Canvas />, document.getElementById('root'));
+
+  console.log(boardarr)
 }
 
 static function drawImage(ctx,x,y,src){
