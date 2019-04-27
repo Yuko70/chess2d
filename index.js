@@ -15,7 +15,7 @@ let spriteWH = 130;
 
 let g = Game;
 
-let gamercolor = 'b';
+let gamercolor = 'b'; //w or b
 
 
 let figarr = {
@@ -36,9 +36,9 @@ let gamearr = [
 
 let boardarr = [
   [1, 0, 1, 0, 1, 0, 1, 0],
-  [0, 1, 0, 1, 0, 1, 0, 1],
-  [1, 2, 1, 0, 1, 0, 1, 0],
-  [0, 1, 0, 1, 0, 1, 0, 1],
+  [0, 1, 2, 1, 0, 1, 0, 1],
+  [1, 0, 3, 0, 1, 0, 1, 0],
+  [0, 1, 3, 1, 0, 1, 0, 1],
   [1, 0, 1, 0, 1, 0, 1, 0],
   [0, 1, 0, 1, 0, 1, 0, 1],
   [1, 0, 1, 0, 1, 0, 1, 0],
@@ -107,6 +107,9 @@ class Canvas extends React.Component {
           drawImage(ctx, x, y, 'whiteg.png');
         }
         else if (boardarr[i][j] == 2) {
+          drawImage(ctx, x, y, 'blueg.png');
+        }
+        else if (boardarr[i][j] == 3) {
           drawImage(ctx, x, y, 'lightblueg.png');
         }
 
