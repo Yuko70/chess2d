@@ -74,8 +74,8 @@ class Canvas extends React.Component {
     const ctx = canvas.getContext("2d")
     ctx.fillStyle = "#FFF000";
     ctx.fillRect(0, 0, 480, 480);
-    //ctx.fillStyle = "blue";
 
+    //ctx.fillStyle = "blue";
     //console.log(figarr['bk'][0]);
     //console.log(gamearr[0][0]=='br');
 
@@ -98,8 +98,6 @@ class Canvas extends React.Component {
         }
 
         //console.log(ii,jj);
-        
-        
 
         // if (i % 2 == 0 & j % 2 == 0) {
         //   drawImage(ctx,x,y,'whiteg.png');
@@ -140,7 +138,6 @@ class Canvas extends React.Component {
           //drawImageFig(ctx,x,y,gamearr[i][j]);
           //console.log(gamearr[1][0]);
         }
-
       }
       //ctx.strokeText(Maze[i].charAt(j), x+16, y+16);
     }
