@@ -4,14 +4,50 @@ import ReactDOM from 'react-dom';
 import Hello from './Hello';
 import './style.css';
 
+import './figure.js'
+
 class Chess {
   constructor() {
     this.play = 1;
-    this.player = 0;
+    this.move = 0;
+    this.playercolor = 0; //let gamercolor = 'w'; //w or b
 
+    this.imageAdress = 'https://raw.githubusercontent.com/yuko70/chess2d/master/img/';
+    this.cWidth = 480;
+    this.cHeight = 480;
+
+    this.fieldW = 60;
+    this.fieldH = 60;
+    this.spriteWH = 130;
+
+    this.figures = [];
     
+    this.configures();/
+    // console.log('CONFIGURES');
+  }
+
+  configures() {
+    conslole.log('CONFIGURES');
+    let figarr = {bp: [0, 0], bk: [130, 0], bb: [260, 0], br: [390, 0], bq: [520, 0], bki: [650, 0],
+                  wp: [0, 130], wk: [130, 130], wb: [260, 130], wr: [390, 130], wq: [520, 130], wki: [650, 130]};
+    
+    for (let i = 0; i < 12; i++) {
+      console.log();
+    }
+
+    for (let key in figarr) {
+      var value = array[key];
+      console.log(key, value);
+    }
+
   }
 }
+
+let ch = new Chess();
+console.log(ch.spriteWH);
+
+
+
 
 let imageAdress = 'https://raw.githubusercontent.com/yuko70/chess2d/master/img/';
 let cWidth = 480;
@@ -21,14 +57,12 @@ let fieldW = 60;
 let fieldH = 60;
 let spriteWH = 130;
 
-let g = Game;
+// let g = Game;
 
 let gamercolor = 'w'; //w or b
 
-let figarr = {
-  bp: [0, 0], bk: [130, 0], bb: [260, 0], br: [390, 0], bq: [520, 0], bki: [650, 0],
-  wp: [0, 130], wk: [130, 130], wb: [260, 130], wr: [390, 130], wq: [520, 130], wki: [650, 130]
-};
+let figarr = {bp: [0, 0], bk: [130, 0], bb: [260, 0], br: [390, 0], bq: [520, 0], bki: [650, 0],
+                  wp: [0, 130], wk: [130, 130], wb: [260, 130], wr: [390, 130], wq: [520, 130], wki: [650, 130]};
 
 let gamearr = [
   ['br', 'bk', 'bb', 'bq', 'bki', 'bb', 'bk', 'br'],
@@ -43,9 +77,9 @@ let gamearr = [
 
 let boardarr = [
   [1, 0, 1, 0, 1, 0, 1, 0],
-  [0, 1, 2, 1, 0, 1, 0, 1],
-  [1, 0, 3, 0, 1, 0, 1, 0],
-  [0, 1, 3, 1, 0, 1, 0, 1],
+  [0, 1, 0, 1, 0, 1, 0, 1],
+  [1, 0, 1, 0, 1, 0, 1, 0],
+  [0, 1, 0, 1, 0, 1, 0, 1],
   [1, 0, 1, 0, 1, 0, 1, 0],
   [0, 1, 0, 1, 0, 1, 0, 1],
   [1, 0, 1, 0, 1, 0, 1, 0],
@@ -135,7 +169,7 @@ class Canvas extends React.Component {
         else if (boardarr[i][j] == 4) {
           drawImage(ctx, x, y, 'redg.png');
         }
-        console.log('kresliiiiiiiiiiii');
+        // console.log('kresliiiiiiiiiiii');
 
         if (gamearr[i][j] != 0) {
           // if (gamercolor == 'b') {
@@ -206,6 +240,8 @@ function click(event) {
   console.log(document.getElementById('canvas'));
 
 
+  // let ch = new Chess();
+  // console.log(ch.spriteWH);
 
 
   //document.getElementById('canvas').updateCanvas();
@@ -252,26 +288,26 @@ static function drawImageFig(ctx, dx, dy, figure) {
 //render(<App />, document.getElementById('root'));
 
 
-class Game {
-  constructor() {
-    let state = {
-      lives: 3,
-      pac: Pacman(),
-      ghost: Ghost(),
-      map: Maze,
-      pacTiles: [
+// class Game {
+//   constructor() {
+//     let state = {
+//       lives: 3,
+//       pac: Pacman(),
+//       ghost: Ghost(),
+//       map: Maze,
+//       pacTiles: [
 
-      ],
-    };
-  }
-  preLoad() {
-    let canvas = document.getElementById('canvas')
-    let ctx = canvas.getContext('2d');
-    ctx.fillStyle = "green";
-    ctx.fillText(100, 100, "sdawdawdawdawdawdawdawdawdadawda");
-    ctx.stroke()
-  }
-}
+//       ],
+//     };
+//   }
+//   preLoad() {
+//     let canvas = document.getElementById('canvas')
+//     let ctx = canvas.getContext('2d');
+//     ctx.fillStyle = "green";
+//     ctx.fillText(100, 100, "sdawdawdawdawdawdawdawdawdadawda");
+//     ctx.stroke()
+//   }
+// }
 
 
 render(<Canvas />, document.getElementById('root'));
