@@ -50,8 +50,8 @@ class Canvas extends React.Component {
     ctx.fillRect(0,0,480,480);
     //ctx.fillStyle = "blue";
 
-    console.log(figarr['bk'][0]);
-    console.log(gamearr[0][0]=='br');
+    //console.log(figarr['bk'][0]);
+    //console.log(gamearr[0][0]=='br');
 
 
     for (let i = 0; i < 8; i++){
