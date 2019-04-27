@@ -15,14 +15,19 @@ let spriteWH = 130;
 
 let g = Game;
 
-let figarr = {bp: [0,0], bk: [130, 0], bb: [260, 0], br: [390, 0], bq: [520, 0], bki: [650, 0],
-              wp: [0,130], wk: [130, 130], wb: [260, 130], wr: [390, 130], wq: [520, 130], wki: [650, 130]};
+let gamercolor = 'b';
+
+
+let figarr = {
+  bp: [0, 0], bk: [130, 0], bb: [260, 0], br: [390, 0], bq: [520, 0], bki: [650, 0],
+  wp: [0, 130], wk: [130, 130], wb: [260, 130], wr: [390, 130], wq: [520, 130], wki: [650, 130]
+};
 
 let gamearr = [
   ['br', 'bk', 'bb', 'bq', 'bki', 'bb', 'bk', 'br'],
   ['bp', 'bp', 'bp', 'bp', 'bp', 'bp', 'bp', 'bp'],
   [0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 'bq', 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0, 0],
   ['wp', 'wp', 'wp', 'wp', 'wp', 'wp', 'wp', 'wp'],
@@ -32,7 +37,7 @@ let gamearr = [
 let boardarr = [
   [1, 0, 1, 0, 1, 0, 1, 0],
   [0, 1, 0, 1, 0, 1, 0, 1],
-  [1, 0, 1, 0, 1, 0, 1, 0],
+  [1, 2, 1, 0, 1, 0, 1, 0],
   [0, 1, 0, 1, 0, 1, 0, 1],
   [1, 0, 1, 0, 1, 0, 1, 0],
   [0, 1, 0, 1, 0, 1, 0, 1],
@@ -58,51 +63,76 @@ class Canvas extends React.Component {
     const canvas = document.getElementById('canvas')
     const ctx = canvas.getContext("2d")
     ctx.fillStyle = "#FF0000";
-    ctx.fillRect(0,0,480,480);
+    ctx.fillRect(0, 0, 480, 480);
     //ctx.fillStyle = "blue";
 
     //console.log(figarr['bk'][0]);
     //console.log(gamearr[0][0]=='br');
 
+    let ii = 8;
+    let jj = 8;
 
-    for (let i = 0; i < 8; i++){
-      for (let j = 0; j < 8; j++){
-          let x = 60*j;
-          let y = 60*i;
+    for (let i = 0; i < 8; i++) {
+      ii--;
+      jj = 8;
+      for (let j = 0; j < 8; j++) {
+        jj--;
+       
+        if (gamercolor == 'w') {
+          let x = 60 * j;
+          let y = 60 * i;
+        }
+        else {
+          let x = 60 * jj;
+          let y = 60 * ii;
+        }
+        //console.log(ii,jj);
+        
+        
 
-          // if (i % 2 == 0 & j % 2 == 0) {
-          //   drawImage(ctx,x,y,'whiteg.png');
-          // }
-          // else if (i % 2 == 1 & j % 2 == 1) {
-          //   drawImage(ctx,x,y,'whiteg.png');
+        // if (i % 2 == 0 & j % 2 == 0) {
+        //   drawImage(ctx,x,y,'whiteg.png');
+        // }
+        // else if (i % 2 == 1 & j % 2 == 1) {
+        //   drawImage(ctx,x,y,'whiteg.png');
+        // }
+        // else {
+        //   drawImage(ctx,x,y,'greyg.png');
+        // }
+
+        if (boardarr[i][j] == 0) {
+          drawImage(ctx, x, y, 'greyg.png');
+        }
+        else if (boardarr[i][j] == 1) {
+          drawImage(ctx, x, y, 'whiteg.png');
+        }
+        else if (boardarr[i][j] == 2) {
+          drawImage(ctx, x, y, 'lightblueg.png');
+        }
+
+        if (gamearr[i][j] != 0) {
+          // if (gamercolor == 'b') {
+          //   //drawImageFig(ctx,x,y,gamearr[i][j]);
+          //   drawImageFig(ctx, x, y, gamearr[i][j]);
+          //   //console.log(gamearr[j][j]);
           // }
           // else {
-          //   drawImage(ctx,x,y,'greyg.png');
+            drawImageFig(ctx, x, y, gamearr[i][j]);
           // }
-
-          if (boardarr[i][j] == 0) {
-            drawImage(ctx,x,y,'greyg.png');
-          }
-          else if (boardarr[i][j] == 1) {
-            drawImage(ctx,x,y,'whiteg.png');
-          }
-          else if (boardarr[i][j] == 2) {
-            drawImage(ctx,x,y,'lightblueg.png');
-          }
-
-          if (gamearr[i][j] != 0) {
-            drawImageFig(ctx,x,y,gamearr[i][j]);
-            //console.log(gamearr[1][0]);
-          }
-
+          //drawImageFig(ctx,x,y,gamearr[i][j]);
+          //console.log(gamearr[1][0]);
         }
-        //ctx.strokeText(Maze[i].charAt(j), x+16, y+16);
+
+      }
+      //ctx.strokeText(Maze[i].charAt(j), x+16, y+16);
     }
-    canvas.onclick = function(){click(event)};
-    
+
+
+    canvas.onclick = function () { click(event) };
+
   }
   render() {
-    return(
+    return (
       <div>
         <canvas id="canvas" width={cWidth} height={cHeight} />
       </div>
@@ -110,7 +140,7 @@ class Canvas extends React.Component {
   }
 }
 
-function click(){
+function click() {
   //this.g.preLoad();
   console.log("sss");
   let x = event.offsetX;
@@ -119,10 +149,21 @@ function click(){
   // guessY = y;
   //console.log("x coords: " + x + ", y coords: " + y);
 
-  console.log("x coords: " + Math.floor(x/cWidth*8) + ", y coords: " + Math.floor(y/cHeight*8));
+  //console.log("x coords: " + Math.floor(x / cWidth * 8) + ", y coords: " + Math.floor(y / cHeight * 8));
 
-  let lx = Math.floor(x/cWidth*8);
-  let ly = Math.floor(y/cWidth*8);
+  if (gamercolor == 'w') {
+    let lx = Math.floor(x / cWidth * 8);
+    let ly = Math.floor(y / cHeight * 8);
+  }
+  else {
+    let lx = Math.floor( (cWidth - x) / cWidth * 8 );
+    let ly = Math.floor( (cHeight - y) / cHeight * 8 );
+  }
+  // let lx = Math.floor(x / cWidth * 8);
+  // let ly = Math.floor(y / cWidth * 8);
+
+
+
   console.log("x coords: " + lx + ", y coords: " + ly);
 
   boardarr[lx][ly] = 2;
@@ -132,16 +173,16 @@ function click(){
   console.log(boardarr)
 }
 
-static function drawImage(ctx,x,y,src){
+static function drawImage(ctx, x, y, src) {
   let img = new Image();
-  img.src = imageAdress+src;
-  ctx.drawImage(img,x,y);
+  img.src = imageAdress + src;
+  ctx.drawImage(img, x, y);
 }
 
-static function drawImageFig(ctx,dx,dy,figure){
+static function drawImageFig(ctx, dx, dy, figure) {
   let img = new Image();
-  img.src = imageAdress+'chessfig.png';
-  ctx.drawImage(img, figarr[figure][0], figarr[figure][1], spriteWH, spriteWH, dx, dy, fieldW, fieldH); 
+  img.src = imageAdress + 'chessfig.png';
+  ctx.drawImage(img, figarr[figure][0], figarr[figure][1], spriteWH, spriteWH, dx, dy, fieldW, fieldH);
 }
 
 
@@ -168,23 +209,23 @@ static function drawImageFig(ctx,dx,dy,figure){
 //render(<App />, document.getElementById('root'));
 
 
-class Game{
-  constructor(){
-     let state = {
-      lives : 3,
-      pac : Pacman(),
-      ghost : Ghost(),
-      map : Maze,
-      pacTiles : [
-        
+class Game {
+  constructor() {
+    let state = {
+      lives: 3,
+      pac: Pacman(),
+      ghost: Ghost(),
+      map: Maze,
+      pacTiles: [
+
       ],
     };
   }
-  preLoad(){
+  preLoad() {
     let canvas = document.getElementById('canvas')
     let ctx = canvas.getContext('2d');
     ctx.fillStyle = "green";
-    ctx.fillText(100,100,"sdawdawdawdawdawdawdawdawdadawda");
+    ctx.fillText(100, 100, "sdawdawdawdawdawdawdawdawdadawda");
     ctx.stroke()
   }
 }
