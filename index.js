@@ -146,11 +146,13 @@ class Canvas extends React.Component {
     }
 
 
-    canvas.onclick = function () { click(event) };
+    canvas.onclick = function () { click(event, this) };
 
   }
   render() {
+    
     return (
+      
       <div>
         <canvas id="canvas" width={cWidth} height={cHeight} />
       </div>
@@ -158,7 +160,7 @@ class Canvas extends React.Component {
   }
 }
 
-function click(event) {
+function click(event, this) {
   //this.g.preLoad();
   //console.log("sss");
   let x = event.offsetX;
@@ -193,12 +195,18 @@ function click(event) {
 
   //ReactDOM.render(<Canvas/>, document.getElementById('canvas')); //-> this
 
-  /render(<Canvas/>, document.getElementById('canvas'));
 
-  let canvas = document.getElementById('canvas');
-  let ctx = canvas.getContext('2d');
-  //ctx.test();
+  //render(<Canvas/>, document.getElementById('canvas'));
+  
+  console.log(document.getElementById('canvas'));
 
+
+
+
+  //document.getElementById('canvas').updateCanvas();
+  // let canvas = document.getElementById('canvas');
+  // let ctx = canvas.getContext('2d');
+  // ctx.render;
   //Canvas.test();
   //updateCanvas();
   //console.log(boardarr)
