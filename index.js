@@ -5,7 +5,7 @@ import './style.css';
 
 
 
-/let imageAdress = 'https://raw.githubusercontent.com/yuko70/chess2d/master/img/';
+let imageAdress = 'https://raw.githubusercontent.com/yuko70/chess2d/master/img/';
 let cWidth = 480;
 let cHeight = 480;
 
@@ -14,6 +14,20 @@ let fieldH = 60;
 let spriteWH = 130;
 
 let g = Game;
+
+let figarr = {bp: [0,0], bk: [130, 0], bb: [260, 0], br: [390, 0], bq: [520, 0], bki: [650, 0],
+              wp: [0,130], wk: [130, 130], wb: [260, 130], wr: [390, 130], wq: [520, 130], wki: [650, 130]};
+
+let gamearr = [
+  ['br', 'bk', 'bb', 'bq', 'bki', 'bb', 'bk', 'br'],
+  ['bp', 'bp', 'bp', 'bp', 'bp', 'bp', 'bp', 'bp'],
+  [0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0],
+  ['wp', 'wp', 'wp', 'wp', 'wp', 'wp', 'wp', 'wp'],
+  ['wr', 'wk', 'wb', 'wq', 'wki', 'wb', 'wk', 'wr'],
+];
 
 
 
@@ -36,6 +50,9 @@ class Canvas extends React.Component {
     ctx.fillRect(0,0,480,480);
     //ctx.fillStyle = "blue";
 
+    console.log(figarr['bk'][0]);
+    console.log(gamearr[0][0]=='br');
+
 
     for (let i = 0; i < 8; i++){
       for (let j = 0; j < 8; j++){
@@ -47,10 +64,14 @@ class Canvas extends React.Component {
           }
           else if (i % 2 == 1 & j % 2 == 1) {
             drawImage(ctx,x,y,'whiteg.png');
-            drawImageFig(ctx, i*130, 0, x, 0, 'chessfig.png');
           }
           else {
             drawImage(ctx,x,y,'greyg.png');
+          }
+
+          if (gamearr[i][j] != 0) {
+            drawImageFig(ctx,x,y,gamearr[i][j]);
+            //console.log(gamearr[1][0]);
           }
 
         }
@@ -70,7 +91,7 @@ class Canvas extends React.Component {
 
 function doSth(){
   this.g.preLoad();
-  console.log("sss")
+  console.log("sss");
 }
 
 static function drawImage(ctx,x,y,src){
@@ -79,10 +100,10 @@ static function drawImage(ctx,x,y,src){
   ctx.drawImage(img,x,y);
 }
 
-static function drawImageFig(ctx,sx,sy,dx,dy,src){
+static function drawImageFig(ctx,dx,dy,figure){
   let img = new Image();
-  img.src = imageAdress+src;
-  ctx.drawImage(img, sx, sy, spriteWH, spriteWH, dx, dy, fieldW, fieldH); 
+  img.src = imageAdress+'chessfig.png';
+  ctx.drawImage(img, figarr[figure][0], figarr[figure][1], spriteWH, spriteWH, dx, dy, fieldW, fieldH); 
 }
 
 
