@@ -4,7 +4,14 @@ import ReactDOM from 'react-dom';
 import Hello from './Hello';
 import './style.css';
 
+class Chess {
+  constructor() {
+    this.play = 1;
+    this.player = 0;
 
+    
+  }
+}
 
 let imageAdress = 'https://raw.githubusercontent.com/yuko70/chess2d/master/img/';
 let cWidth = 480;
