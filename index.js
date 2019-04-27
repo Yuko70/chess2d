@@ -144,23 +144,20 @@ class Canvas extends React.Component {
       }
       //ctx.strokeText(Maze[i].charAt(j), x+16, y+16);
     }
-
-
-    canvas.onclick = function () { click(event, this) };
-
+    canvas.onclick = function () { click(event) };
   }
+
   render() {
-    
     return (
-      
       <div>
         <canvas id="canvas" width={cWidth} height={cHeight} />
       </div>
     )
   }
+  
 }
 
-function click(event, this) {
+function click(event) {
   //this.g.preLoad();
   //console.log("sss");
   let x = event.offsetX;
@@ -187,7 +184,7 @@ function click(event, this) {
   console.log("x coords: " + lx + ", y coords: " + ly);
 
   boardarr[lx][ly] = 2;
-  //updateCanvas();
+
 
   //console.log(gamearr[lx][ly]);
   gamearr[lx][ly] = 'bp';
