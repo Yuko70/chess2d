@@ -195,12 +195,12 @@ function click(event) {
 
   //render(<Canvas/>, document.getElementById('root'));
 
-  // let canvas = document.getElementById('canvas');
-  // let ctx = canvas.getContext('2d');
-  //canvas.test();
+  let canvas = document.getElementById('canvas');
+  let ctx = canvas.getContext('2d');
+  ctx.test();
 
-  //React.Component.Canvas.test();
-  //thiss.updateCanvas();
+  //Canvas.test();
+  //updateCanvas();
   //console.log(boardarr)
  }
 
