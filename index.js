@@ -86,6 +86,9 @@ class Canvas extends React.Component {
           else if (boardarr[i][j] == 1) {
             drawImage(ctx,x,y,'whiteg.png');
           }
+          else if (boardarr[i][j] == 2) {
+            drawImage(ctx,x,y,'blueg.png');
+          }
 
           if (gamearr[i][j] != 0) {
             drawImageFig(ctx,x,y,gamearr[i][j]);
@@ -122,7 +125,7 @@ function click(){
   let ly = Math.floor(y/cWidth*8);
   console.log("x coords: " + lx + ", y coords: " + ly);
 
-  
+  boardarr[lx][ly] = 2;
 
 }
 
