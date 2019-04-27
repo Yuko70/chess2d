@@ -5,7 +5,7 @@ import './style.css';
 
 
 
-let imageAdress = 'https://raw.githubusercontent.com/yuko70/chess2d/master/img/';
+/let imageAdress = 'https://raw.githubusercontent.com/yuko70/chess2d/master/img/';
 let cWidth = 480;
 let cHeight = 480;
 
