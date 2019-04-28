@@ -89,6 +89,12 @@ class Chess {
 
       //constructor( col, posx, posy, t, spx, spy, spwh, fw, fh)
 
+      if (type == 'pawn') {
+        for (let i = 0; i < 8; i++) {
+
+        }
+      }
+      
 
       // this.figures.push({
       //   key: key,
