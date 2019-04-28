@@ -6,7 +6,7 @@ import './style.css';
 
 import Figure from './figure.js';
 
-//commit 0:42
+//commit 1:06
 
 class Chess {
   constructor() {
@@ -191,7 +191,14 @@ class Canvas extends React.Component {
         for (let f in chess.gamearea) {
           let figure = chess.gamearea[f];
           if (figure.clicked == true) {
-            drawImage(ctx, figure.x*60, figure.y*60, 'blueg.png');
+            if (chess.playercolor == 0) {
+              drawImage(ctx, figure.x*60, figure.y*60, 'blueg.png');
+              console.log(figure.moves);
+            }
+            else {
+              drawImage(ctx, (7-figure.x)*60, (7-figure.y)*60, 'blueg.png');
+            }
+            
           }
         }
       }
