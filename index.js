@@ -6,7 +6,7 @@ import './style.css';
 
 import Figure from './figure.js';
 
-//commit 
+//commit 0:14
 
 class Chess {
   constructor() {
