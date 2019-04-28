@@ -47,13 +47,16 @@ class Chess {
       else {
         color = 'white';
       }
-      
+      let spx = value[0];
+      let spy = value[1];
+
       console.log('string', col);
+      console.log('spx', spx, 'spy', spy);
 
 
       // figures.push({
       //   key: key,
-      //   value: new Figure()
+      //   value: new Figure(color, )
       // });
     }
 
