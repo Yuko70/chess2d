@@ -222,8 +222,8 @@ class Canvas extends React.Component {
   // }
 
   componentDidMount() {
-    // requestAnimationFrame(() => {this.updateCanvas()}); //-uncomment for startAnimation
-    this.updateCanvas();
+    requestAnimationFrame(() => {this.updateCanvas()}); //-uncomment for startAnimation
+    // this.updateCanvas();
   }
 
   test() {
@@ -308,7 +308,7 @@ class Canvas extends React.Component {
     drawImageFig(ctx, 60, 60);
 
     canvas.onclick = function () { click(event) };
-    // requestAnimationFrame(() => {this.updateCanvas()}); //-uncomment for startAnimation
+    requestAnimationFrame(() => {this.updateCanvas()}); //-uncomment for startAnimation
   }
 
   render() {
@@ -353,7 +353,7 @@ function click(event) {
 
 
   //console.log(gamearr[lx][ly]);
-  /gamearr[lx][ly] = 'bp';
+  //gamearr[lx][ly] = 'bp';
   //console.log(gamearr[lx][ly]);
 
   //ReactDOM.render(<Canvas/>, document.getElementById('canvas')); //-> this
