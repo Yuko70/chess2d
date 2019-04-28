@@ -90,11 +90,23 @@ class Chess {
       //constructor( col, posx, posy, t, spx, spy, spwh, fw, fh)
 
       if (type == 'pawn') {
-        for (let i = 0; i < 8; i++) {
-
+        let j = 0;
+        if (color == 'black') {
+          j = 1;
+          for (let i = 0; i < 8; i++) {
+            this.gamearea.push(new Figure(color, i, j, type, figarr[]))
+          }
         }
+        else {
+          j = 6
+          for (let i = 0; i < 8; i++) {
+
+          }
+        }
+        
       }
       
+      console.log(this.gamearea)
 
       // this.figures.push({
       //   key: key,
