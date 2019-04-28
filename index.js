@@ -80,52 +80,52 @@ class Chess {
       else if (key.substring(1, 3) == 'k') {
         type = 'knight';
         if (color == 'black') {
-          this.gamearea.push(new Figure(color, 0, 1, type, this.figarr[key][0], this.figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
-          this.gamearea.push(new Figure(color, 0, 6, type, this.figarr[key][0], this.figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
+          this.gamearea.push(new Figure(color, 1, 0, type, this.figarr[key][0], this.figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
+          this.gamearea.push(new Figure(color, 6, 0, type, this.figarr[key][0], this.figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
         }
         else {
-          this.gamearea.push(new Figure(color, 7, 1, type, this.figarr[key][0], this.figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
-          this.gamearea.push(new Figure(color, 7, 6, type, this.figarr[key][0], this.figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
+          this.gamearea.push(new Figure(color, 1, 7, type, this.figarr[key][0], this.figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
+          this.gamearea.push(new Figure(color, 6, 7, type, this.figarr[key][0], this.figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
         }
       }
       else if (key.substring(1, 3) == 'b') {
         type = 'bishop';
         if (color == 'black') {
-          this.gamearea.push(new Figure(color, 0, 2, type, this.figarr[key][0], this.figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
-          this.gamearea.push(new Figure(color, 0, 5, type, this.figarr[key][0], this.figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
+          this.gamearea.push(new Figure(color, 2, 0, type, this.figarr[key][0], this.figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
+          this.gamearea.push(new Figure(color, 5, 0, type, this.figarr[key][0], this.figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
         }
         else {
-          this.gamearea.push(new Figure(color, 7, 2, type, this.figarr[key][0], this.figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
-          this.gamearea.push(new Figure(color, 7, 5, type, this.figarr[key][0], this.figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
+          this.gamearea.push(new Figure(color, 2, 7, type, this.figarr[key][0], this.figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
+          this.gamearea.push(new Figure(color, 5, 7, type, this.figarr[key][0], this.figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
         }
       }
       else if (key.substring(1, 3) == 'r') {
         type = 'rook';
         if (color == 'black') {
           this.gamearea.push(new Figure(color, 0, 0, type, this.figarr[key][0], this.figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
-          this.gamearea.push(new Figure(color, 0, 7, type, this.figarr[key][0], this.figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
+          this.gamearea.push(new Figure(color, 7, 0, type, this.figarr[key][0], this.figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
         }
         else {
-          this.gamearea.push(new Figure(color, 7, 0, type, this.figarr[key][0], this.figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
+          this.gamearea.push(new Figure(color, 0, 7, type, this.figarr[key][0], this.figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
           this.gamearea.push(new Figure(color, 7, 7, type, this.figarr[key][0], this.figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
         }
       }
       else if (key.substring(1, 3) == 'q') {
         type = 'queen';
         if (color == 'black') {
-          this.gamearea.push(new Figure(color, 0, 3, type, this.figarr[key][0], this.figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
+          this.gamearea.push(new Figure(color, 3, 0, type, this.figarr[key][0], this.figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
         }
         else {
-          this.gamearea.push(new Figure(color, 7, 3, type, this.figarr[key][0], this.figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
+          this.gamearea.push(new Figure(color, 3, 7, type, this.figarr[key][0], this.figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
         }
       }
       else if (key.substring(1, 3) == 'ki') {
         type = 'king';
         if (color == 'black') {
-          this.gamearea.push(new Figure(color, 0, 4, type, this.figarr[key][0], this.figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
+          this.gamearea.push(new Figure(color, 4, 0, type, this.figarr[key][0], this.figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
         }
         else {
-          this.gamearea.push(new Figure(color, 7, 4, type, this.figarr[key][0], this.figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
+          this.gamearea.push(new Figure(color, 4, 7, type, this.figarr[key][0], this.figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
         }
       }
 
