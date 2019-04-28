@@ -23,6 +23,7 @@ class Chess {
     this.gamearea = [];
     
     this.configures();
+    this.figarr = {};
 
     this.boardarea = [
       [1, 0, 1, 0, 1, 0, 1, 0],
@@ -39,11 +40,11 @@ class Chess {
 
   configures() {
     console.log('CONFIGURES');
-    let figarr = {bp: [0, 0], bk: [130, 0], bb: [260, 0], br: [390, 0], bq: [520, 0], bki: [650, 0],
+    this.figarr = {bp: [0, 0], bk: [130, 0], bb: [260, 0], br: [390, 0], bq: [520, 0], bki: [650, 0],
                   wp: [0, 130], wk: [130, 130], wb: [260, 130], wr: [390, 130], wq: [520, 130], wki: [650, 130]};
     
 
-    for (let key in figarr) {
+    for (let key in this.figarr) {
       // var value = figarr[key];
       // console.log(key, value);
       
@@ -55,8 +56,8 @@ class Chess {
       else {
         color = 'white';
       }
-      let spx = figarr[key][0];
-      let spy = figarr[key][1];
+      let spx = this.figarr[key][0];
+      let spy = this.figarr[key][1];
 
 
       let type = ''; 
@@ -66,65 +67,65 @@ class Chess {
         if (color == 'black') {
           j = 1;
           for (let i = 0; i < 8; i++) {
-            this.gamearea.push(new Figure(color, i, j, type, figarr[key][0], figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
+            this.gamearea.push(new Figure(color, i, j, type, this.figarr[key][0], this.figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
           }
         }
         else {
           j = 6
           for (let i = 0; i < 8; i++) {
-            this.gamearea.push(new Figure(color, i, j, type, figarr[key][0], figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
+            this.gamearea.push(new Figure(color, i, j, type, this.figarr[key][0], this.figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
           }
         }
       }
       else if (key.substring(1, 3) == 'k') {
         type = 'knight';
         if (color == 'black') {
-          this.gamearea.push(new Figure(color, 0, 1, type, figarr[key][0], figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
-          this.gamearea.push(new Figure(color, 0, 6, type, figarr[key][0], figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
+          this.gamearea.push(new Figure(color, 0, 1, type, this.figarr[key][0], this.figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
+          this.gamearea.push(new Figure(color, 0, 6, type, this.figarr[key][0], this.figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
         }
         else {
-          this.gamearea.push(new Figure(color, 7, 1, type, figarr[key][0], figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
-          this.gamearea.push(new Figure(color, 7, 6, type, figarr[key][0], figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
+          this.gamearea.push(new Figure(color, 7, 1, type, this.figarr[key][0], this.figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
+          this.gamearea.push(new Figure(color, 7, 6, type, this.figarr[key][0], this.figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
         }
       }
       else if (key.substring(1, 3) == 'b') {
         type = 'bishop';
         if (color == 'black') {
-          this.gamearea.push(new Figure(color, 0, 2, type, figarr[key][0], figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
-          this.gamearea.push(new Figure(color, 0, 5, type, figarr[key][0], figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
+          this.gamearea.push(new Figure(color, 0, 2, type, this.figarr[key][0], this.figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
+          this.gamearea.push(new Figure(color, 0, 5, type, this.figarr[key][0], this.figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
         }
         else {
-          this.gamearea.push(new Figure(color, 7, 2, type, figarr[key][0], figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
-          this.gamearea.push(new Figure(color, 7, 5, type, figarr[key][0], figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
+          this.gamearea.push(new Figure(color, 7, 2, type, this.figarr[key][0], this.figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
+          this.gamearea.push(new Figure(color, 7, 5, type, this.figarr[key][0], this.figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
         }
       }
       else if (key.substring(1, 3) == 'r') {
         type = 'rook';
         if (color == 'black') {
-          this.gamearea.push(new Figure(color, 0, 0, type, figarr[key][0], figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
-          this.gamearea.push(new Figure(color, 0, 7, type, figarr[key][0], figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
+          this.gamearea.push(new Figure(color, 0, 0, type, this.figarr[key][0], this.figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
+          this.gamearea.push(new Figure(color, 0, 7, type, this.figarr[key][0], this.figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
         }
         else {
-          this.gamearea.push(new Figure(color, 7, 0, type, figarr[key][0], figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
-          this.gamearea.push(new Figure(color, 7, 7, type, figarr[key][0], figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
+          this.gamearea.push(new Figure(color, 7, 0, type, this.figarr[key][0], this.figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
+          this.gamearea.push(new Figure(color, 7, 7, type, this.figarr[key][0], this.figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
         }
       }
       else if (key.substring(1, 3) == 'q') {
         type = 'queen';
         if (color == 'black') {
-          this.gamearea.push(new Figure(color, 0, 3, type, figarr[key][0], figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
+          this.gamearea.push(new Figure(color, 0, 3, type, this.figarr[key][0], this.figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
         }
         else {
-          this.gamearea.push(new Figure(color, 7, 3, type, figarr[key][0], figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
+          this.gamearea.push(new Figure(color, 7, 3, type, this.figarr[key][0], this.figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
         }
       }
       else if (key.substring(1, 3) == 'ki') {
         type = 'king';
         if (color == 'black') {
-          this.gamearea.push(new Figure(color, 0, 4, type, figarr[key][0], figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
+          this.gamearea.push(new Figure(color, 0, 4, type, this.figarr[key][0], this.figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
         }
         else {
-          this.gamearea.push(new Figure(color, 7, 4, type, figarr[key][0], figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
+          this.gamearea.push(new Figure(color, 7, 4, type, this.figarr[key][0], this.figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
         }
       }
 
@@ -158,6 +159,7 @@ let chess = new Chess();
 // console.log(ch.spriteWH);
 
 console.log(chess.gamearea);
+// console.log(chess.figarr);
 
 
 
@@ -174,8 +176,8 @@ console.log(chess.gamearea);
 
 // let gamercolor = 'b'; //w or b
 
-let figarr = {bp: [0, 0], bk: [130, 0], bb: [260, 0], br: [390, 0], bq: [520, 0], bki: [650, 0],
-                  wp: [0, 130], wk: [130, 130], wb: [260, 130], wr: [390, 130], wq: [520, 130], wki: [650, 130]};
+// let figarr = {bp: [0, 0], bk: [130, 0], bb: [260, 0], br: [390, 0], bq: [520, 0], bki: [650, 0],
+                  // wp: [0, 130], wk: [130, 130], wb: [260, 130], wr: [390, 130], wq: [520, 130], wki: [650, 130]};
 
 let gamearr = [
   ['br', 'bk', 'bb', 'bq', 'bki', 'bb', 'bk', 'br'],
@@ -284,21 +286,26 @@ class Canvas extends React.Component {
         }
         // console.log('kresliiiiiiiiiiii');
 
-        if (gamearr[i][j] != 0) {
-          // if (gamercolor == 'b') {
-          //   //drawImageFig(ctx,x,y,gamearr[i][j]);
-          //   drawImageFig(ctx, x, y, gamearr[i][j]);
-          //   //console.log(gamearr[j][j]);
-          // }
-          // else {
-            drawImageFig(ctx, x, y, gamearr[i][j]);
-          // }
-          //drawImageFig(ctx,x,y,gamearr[i][j]);
-          //console.log(gamearr[1][0]);
-        }
+        // if (gamearr[i][j] != 0) {
+        //   // if (gamercolor == 'b') {
+        //   //   //drawImageFig(ctx,x,y,gamearr[i][j]);
+        //   //   drawImageFig(ctx, x, y, gamearr[i][j]);
+        //   //   //console.log(gamearr[j][j]);
+        //   // }
+        //   // else {
+        //     drawImageFig(ctx, x, y, gamearr[i][j]);
+        //   // }
+        //   //drawImageFig(ctx,x,y,gamearr[i][j]);
+        //   //console.log(gamearr[1][0]);
+        // }
+
+        
       }
       //ctx.strokeText(Maze[i].charAt(j), x+16, y+16);
     }
+    
+
+
     canvas.onclick = function () { click(event) };
     requestAnimationFrame(() => {this.updateCanvas()}); //-uncomment for startAnimation
   }
@@ -375,10 +382,18 @@ static function drawImage(ctx, x, y, src) {
   ctx.drawImage(img, x, y);
 }
 
-static function drawImageFig(ctx, dx, dy, figure) {
-  let img = new Image();
-  img.src = chess.imageAdress + 'chessfig.png';
-  ctx.drawImage(img, figarr[figure][0], figarr[figure][1], chess.spriteWH, chess.spriteWH, dx, dy, chess.fieldW, chess.fieldH);
+// static function drawImageFig(ctx, dx, dy, figure) {
+//   let img = new Image();
+//   img.src = chess.imageAdress + 'chessfig.png';
+//   console.log(figure);
+//   ctx.drawImage(img, chess.figarr[figure][0], chess.figarr[figure][1], chess.spriteWH, chess.spriteWH, dx, dy, chess.fieldW, chess.fieldH);
+// }
+
+static function drawImageFig(ctx, x, y) {
+  console.log(chess.gamearea)
+  for (let figure in chess.gamearea) {
+
+  }
 }
 
 
