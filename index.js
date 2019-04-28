@@ -22,22 +22,39 @@ class Chess {
 
     this.figures = [];
     
-    this.configures();/
+    this.configures();
     // console.log('CONFIGURES');
   }
 
   configures() {
-    conslole.log('CONFIGURES');
+    console.log('CONFIGURES');
     let figarr = {bp: [0, 0], bk: [130, 0], bb: [260, 0], br: [390, 0], bq: [520, 0], bki: [650, 0],
                   wp: [0, 130], wk: [130, 130], wb: [260, 130], wr: [390, 130], wq: [520, 130], wki: [650, 130]};
     
-    for (let i = 0; i < 12; i++) {
-      console.log();
-    }
+    // for (let i = 0; i < 12; i++) {
+    //   console.log();
+    // }
 
     for (let key in figarr) {
-      var value = array[key];
+      var value = figarr[key];
       console.log(key, value);
+      
+      let col = key.substring(0, 1);
+      let color = '';
+      if (col == 'b') {
+        color = 'black';
+      }
+      else {
+        color = 'white';
+      }
+      
+      console.log('string', col);
+
+
+      // figures.push({
+      //   key: key,
+      //   value: new Figure()
+      // });
     }
 
   }
