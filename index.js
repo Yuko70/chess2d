@@ -6,7 +6,7 @@ import './style.css';
 
 import Figure from './figure.js';
 
-//commit 19:4
+//commit 
 
 class Chess {
   constructor() {
@@ -46,10 +46,7 @@ class Chess {
                   wp: [0, 130], wk: [130, 130], wb: [260, 130], wr: [390, 130], wq: [520, 130], wki: [650, 130]};
     
 
-    for (let key in this.figarr) {
-      // var value = figarr[key];
-      // console.log(key, value);
-      
+    for (let key in this.figarr) {  
       
       let color = '';
       if (key.substring(0, 1) == 'b') {
@@ -60,7 +57,6 @@ class Chess {
       }
       let spx = this.figarr[key][0];
       let spy = this.figarr[key][1];
-
 
       let type = ''; 
       if (key.substring(1, 3) == 'p') {
@@ -131,97 +127,18 @@ class Chess {
         }
       }
 
-      // console.log('substring', key.substring(1, 3) == 'ki', key.substring(1, 3))
-
-      // console.log('string', col);
-      // console.log('spx', spx, 'spy', spy);
-
-      //constructor( col, posx, posy, t, spx, spy, spwh, fw, fh)
-
-      // if (type == 'pawn') {
-        
-        
-      // }
-      
-      // console.log(this.gamearea)
-
-      // this.figures.push({
-      //   key: key,
-      //   value: new Figure(color, )
-      // });
     }
 
   }
 }
 
-// let f = new Figure('black', 0, 0, 'pawn', 0, 0, 130, 60, 60);
-// console.log(f)
 
 let chess = new Chess();
-// console.log(ch.spriteWH);
 
 console.log(chess.gamearea);
-// console.log(chess.figarr);
-
-
-
-
-// let imageAdress = 'https://raw.githubusercontent.com/yuko70/chess2d/master/img/';
-// let cWidth = 480;
-// let cHeight = 480;
-
-// let fieldW = 60;
-// let fieldH = 60;
-// let spriteWH = 130;
-
-// let g = Game;
-
-// let gamercolor = 'b'; //w or b
-
-// let figarr = {bp: [0, 0], bk: [130, 0], bb: [260, 0], br: [390, 0], bq: [520, 0], bki: [650, 0],
-//              wp: [0, 130], wk: [130, 130], wb: [260, 130], wr: [390, 130], wq: [520, 130], wki: [650, 130]};
-
-// let gamearr = [
-//   ['br', 'bk', 'bb', 'bq', 'bki', 'bb', 'bk', 'br'],
-//   ['bp', 'bp', 'bp', 'bp', 'bp', 'bp', 'bp', 'bp'],
-//   [0, 0, 0, 0, 0, 0, 0, 0],
-//   [0, 0, 0, 0, 0, 0, 0, 0],
-//   [0, 0, 0, 0, 0, 0, 0, 0],
-//   [0, 0, 0, 0, 0, 0, 0, 0],
-//   ['wp', 'wp', 'wp', 'wp', 'wp', 'wp', 'wp', 'wp'],
-//   ['wr', 'wk', 'wb', 'wq', 'wki', 'wb', 'wk', 'wr'],
-// ];
-
-// let boardarr = [
-//   [1, 0, 1, 0, 1, 0, 1, 0],
-//   [0, 1, 0, 1, 0, 1, 0, 1],
-//   [1, 0, 1, 0, 1, 0, 1, 0],
-//   [0, 1, 0, 1, 0, 1, 0, 1],
-//   [1, 0, 1, 0, 1, 0, 1, 0],
-//   [0, 1, 0, 1, 0, 1, 0, 1],
-//   [1, 0, 1, 0, 1, 0, 1, 0],
-//   [0, 1, 0, 1, 0, 1, 0, 1],
-// ];
-
-
-
-// First I load the Image
-//let sprite = new Image();
-//sprite.src = 'https://raw.githubusercontent.com/yuko70/chess2d/master/img/chessfig.png';
-// Define sprite size
-//spriteSize = 16;
-// Draw on map, tileIndex is the number i store in the map array
-//ctx.drawImage(sprite, 0, tileIndex * spriteWH, spriteWH, spriteWH, tileX, tileY, spriteWH, spriteWH);
-// And the map looks like this but bigger
-//var map = Array([0,0,0,1,1],[1,1,0,1,0]);
 
 
 class Canvas extends React.Component {
-
-  // constructor(props) {
-  //   super(props);
-  //   this.myCanvas = React.createRef();
-  // }
 
   componentDidMount() {
     requestAnimationFrame(() => {this.updateCanvas()}); //-uncomment for startAnimation
@@ -237,10 +154,6 @@ class Canvas extends React.Component {
     const ctx = canvas.getContext("2d")
     ctx.fillStyle = "#FFF000";
     ctx.fillRect(0, 0, 480, 480);
-
-    //ctx.fillStyle = "blue";
-    //console.log(figarr['bk'][0]);
-    //console.log(gamearr[0][0]=='br');
 
     let ii = 8;
     let jj = 8;
@@ -260,18 +173,6 @@ class Canvas extends React.Component {
           let y = 60 * jj;
         }
 
-        //console.log(ii,jj);
-
-        // if (i % 2 == 0 & j % 2 == 0) {
-        //   drawImage(ctx,x,y,'whiteg.png');
-        // }
-        // else if (i % 2 == 1 & j % 2 == 1) {
-        //   drawImage(ctx,x,y,'whiteg.png');
-        // }
-        // else {
-        //   drawImage(ctx,x,y,'greyg.png');
-        // }
-
         if (chess.boardarea[i][j] == 0) {
           drawImage(ctx, x, y, 'greyg.png');
         }
@@ -287,24 +188,9 @@ class Canvas extends React.Component {
         else if (chess.boardarea[i][j] == 4) {
           drawImage(ctx, x, y, 'redg.png');
         }
-        // console.log('kresliiiiiiiiiiii');
-
-        // if (gamearr[i][j] != 0) {
-        //   // if (gamercolor == 'b') {
-        //   //   //drawImageFig(ctx,x,y,gamearr[i][j]);
-        //   //   drawImageFig(ctx, x, y, gamearr[i][j]);
-        //   //   //console.log(gamearr[j][j]);
-        //   // }
-        //   // else {
-        //     drawImageFig(ctx, x, y, gamearr[i][j]);
-        //   // }
-        //   //drawImageFig(ctx,x,y,gamearr[i][j]);
-        //   //console.log(gamearr[1][0]);
-        // }
-
         
       }
-      //ctx.strokeText(Maze[i].charAt(j), x+16, y+16);
+    
     }
     
     drawImageFig(ctx, 60, 60);
@@ -324,19 +210,11 @@ class Canvas extends React.Component {
 }
 
 function click(event) {
-  //this.g.preLoad();
-  //console.log("sss");
+
   let x = event.offsetX;
   let y = event.offsetY;
-  // guessX = x;
-  // guessY = y;
-  //console.log("x coords: " + x + ", y coords: " + y);
-
-  //console.log("x coords: " + Math.floor(x / chess.cWidth * 8) + ", y coords: " + Math.floor(y / cHeight * 8));
 
   if (chess.playercolor == 0) {
-    // let lx = Math.floor(x / chess.cWidth * 8);
-    // let ly = Math.floor(y / chess.cHeight * 8);
     let lx = Math.floor(x / chess.cWidth * 8);
     let ly = Math.floor(y / chess.cHeight * 8);
   }
@@ -344,10 +222,6 @@ function click(event) {
     let lx = Math.floor( (chess.cWidth - x) / chess.cWidth * 8 );
     let ly = Math.floor( (chess.cHeight - y) / chess.cHeight * 8 );
   }
-
-  //let lx = Math.floor(x / chess.cWidth * 8);
-  //let ly = Math.floor(y / chess.cWidth * 8);
-
 
   console.log("x coords: " + lx + ", y coords: " + ly);
 
@@ -359,40 +233,18 @@ function click(event) {
       figure.clicked = true;
     }
   }
-  // chess.playercolor = 0;
 
   // otacanie hernej plochy
-  // if (chess.playercolor == 0) {
-  //   chess.playercolor = 1;
-  // }
-  // else {
-  //   chess.playercolor = 0
-  // }
+  if (chess.playercolor == 0) {
+    chess.playercolor = 1;
+  }
+  else {
+    chess.playercolor = 0
+  }
 
-
-  //console.log(gamearr[lx][ly]);
-  //gamearr[lx][ly] = 'bp';
-  //console.log(gamearr[lx][ly]);
-
-  //ReactDOM.render(<Canvas/>, document.getElementById('canvas')); //-> this
-
-
-  //render(<Canvas/>, document.getElementById('canvas'));
   
   console.log(document.getElementById('canvas'));
 
-
-  // let ch = new Chess();
-  // console.log(ch.spriteWH);
-
-
-  //document.getElementById('canvas').updateCanvas();
-  // let canvas = document.getElementById('canvas');
-  // let ctx = canvas.getContext('2d');
-  // ctx.render;
-  //Canvas.test();
-  //updateCanvas();
-  //console.log(boardarr)
  }
 
 static function drawImage(ctx, x, y, src) {
@@ -401,30 +253,11 @@ static function drawImage(ctx, x, y, src) {
   ctx.drawImage(img, x, y);
 }
 
-// static function drawImageFig(ctx, dx, dy, figure) {
-//   let img = new Image();
-//   img.src = chess.imageAdress + 'chessfig.png';
-//   console.log(figure);
-//   ctx.drawImage(img, chess.figarr[figure][0], chess.figarr[figure][1], chess.spriteWH, chess.spriteWH, dx, dy, chess.fieldW, chess.fieldH);
-// }
-
 static function drawImageFig(ctx, sizex, sizey) {
   // console.log(chess.gamearea)
   let img = new Image();
   img.src = chess.imageAdress + 'chessfig.png';
   
-  // if (chess.playercolor == 0) {
-  //   for (let f in chess.gamearea) {
-  //     let figure = chess.gamearea[f];
-  //     ctx.drawImage(img, figure.spritex, figure.spritey, chess.spriteWH, chess.spriteWH, figure.x*sizex, figure.y*sizey, chess.fieldW, chess.fieldH);
-  //   }
-  // } 
-  // else {
-  //   for (let f in chess.gamearea) {
-  //     let figure = chess.gamearea[f];
-  //     ctx.drawImage(img, figure.spritex, figure.spritey, chess.spriteWH, chess.spriteWH, (7-figure.x)*sizex, (7-figure.y)*sizey, chess.fieldW, chess.fieldH);
-  //   }
-  // } 
   
   for (let f in chess.gamearea) {
     let figure = chess.gamearea[f];
@@ -438,55 +271,10 @@ static function drawImageFig(ctx, sizex, sizey) {
        chess.boardarea[figure.x][figure.y] = 2;
      }
     //  else {
-       
+       // zafarbenie policka spravne naspat
     //  }
   }
   
 }
-
-
-
-/*class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      name: 'React'
-    };
-  }
-  render() {
-    return (
-      <div>
-        <Hello name={this.state.name} />
-        <p>
-        </p>
-      </div>
-    );
-  }
-}*/
-
-//render(<App />, document.getElementById('root'));
-
-
-// class Game {
-//   constructor() {
-//     let state = {
-//       lives: 3,
-//       pac: Pacman(),
-//       ghost: Ghost(),
-//       map: Maze,
-//       pacTiles: [
-
-//       ],
-//     };
-//   }
-//   preLoad() {
-//     let canvas = document.getElementById('canvas')
-//     let ctx = canvas.getContext('2d');
-//     ctx.fillStyle = "green";
-//     ctx.fillText(100, 100, "sdawdawdawdawdawdawdawdawdadawda");
-//     ctx.stroke()
-//   }
-// }
-
 
 render(<Canvas />, document.getElementById('root'));
