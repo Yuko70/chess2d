@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import Hello from './Hello';
 import './style.css';
 
-import './figure.js'
+import './figure.js';
 
 class Chess {
   constructor() {
@@ -54,7 +54,7 @@ class Chess {
       console.log('spx', spx, 'spy', spy);
 
 
-      // figures.push({
+      // this.figures.push({
       //   key: key,
       //   value: new Figure(color, )
       // });
@@ -62,6 +62,7 @@ class Chess {
 
   }
 }
+let f = new Figure();
 
 let ch = new Chess();
 console.log(ch.spriteWH);
