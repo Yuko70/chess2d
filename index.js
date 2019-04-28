@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import Hello from './Hello';
 import './style.css';
 
-import './figure.js';
+import Figure from './figure.js';
 
 class Chess {
   constructor() {
@@ -20,7 +20,18 @@ class Chess {
     this.fieldH = 60;
     this.spriteWH = 130;
 
-    this.figures = [];
+    this.gamearea = [];
+
+    let gamearr = [
+      ['br', 'bk', 'bb', 'bq', 'bki', 'bb', 'bk', 'br'],
+      ['bp', 'bp', 'bp', 'bp', 'bp', 'bp', 'bp', 'bp'],
+      [0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0],
+      ['wp', 'wp', 'wp', 'wp', 'wp', 'wp', 'wp', 'wp'],
+      ['wr', 'wk', 'wb', 'wq', 'wki', 'wb', 'wk', 'wr'],
+    ];
     
     this.configures();
     // console.log('CONFIGURES');
@@ -39,9 +50,9 @@ class Chess {
       var value = figarr[key];
       console.log(key, value);
       
-      let col = key.substring(0, 1);
+      
       let color = '';
-      if (col == 'b') {
+      if (key.substring(0, 1) == 'b') {
         color = 'black';
       }
       else {
@@ -50,8 +61,33 @@ class Chess {
       let spx = value[0];
       let spy = value[1];
 
-      console.log('string', col);
+
+      let type = ''; 
+      if (key.substring(1, 3) == 'p') {
+        type = 'pawn';
+      }
+      else if (key.substring(1, 3) == 'k') {
+        type = 'knight';
+      }
+      else if (key.substring(1, 3) == 'b') {
+        type = 'bishop';
+      }
+      else if (key.substring(1, 3) == 'r') {
+        type = 'rook';
+      }
+      else if (key.substring(1, 3) == 'q') {
+        type = 'queen';
+      }
+      else if (key.substring(1, 3) == 'ki') {
+        type = 'king';
+      }
+
+      // console.log('substring', key.substring(1, 3) == 'ki', key.substring(1, 3))
+
+      // console.log('string', col);
       console.log('spx', spx, 'spy', spy);
+
+      //constructor( col, posx, posy, t, spx, spy, spwh, fw, fh)
 
 
       // this.figures.push({
@@ -62,7 +98,7 @@ class Chess {
 
   }
 }
-let f = new Figure();
+// let f = new Figure();
 
 let ch = new Chess();
 console.log(ch.spriteWH);
