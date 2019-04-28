@@ -6,7 +6,7 @@ import './style.css';
 
 import Figure from './figure.js';
 
-//commit 1:06
+//commit 1:23
 
 class Chess {
   constructor() {
@@ -194,12 +194,15 @@ class Canvas extends React.Component {
           if (figure.clicked == true) {
             if (chess.playercolor == 0) {
               drawImage(ctx, figure.x*60, figure.y*60, 'blueg.png');
-              for (xy in figure.moves) {
-                drawImage(ctx, xy[0]*60, xy[1]*60, 'blueg.png');
-              }
+              // for (let xy in figure.moves) {
+              //   drawImage(ctx, xy[0]*60, xy[1]*60, 'lightblueg.png');
+              // }
             }
             else {
               drawImage(ctx, (7-figure.x)*60, (7-figure.y)*60, 'blueg.png');
+              // for (let xy in figure.moves) {
+              //   drawImage(ctx, (7-xy[0])*60, (xy[1])*60, 'lightblueg.png');
+              // }
             }
             
           }
