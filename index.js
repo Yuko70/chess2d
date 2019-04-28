@@ -349,7 +349,15 @@ function click(event) {
 
   console.log("x coords: " + lx + ", y coords: " + ly);
 
-  chess.boardarea[lx][ly] = 2;
+  // chess.boardarea[lx][ly] = 2;
+
+  // chess.playercolor = 0;
+  if (chess.playercolor == 0) {
+    chess.playercolor = 1;
+  }
+  else {
+    chess.playercolor = 0
+  }
 
 
   //console.log(gamearr[lx][ly]);
@@ -394,12 +402,30 @@ static function drawImageFig(ctx, sizex, sizey) {
   // console.log(chess.gamearea)
   let img = new Image();
   img.src = chess.imageAdress + 'chessfig.png';
-
+  
+  // if (chess.playercolor == 0) {
+  //   for (let f in chess.gamearea) {
+  //     let figure = chess.gamearea[f];
+  //     ctx.drawImage(img, figure.spritex, figure.spritey, chess.spriteWH, chess.spriteWH, figure.x*sizex, figure.y*sizey, chess.fieldW, chess.fieldH);
+  //   }
+  // } 
+  // else {
+  //   for (let f in chess.gamearea) {
+  //     let figure = chess.gamearea[f];
+  //     ctx.drawImage(img, figure.spritex, figure.spritey, chess.spriteWH, chess.spriteWH, (7-figure.x)*sizex, (7-figure.y)*sizey, chess.fieldW, chess.fieldH);
+  //   }
+  // } 
+  
   for (let f in chess.gamearea) {
-    //console.log('figure', chess.gamearea[f]);
     let figure = chess.gamearea[f];
-    ctx.drawImage(img, figure.spritex, figure.spritey, chess.spriteWH, chess.spriteWH, figure.x*sizex, figure.y*sizey, chess.fieldW, chess.fieldH);
+     if (chess.playercolor == 0) {
+       ctx.drawImage(img, figure.spritex, figure.spritey, chess.spriteWH, chess.spriteWH, figure.x*sizex, figure.y*sizey, chess.fieldW, chess.fieldH);
+     }
+     else {
+       ctx.drawImage(img, figure.spritex, figure.spritey, chess.spriteWH, chess.spriteWH, (7-figure.x)*sizex, (7-figure.y)*sizey, chess.fieldW, chess.fieldH);
+     }
   }
+  
 }
 
 
