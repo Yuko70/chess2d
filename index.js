@@ -176,19 +176,19 @@ console.log(chess.gamearea);
 
 // let gamercolor = 'b'; //w or b
 
-let figarr = {bp: [0, 0], bk: [130, 0], bb: [260, 0], br: [390, 0], bq: [520, 0], bki: [650, 0],
-             wp: [0, 130], wk: [130, 130], wb: [260, 130], wr: [390, 130], wq: [520, 130], wki: [650, 130]};
+// let figarr = {bp: [0, 0], bk: [130, 0], bb: [260, 0], br: [390, 0], bq: [520, 0], bki: [650, 0],
+//              wp: [0, 130], wk: [130, 130], wb: [260, 130], wr: [390, 130], wq: [520, 130], wki: [650, 130]};
 
-let gamearr = [
-  ['br', 'bk', 'bb', 'bq', 'bki', 'bb', 'bk', 'br'],
-  ['bp', 'bp', 'bp', 'bp', 'bp', 'bp', 'bp', 'bp'],
-  [0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0],
-  ['wp', 'wp', 'wp', 'wp', 'wp', 'wp', 'wp', 'wp'],
-  ['wr', 'wk', 'wb', 'wq', 'wki', 'wb', 'wk', 'wr'],
-];
+// let gamearr = [
+//   ['br', 'bk', 'bb', 'bq', 'bki', 'bb', 'bk', 'br'],
+//   ['bp', 'bp', 'bp', 'bp', 'bp', 'bp', 'bp', 'bp'],
+//   [0, 0, 0, 0, 0, 0, 0, 0],
+//   [0, 0, 0, 0, 0, 0, 0, 0],
+//   [0, 0, 0, 0, 0, 0, 0, 0],
+//   [0, 0, 0, 0, 0, 0, 0, 0],
+//   ['wp', 'wp', 'wp', 'wp', 'wp', 'wp', 'wp', 'wp'],
+//   ['wr', 'wk', 'wb', 'wq', 'wki', 'wb', 'wk', 'wr'],
+// ];
 
 // let boardarr = [
 //   [1, 0, 1, 0, 1, 0, 1, 0],
@@ -353,7 +353,7 @@ function click(event) {
 
 
   //console.log(gamearr[lx][ly]);
-  gamearr[lx][ly] = 'bp';
+  /gamearr[lx][ly] = 'bp';
   //console.log(gamearr[lx][ly]);
 
   //ReactDOM.render(<Canvas/>, document.getElementById('canvas')); //-> this
@@ -396,10 +396,9 @@ static function drawImageFig(ctx, sizex, sizey) {
   img.src = chess.imageAdress + 'chessfig.png';
 
   for (let f in chess.gamearea) {
-    console.log('figure', chess.gamearea[f]);
+    //console.log('figure', chess.gamearea[f]);
     let figure = chess.gamearea[f];
     ctx.drawImage(img, figure.spritex, figure.spritey, chess.spriteWH, chess.spriteWH, figure.x*sizex, figure.y*sizey, chess.fieldW, chess.fieldH);
-
   }
 }
 
