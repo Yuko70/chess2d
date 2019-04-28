@@ -235,13 +235,19 @@ function click(event) {
   }
 
   // otacanie hernej plochy
-  if (chess.playercolor == 0) {
-    chess.playercolor = 1;
-  }
-  else {
-    chess.playercolor = 0
-  }
+  // if (chess.playercolor == 0) {
+  //   chess.playercolor = 1;
+  // }
+  // else {
+  //   chess.playercolor = 0
+  // }
 
+  // for (let f in chess.gamearea) {
+  //   let figure = chess.gamearea[f];
+  //   if (figure.x == 0 & figure.y == 1) {
+  //     figure.y += 1;
+  //   }
+  // }
   
   console.log(document.getElementById('canvas'));
 
