@@ -21,17 +21,6 @@ class Chess {
     this.spriteWH = 130;
 
     this.gamearea = [];
-
-    // let gamearr = [
-    //   ['br', 'bk', 'bb', 'bq', 'bki', 'bb', 'bk', 'br'],
-    //   ['bp', 'bp', 'bp', 'bp', 'bp', 'bp', 'bp', 'bp'],
-    //   [0, 0, 0, 0, 0, 0, 0, 0],
-    //   [0, 0, 0, 0, 0, 0, 0, 0],
-    //   [0, 0, 0, 0, 0, 0, 0, 0],
-    //   [0, 0, 0, 0, 0, 0, 0, 0],
-    //   ['wp', 'wp', 'wp', 'wp', 'wp', 'wp', 'wp', 'wp'],
-    //   ['wr', 'wk', 'wb', 'wq', 'wki', 'wb', 'wk', 'wr'],
-    // ];
     
     this.configures();
     // console.log('CONFIGURES');
@@ -42,13 +31,10 @@ class Chess {
     let figarr = {bp: [0, 0], bk: [130, 0], bb: [260, 0], br: [390, 0], bq: [520, 0], bki: [650, 0],
                   wp: [0, 130], wk: [130, 130], wb: [260, 130], wr: [390, 130], wq: [520, 130], wki: [650, 130]};
     
-    // for (let i = 0; i < 12; i++) {
-    //   console.log();
-    // }
 
     for (let key in figarr) {
-      var value = figarr[key];
-      console.log(key, value);
+      // var value = figarr[key];
+      // console.log(key, value);
       
       
       let color = '';
@@ -58,8 +44,8 @@ class Chess {
       else {
         color = 'white';
       }
-      let spx = value[0];
-      let spy = value[1];
+      let spx = figarr[key][0];
+      let spy = figarr[key][1];
 
 
       let type = ''; 
