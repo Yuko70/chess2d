@@ -6,6 +6,8 @@ import './style.css';
 
 import Figure from './figure.js';
 
+//commit 19:4
+
 class Chess {
   constructor() {
     this.play = 1;
@@ -433,8 +435,11 @@ static function drawImageFig(ctx, sizex, sizey) {
        ctx.drawImage(img, figure.spritex, figure.spritey, chess.spriteWH, chess.spriteWH, (7-figure.x)*sizex, (7-figure.y)*sizey, chess.fieldW, chess.fieldH);
      }
      if (figure.clicked == true) {
-       chess.boardarea[]
+       chess.boardarea[figure.x][figure.y] = 2;
      }
+    //  else {
+       
+    //  }
   }
   
 }
