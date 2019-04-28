@@ -10,7 +10,7 @@ class Chess {
   constructor() {
     this.play = 1;
     this.move = 0;
-    this.playercolor = 0; //let gamercolor = 'w'; //w or b
+    this.playercolor = 0; //1 = black, 0 = white  //let gamercolor = 'w'; //w or b
 
     this.imageAdress = 'https://raw.githubusercontent.com/yuko70/chess2d/master/img/';
     this.cWidth = 480;
@@ -163,16 +163,16 @@ console.log(chess.gamearea);
 
 
 // let imageAdress = 'https://raw.githubusercontent.com/yuko70/chess2d/master/img/';
-let cWidth = 480;
-let cHeight = 480;
+// let cWidth = 480;
+// let cHeight = 480;
 
-let fieldW = 60;
-let fieldH = 60;
-let spriteWH = 130;
+// let fieldW = 60;
+// let fieldH = 60;
+// let spriteWH = 130;
 
 // let g = Game;
 
-let gamercolor = 'b'; //w or b
+// let gamercolor = 'b'; //w or b
 
 let figarr = {bp: [0, 0], bk: [130, 0], bb: [260, 0], br: [390, 0], bq: [520, 0], bki: [650, 0],
                   wp: [0, 130], wk: [130, 130], wb: [260, 130], wr: [390, 130], wq: [520, 130], wki: [650, 130]};
@@ -220,7 +220,7 @@ class Canvas extends React.Component {
   // }
 
   componentDidMount() {
-    //requestAnimationFrame(() => {this.updateCanvas()}); //-uncomment for startAnimation
+    requestAnimationFrame(() => {this.updateCanvas()}); //-uncomment for startAnimation
   }
 
   test() {
@@ -246,7 +246,7 @@ class Canvas extends React.Component {
       for (let j = 0; j < 8; j++) {
         jj--;
        
-        if (gamercolor == 'w') {
+        if (chess.playercolor == 0) {
           let x = 60 * j;
           let y = 60 * i;
         }
@@ -300,13 +300,13 @@ class Canvas extends React.Component {
       //ctx.strokeText(Maze[i].charAt(j), x+16, y+16);
     }
     canvas.onclick = function () { click(event) };
-    //requestAnimationFrame(() => {this.updateCanvas()}); //-uncomment for startAnimation
+    requestAnimationFrame(() => {this.updateCanvas()}); //-uncomment for startAnimation
   }
 
   render() {
     return (
       <div>
-        <canvas id="canvas" width={cWidth} height={cHeight} />
+        <canvas id="canvas" width={chess.cWidth} height={chess.cHeight} />
       </div>
     )
   }
@@ -322,21 +322,21 @@ function click(event) {
   // guessY = y;
   //console.log("x coords: " + x + ", y coords: " + y);
 
-  //console.log("x coords: " + Math.floor(x / cWidth * 8) + ", y coords: " + Math.floor(y / cHeight * 8));
+  //console.log("x coords: " + Math.floor(x / chess.cWidth * 8) + ", y coords: " + Math.floor(y / cHeight * 8));
 
-  if (gamercolor == 'w') {
-    // let lx = Math.floor(x / cWidth * 8);
-    // let ly = Math.floor(y / cHeight * 8);
-    let ly = Math.floor(x / cWidth * 8);
-    let lx = Math.floor(y / cHeight * 8);
+  if (chess.playercolor == 0) {
+    // let lx = Math.floor(x / chess.cWidth * 8);
+    // let ly = Math.floor(y / chess.cHeight * 8);
+    let ly = Math.floor(x / chess.cWidth * 8);
+    let lx = Math.floor(y / chess.cHeight * 8);
   }
   else {
-    let ly = Math.floor( (cWidth - x) / cWidth * 8 );
-    let lx = Math.floor( (cHeight - y) / cHeight * 8 );
+    let ly = Math.floor( (chess.cWidth - x) / chess.cWidth * 8 );
+    let lx = Math.floor( (chess.cHeight - y) / chess.cHeight * 8 );
   }
 
-  //let lx = Math.floor(x / cWidth * 8);
-  //let ly = Math.floor(y / cWidth * 8);
+  //let lx = Math.floor(x / chess.cWidth * 8);
+  //let ly = Math.floor(y / chess.cWidth * 8);
 
 
   console.log("x coords: " + lx + ", y coords: " + ly);
@@ -378,7 +378,7 @@ static function drawImage(ctx, x, y, src) {
 static function drawImageFig(ctx, dx, dy, figure) {
   let img = new Image();
   img.src = chess.imageAdress + 'chessfig.png';
-  ctx.drawImage(img, figarr[figure][0], figarr[figure][1], spriteWH, spriteWH, dx, dy, fieldW, fieldH);
+  ctx.drawImage(img, figarr[figure][0], figarr[figure][1], chess.spriteWH, chess.spriteWH, dx, dy, chess.fieldW, chess.fieldH);
 }
 
 
