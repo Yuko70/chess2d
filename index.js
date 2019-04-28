@@ -23,6 +23,17 @@ class Chess {
     this.gamearea = [];
     
     this.configures();
+
+    let boardarr = [
+      [1, 0, 1, 0, 1, 0, 1, 0],
+      [0, 1, 0, 1, 0, 1, 0, 1],
+      [1, 0, 1, 0, 1, 0, 1, 0],
+      [0, 1, 0, 1, 0, 1, 0, 1],
+      [1, 0, 1, 0, 1, 0, 1, 0],
+      [0, 1, 0, 1, 0, 1, 0, 1],
+      [1, 0, 1, 0, 1, 0, 1, 0],
+      [0, 1, 0, 1, 0, 1, 0, 1],
+    ];
     // console.log('CONFIGURES');
   }
 
@@ -143,10 +154,10 @@ class Chess {
 // let f = new Figure('black', 0, 0, 'pawn', 0, 0, 130, 60, 60);
 // console.log(f)
 
-let ch = new Chess();
-console.log(ch.spriteWH);
+let chess = new Chess();
+// console.log(ch.spriteWH);
 
-console.log(ch.gamearea)
+console.log(che.gamearea)
 
 
 
@@ -161,7 +172,7 @@ let spriteWH = 130;
 
 // let g = Game;
 
-let gamercolor = 'w'; //w or b
+let gamercolor = 'b'; //w or b
 
 let figarr = {bp: [0, 0], bk: [130, 0], bb: [260, 0], br: [390, 0], bq: [520, 0], bki: [650, 0],
                   wp: [0, 130], wk: [130, 130], wb: [260, 130], wr: [390, 130], wq: [520, 130], wki: [650, 130]};
@@ -209,7 +220,7 @@ class Canvas extends React.Component {
   // }
 
   componentDidMount() {
-    this.updateCanvas();
+    requestAnimationFrame(() => {this.updateCanvas()});
   }
 
   test() {
@@ -289,6 +300,7 @@ class Canvas extends React.Component {
       //ctx.strokeText(Maze[i].charAt(j), x+16, y+16);
     }
     canvas.onclick = function () { click(event) };
+    requestAnimationFrame(() => {this.updateCanvas()});
   }
 
   render() {
@@ -319,8 +331,8 @@ function click(event) {
     let lx = Math.floor(y / cHeight * 8);
   }
   else {
-    let lx = Math.floor( (cWidth - x) / cWidth * 8 );
-    let ly = Math.floor( (cHeight - y) / cHeight * 8 );
+    let ly = Math.floor( (cWidth - x) / cWidth * 8 );
+    let lx = Math.floor( (cHeight - y) / cHeight * 8 );
   }
 
   //let lx = Math.floor(x / cWidth * 8);
