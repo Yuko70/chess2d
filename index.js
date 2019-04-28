@@ -6,7 +6,7 @@ import './style.css';
 
 import Figure from './figure.js';
 
-//commit 0:1
+//commit 0:42
 
 class Chess {
   constructor() {
@@ -239,12 +239,12 @@ function click(event) {
   }
 
   // otacanie hernej plochy
-  // if (chess.playercolor == 0) {
-  //   chess.playercolor = 1;
-  // }
-  // else {
-  //   chess.playercolor = 0
-  // }
+  if (chess.playercolor == 0) {
+    chess.playercolor = 1;
+  }
+  else {
+    chess.playercolor = 0
+  }
 
   // for (let f in chess.gamearea) {
   //   let figure = chess.gamearea[f];
