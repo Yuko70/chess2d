@@ -10,6 +10,7 @@ export default class Figure {
     this.spritewh = spwh;
     this.fieldw = fw;
     this.fieldh = fh;
+    this.clicked = false;
   }
 
 
