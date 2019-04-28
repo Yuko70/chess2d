@@ -190,10 +190,13 @@ class Canvas extends React.Component {
         // }
         for (let f in chess.gamearea) {
           let figure = chess.gamearea[f];
+          // console.log(figure.moves);
           if (figure.clicked == true) {
             if (chess.playercolor == 0) {
               drawImage(ctx, figure.x*60, figure.y*60, 'blueg.png');
-              console.log(figure.moves);
+              for (xy in figure.moves) {
+                drawImage(ctx, xy[0]*60, xy[1]*60, 'blueg.png');
+              }
             }
             else {
               drawImage(ctx, (7-figure.x)*60, (7-figure.y)*60, 'blueg.png');
