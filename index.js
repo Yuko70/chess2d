@@ -94,14 +94,14 @@ class Chess {
         if (color == 'black') {
           j = 1;
           for (let i = 0; i < 8; i++) {
-            // this.gamearea.push(new Figure(color, i, j, type, figarr[key][0], figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
-            console.log(color, i, j, type, figarr[key][0], figarr[key][1], this.spriteWH, this.fieldW, this.fieldH);
+            this.gamearea.push(new Figure(color, i, j, type, figarr[key][0], figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
+            // console.log(color, i, j, type, figarr[key][0], figarr[key][1], this.spriteWH, this.fieldW, this.fieldH);
           }
         }
         else {
           j = 6
           for (let i = 0; i < 8; i++) {
-            // this.gamearea.push(new Figure(color, i, j, type, figarr[key][0], figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
+            this.gamearea.push(new Figure(color, i, j, type, figarr[key][0], figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
           }
         }
         
@@ -118,10 +118,13 @@ class Chess {
   }
 }
 
-let f = new Figure('black', 0, 0, 'pawn', 0, 0, 130, 60, 60);
+// let f = new Figure('black', 0, 0, 'pawn', 0, 0, 130, 60, 60);
+// console.log(f)
 
 let ch = new Chess();
 console.log(ch.spriteWH);
+
+console.log(ch.ga)
 
 
 

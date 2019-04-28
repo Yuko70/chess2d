@@ -1,5 +1,5 @@
 
-class Figure {
+export default class Figure {
   constructor( col, posx, posy, t, spx, spy, spwh, fw, fh) {
     this.color = col;
     this.x = posx;
