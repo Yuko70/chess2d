@@ -22,16 +22,16 @@ class Chess {
 
     this.gamearea = [];
 
-    let gamearr = [
-      ['br', 'bk', 'bb', 'bq', 'bki', 'bb', 'bk', 'br'],
-      ['bp', 'bp', 'bp', 'bp', 'bp', 'bp', 'bp', 'bp'],
-      [0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0],
-      ['wp', 'wp', 'wp', 'wp', 'wp', 'wp', 'wp', 'wp'],
-      ['wr', 'wk', 'wb', 'wq', 'wki', 'wb', 'wk', 'wr'],
-    ];
+    // let gamearr = [
+    //   ['br', 'bk', 'bb', 'bq', 'bki', 'bb', 'bk', 'br'],
+    //   ['bp', 'bp', 'bp', 'bp', 'bp', 'bp', 'bp', 'bp'],
+    //   [0, 0, 0, 0, 0, 0, 0, 0],
+    //   [0, 0, 0, 0, 0, 0, 0, 0],
+    //   [0, 0, 0, 0, 0, 0, 0, 0],
+    //   [0, 0, 0, 0, 0, 0, 0, 0],
+    //   ['wp', 'wp', 'wp', 'wp', 'wp', 'wp', 'wp', 'wp'],
+    //   ['wr', 'wk', 'wb', 'wq', 'wki', 'wb', 'wk', 'wr'],
+    // ];
     
     this.configures();
     // console.log('CONFIGURES');
@@ -65,37 +65,11 @@ class Chess {
       let type = ''; 
       if (key.substring(1, 3) == 'p') {
         type = 'pawn';
-      }
-      else if (key.substring(1, 3) == 'k') {
-        type = 'knight';
-      }
-      else if (key.substring(1, 3) == 'b') {
-        type = 'bishop';
-      }
-      else if (key.substring(1, 3) == 'r') {
-        type = 'rook';
-      }
-      else if (key.substring(1, 3) == 'q') {
-        type = 'queen';
-      }
-      else if (key.substring(1, 3) == 'ki') {
-        type = 'king';
-      }
-
-      // console.log('substring', key.substring(1, 3) == 'ki', key.substring(1, 3))
-
-      // console.log('string', col);
-      console.log('spx', spx, 'spy', spy);
-
-      //constructor( col, posx, posy, t, spx, spy, spwh, fw, fh)
-
-      if (type == 'pawn') {
         let j = 0;
         if (color == 'black') {
           j = 1;
           for (let i = 0; i < 8; i++) {
             this.gamearea.push(new Figure(color, i, j, type, figarr[key][0], figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
-            // console.log(color, i, j, type, figarr[key][0], figarr[key][1], this.spriteWH, this.fieldW, this.fieldH);
           }
         }
         else {
@@ -104,10 +78,72 @@ class Chess {
             this.gamearea.push(new Figure(color, i, j, type, figarr[key][0], figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
           }
         }
-        
       }
+      else if (key.substring(1, 3) == 'k') {
+        type = 'knight';
+        if (color == 'black') {
+          this.gamearea.push(new Figure(color, 0, 1, type, figarr[key][0], figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
+          this.gamearea.push(new Figure(color, 0, 6, type, figarr[key][0], figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
+        }
+        else {
+          this.gamearea.push(new Figure(color, 7, 1, type, figarr[key][0], figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
+          this.gamearea.push(new Figure(color, 7, 6, type, figarr[key][0], figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
+        }
+      }
+      else if (key.substring(1, 3) == 'b') {
+        type = 'bishop';
+        if (color == 'black') {
+          this.gamearea.push(new Figure(color, 0, 2, type, figarr[key][0], figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
+          this.gamearea.push(new Figure(color, 0, 5, type, figarr[key][0], figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
+        }
+        else {
+          this.gamearea.push(new Figure(color, 7, 2, type, figarr[key][0], figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
+          this.gamearea.push(new Figure(color, 7, 5, type, figarr[key][0], figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
+        }
+      }
+      else if (key.substring(1, 3) == 'r') {
+        type = 'rook';
+        if (color == 'black') {
+          this.gamearea.push(new Figure(color, 0, 0, type, figarr[key][0], figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
+          this.gamearea.push(new Figure(color, 0, 7, type, figarr[key][0], figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
+        }
+        else {
+          this.gamearea.push(new Figure(color, 7, 0, type, figarr[key][0], figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
+          this.gamearea.push(new Figure(color, 7, 7, type, figarr[key][0], figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
+        }
+      }
+      else if (key.substring(1, 3) == 'q') {
+        type = 'queen';
+        if (color == 'black') {
+          this.gamearea.push(new Figure(color, 0, 3, type, figarr[key][0], figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
+        }
+        else {
+          this.gamearea.push(new Figure(color, 7, 3, type, figarr[key][0], figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
+        }
+      }
+      else if (key.substring(1, 3) == 'ki') {
+        type = 'king';
+        if (color == 'black') {
+          this.gamearea.push(new Figure(color, 0, 4, type, figarr[key][0], figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
+        }
+        else {
+          this.gamearea.push(new Figure(color, 7, 4, type, figarr[key][0], figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
+        }
+      }
+
+      // console.log('substring', key.substring(1, 3) == 'ki', key.substring(1, 3))
+
+      // console.log('string', col);
+      // console.log('spx', spx, 'spy', spy);
+
+      //constructor( col, posx, posy, t, spx, spy, spwh, fw, fh)
+
+      // if (type == 'pawn') {
+        
+        
+      // }
       
-      console.log(this.gamearea)
+      // console.log(this.gamearea)
 
       // this.figures.push({
       //   key: key,
@@ -124,7 +160,7 @@ class Chess {
 let ch = new Chess();
 console.log(ch.spriteWH);
 
-console.log(ch.ga)
+console.log(ch.gamearea)
 
 
 
@@ -291,8 +327,10 @@ function click(event) {
   //console.log("x coords: " + Math.floor(x / cWidth * 8) + ", y coords: " + Math.floor(y / cHeight * 8));
 
   if (gamercolor == 'w') {
-    let lx = Math.floor(x / cWidth * 8);
-    let ly = Math.floor(y / cHeight * 8);
+    // let lx = Math.floor(x / cWidth * 8);
+    // let ly = Math.floor(y / cHeight * 8);
+    let ly = Math.floor(x / cWidth * 8);
+    let lx = Math.floor(y / cHeight * 8);
   }
   else {
     let lx = Math.floor( (cWidth - x) / cWidth * 8 );
