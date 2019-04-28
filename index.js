@@ -24,7 +24,7 @@ class Chess {
     
     this.configures();
 
-    let boardarr = [
+    this.boardarea = [
       [1, 0, 1, 0, 1, 0, 1, 0],
       [0, 1, 0, 1, 0, 1, 0, 1],
       [1, 0, 1, 0, 1, 0, 1, 0],
@@ -188,16 +188,16 @@ let gamearr = [
   ['wr', 'wk', 'wb', 'wq', 'wki', 'wb', 'wk', 'wr'],
 ];
 
-let boardarr = [
-  [1, 0, 1, 0, 1, 0, 1, 0],
-  [0, 1, 0, 1, 0, 1, 0, 1],
-  [1, 0, 1, 0, 1, 0, 1, 0],
-  [0, 1, 0, 1, 0, 1, 0, 1],
-  [1, 0, 1, 0, 1, 0, 1, 0],
-  [0, 1, 0, 1, 0, 1, 0, 1],
-  [1, 0, 1, 0, 1, 0, 1, 0],
-  [0, 1, 0, 1, 0, 1, 0, 1],
-];
+// let boardarr = [
+//   [1, 0, 1, 0, 1, 0, 1, 0],
+//   [0, 1, 0, 1, 0, 1, 0, 1],
+//   [1, 0, 1, 0, 1, 0, 1, 0],
+//   [0, 1, 0, 1, 0, 1, 0, 1],
+//   [1, 0, 1, 0, 1, 0, 1, 0],
+//   [0, 1, 0, 1, 0, 1, 0, 1],
+//   [1, 0, 1, 0, 1, 0, 1, 0],
+//   [0, 1, 0, 1, 0, 1, 0, 1],
+// ];
 
 
 
@@ -267,19 +267,19 @@ class Canvas extends React.Component {
         //   drawImage(ctx,x,y,'greyg.png');
         // }
 
-        if (boardarr[i][j] == 0) {
+        if (chess.boardarea[i][j] == 0) {
           drawImage(ctx, x, y, 'greyg.png');
         }
-        else if (boardarr[i][j] == 1) {
+        else if (chess.boardarea[i][j] == 1) {
           drawImage(ctx, x, y, 'whiteg.png');
         }
-        else if (boardarr[i][j] == 2) {
+        else if (chess.boardarea[i][j] == 2) {
           drawImage(ctx, x, y, 'blueg.png');
         }
-        else if (boardarr[i][j] == 3) {
+        else if (chess.boardarea[i][j] == 3) {
           drawImage(ctx, x, y, 'lightblueg.png');
         }
-        else if (boardarr[i][j] == 4) {
+        else if (chess.boardarea[i][j] == 4) {
           drawImage(ctx, x, y, 'redg.png');
         }
         // console.log('kresliiiiiiiiiiii');
@@ -341,7 +341,7 @@ function click(event) {
 
   console.log("x coords: " + lx + ", y coords: " + ly);
 
-  boardarr[lx][ly] = 2;
+  chess.boardarea[lx][ly] = 2;
 
 
   //console.log(gamearr[lx][ly]);
