@@ -157,12 +157,12 @@ class Chess {
 let chess = new Chess();
 // console.log(ch.spriteWH);
 
-console.log(che.gamearea)
+console.log(chess.gamearea);
 
 
 
 
-let imageAdress = 'https://raw.githubusercontent.com/yuko70/chess2d/master/img/';
+// let imageAdress = 'https://raw.githubusercontent.com/yuko70/chess2d/master/img/';
 let cWidth = 480;
 let cHeight = 480;
 
@@ -220,7 +220,7 @@ class Canvas extends React.Component {
   // }
 
   componentDidMount() {
-    requestAnimationFrame(() => {this.updateCanvas()});
+    //requestAnimationFrame(() => {this.updateCanvas()}); //-uncomment for startAnimation
   }
 
   test() {
@@ -300,7 +300,7 @@ class Canvas extends React.Component {
       //ctx.strokeText(Maze[i].charAt(j), x+16, y+16);
     }
     canvas.onclick = function () { click(event) };
-    requestAnimationFrame(() => {this.updateCanvas()});
+    //requestAnimationFrame(() => {this.updateCanvas()}); //-uncomment for startAnimation
   }
 
   render() {
@@ -371,13 +371,13 @@ function click(event) {
 
 static function drawImage(ctx, x, y, src) {
   let img = new Image();
-  img.src = imageAdress + src;
+  img.src = chess.imageAdress + src;
   ctx.drawImage(img, x, y);
 }
 
 static function drawImageFig(ctx, dx, dy, figure) {
   let img = new Image();
-  img.src = imageAdress + 'chessfig.png';
+  img.src = chess.imageAdress + 'chessfig.png';
   ctx.drawImage(img, figarr[figure][0], figarr[figure][1], spriteWH, spriteWH, dx, dy, fieldW, fieldH);
 }
 
