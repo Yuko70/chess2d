@@ -6,7 +6,7 @@ import './style.css';
 
 import Figure from './figure.js';
 
-//commit 0:14
+//commit 0:1
 
 class Chess {
   constructor() {
@@ -179,16 +179,21 @@ class Canvas extends React.Component {
         else if (chess.boardarea[i][j] == 1) {
           drawImage(ctx, x, y, 'whiteg.png');
         }
-        else if (chess.boardarea[i][j] == 2) {
-          drawImage(ctx, x, y, 'blueg.png');
+        // else if (chess.boardarea[i][j] == 2) {
+        //   drawImage(ctx, x, y, 'blueg.png');
+        // }
+        // else if (chess.boardarea[i][j] == 3) {
+        //   drawImage(ctx, x, y, 'lightblueg.png');
+        // }
+        // else if (chess.boardarea[i][j] == 4) {
+        //   drawImage(ctx, x, y, 'redg.png');
+        // }
+        for (let f in chess.gamearea) {
+          let figure = chess.gamearea[f];
+          if (figure.clicked == true) {
+            drawImage(ctx, figure.x*60, figure.y*60, 'blueg.png');
+          }
         }
-        else if (chess.boardarea[i][j] == 3) {
-          drawImage(ctx, x, y, 'lightblueg.png');
-        }
-        else if (chess.boardarea[i][j] == 4) {
-          drawImage(ctx, x, y, 'redg.png');
-        }
-        
       }
     
     }
@@ -225,13 +230,12 @@ function click(event) {
 
   console.log("x coords: " + lx + ", y coords: " + ly);
 
-  chess.boardarea[lx][ly] = 2;
-
   for (let f in chess.gamearea) {
     let figure = chess.gamearea[f];
     if (figure.x == lx & figure.y == ly) {
-      figure.clicked = true;
+      figure.clicked = !figure.clicked;
     }
+
   }
 
   // otacanie hernej plochy
@@ -273,9 +277,9 @@ static function drawImageFig(ctx, sizex, sizey) {
      else {
        ctx.drawImage(img, figure.spritex, figure.spritey, chess.spriteWH, chess.spriteWH, (7-figure.x)*sizex, (7-figure.y)*sizey, chess.fieldW, chess.fieldH);
      }
-     if (figure.clicked == true) {
-       chess.boardarea[figure.x][figure.y] = 2;
-     }
+    //  if (figure.clicked == true) {
+    //    chess.boardarea[figure.x][figure.y] = 2;
+    //  }
     //  else {
        // zafarbenie policka spravne naspat
     //  }
