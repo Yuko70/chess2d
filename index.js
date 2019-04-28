@@ -176,8 +176,8 @@ console.log(chess.gamearea);
 
 // let gamercolor = 'b'; //w or b
 
-// let figarr = {bp: [0, 0], bk: [130, 0], bb: [260, 0], br: [390, 0], bq: [520, 0], bki: [650, 0],
-                  // wp: [0, 130], wk: [130, 130], wb: [260, 130], wr: [390, 130], wq: [520, 130], wki: [650, 130]};
+let figarr = {bp: [0, 0], bk: [130, 0], bb: [260, 0], br: [390, 0], bq: [520, 0], bki: [650, 0],
+             wp: [0, 130], wk: [130, 130], wb: [260, 130], wr: [390, 130], wq: [520, 130], wki: [650, 130]};
 
 let gamearr = [
   ['br', 'bk', 'bb', 'bq', 'bki', 'bb', 'bk', 'br'],
@@ -222,7 +222,8 @@ class Canvas extends React.Component {
   // }
 
   componentDidMount() {
-    requestAnimationFrame(() => {this.updateCanvas()}); //-uncomment for startAnimation
+    // requestAnimationFrame(() => {this.updateCanvas()}); //-uncomment for startAnimation
+    this.updateCanvas();
   }
 
   test() {
@@ -249,12 +250,12 @@ class Canvas extends React.Component {
         jj--;
        
         if (chess.playercolor == 0) {
-          let x = 60 * j;
-          let y = 60 * i;
+          let x = 60 * i;
+          let y = 60 * j;
         }
         else {
-          let x = 60 * jj;
-          let y = 60 * ii;
+          let x = 60 * ii;
+          let y = 60 * jj;
         }
 
         //console.log(ii,jj);
@@ -304,10 +305,10 @@ class Canvas extends React.Component {
       //ctx.strokeText(Maze[i].charAt(j), x+16, y+16);
     }
     
-
+    drawImageFig(ctx, 60, 60);
 
     canvas.onclick = function () { click(event) };
-    requestAnimationFrame(() => {this.updateCanvas()}); //-uncomment for startAnimation
+    // requestAnimationFrame(() => {this.updateCanvas()}); //-uncomment for startAnimation
   }
 
   render() {
@@ -334,12 +335,12 @@ function click(event) {
   if (chess.playercolor == 0) {
     // let lx = Math.floor(x / chess.cWidth * 8);
     // let ly = Math.floor(y / chess.cHeight * 8);
-    let ly = Math.floor(x / chess.cWidth * 8);
-    let lx = Math.floor(y / chess.cHeight * 8);
+    let lx = Math.floor(x / chess.cWidth * 8);
+    let ly = Math.floor(y / chess.cHeight * 8);
   }
   else {
-    let ly = Math.floor( (chess.cWidth - x) / chess.cWidth * 8 );
-    let lx = Math.floor( (chess.cHeight - y) / chess.cHeight * 8 );
+    let lx = Math.floor( (chess.cWidth - x) / chess.cWidth * 8 );
+    let ly = Math.floor( (chess.cHeight - y) / chess.cHeight * 8 );
   }
 
   //let lx = Math.floor(x / chess.cWidth * 8);
@@ -389,9 +390,15 @@ static function drawImage(ctx, x, y, src) {
 //   ctx.drawImage(img, chess.figarr[figure][0], chess.figarr[figure][1], chess.spriteWH, chess.spriteWH, dx, dy, chess.fieldW, chess.fieldH);
 // }
 
-static function drawImageFig(ctx, x, y) {
-  console.log(chess.gamearea)
-  for (let figure in chess.gamearea) {
+static function drawImageFig(ctx, sizex, sizey) {
+  // console.log(chess.gamearea)
+  let img = new Image();
+  img.src = chess.imageAdress + 'chessfig.png';
+
+  for (let f in chess.gamearea) {
+    console.log('figure', chess.gamearea[f]);
+    let figure = chess.gamearea[f];
+    ctx.drawImage(img, figure.spritex, figure.spritey, chess.spriteWH, chess.spriteWH, figure.x*sizex, figure.y*sizey, chess.fieldW, chess.fieldH);
 
   }
 }
