@@ -1,232 +1,122 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-import ReactDOM from 'react-dom';
-import Hello from './Hello';
 import './style.css';
 
-import Figure from './figure.js';
-
-//commit 1:23
-
-class Chess {
-  constructor() {
-    this.play = 1;
-    this.move = 0;
-    this.playercolor = 0; //1 = black, 0 = white  //let gamercolor = 'w'; //w or b
-
-    this.imageAdress = 'https://raw.githubusercontent.com/yuko70/chess2d/master/img/';
-    this.cWidth = 480;
-    this.cHeight = 480;
-
-    this.fieldW = 60;
-    this.fieldH = 60;
-    this.spriteWH = 130;
-
-    this.gamearea = [];
-    
-    this.configures();
-    this.figarr = {};
-
-    this.boardarea = [
-      [1, 0, 1, 0, 1, 0, 1, 0],
-      [0, 1, 0, 1, 0, 1, 0, 1],
-      [1, 0, 1, 0, 1, 0, 1, 0],
-      [0, 1, 0, 1, 0, 1, 0, 1],
-      [1, 0, 1, 0, 1, 0, 1, 0],
-      [0, 1, 0, 1, 0, 1, 0, 1],
-      [1, 0, 1, 0, 1, 0, 1, 0],
-      [0, 1, 0, 1, 0, 1, 0, 1],
-    ];
-    // console.log('CONFIGURES');
-  }
-
-  configures() {
-    console.log('CONFIGURES');
-    this.figarr = {bp: [0, 0], bk: [130, 0], bb: [260, 0], br: [390, 0], bq: [520, 0], bki: [650, 0],
-                  wp: [0, 130], wk: [130, 130], wb: [260, 130], wr: [390, 130], wq: [520, 130], wki: [650, 130]};
-    
-
-    for (let key in this.figarr) {  
-      
-      let color = '';
-      if (key.substring(0, 1) == 'b') {
-        color = 'black';
-      }
-      else {
-        color = 'white';
-      }
-      let spx = this.figarr[key][0];
-      let spy = this.figarr[key][1];
-
-      let type = ''; 
-      if (key.substring(1, 3) == 'p') {
-        type = 'pawn';
-        let j = 0;
-        if (color == 'black') {
-          j = 1;
-          for (let i = 0; i < 8; i++) {
-            this.gamearea.push(new Figure(color, i, j, type, this.figarr[key][0], this.figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
-          }
-        }
-        else {
-          j = 6
-          for (let i = 0; i < 8; i++) {
-            this.gamearea.push(new Figure(color, i, j, type, this.figarr[key][0], this.figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
-          }
-        }
-      }
-      else if (key.substring(1, 3) == 'k') {
-        type = 'knight';
-        if (color == 'black') {
-          this.gamearea.push(new Figure(color, 1, 0, type, this.figarr[key][0], this.figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
-          this.gamearea.push(new Figure(color, 6, 0, type, this.figarr[key][0], this.figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
-        }
-        else {
-          this.gamearea.push(new Figure(color, 1, 7, type, this.figarr[key][0], this.figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
-          this.gamearea.push(new Figure(color, 6, 7, type, this.figarr[key][0], this.figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
-        }
-      }
-      else if (key.substring(1, 3) == 'b') {
-        type = 'bishop';
-        if (color == 'black') {
-          this.gamearea.push(new Figure(color, 2, 0, type, this.figarr[key][0], this.figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
-          this.gamearea.push(new Figure(color, 5, 0, type, this.figarr[key][0], this.figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
-        }
-        else {
-          this.gamearea.push(new Figure(color, 2, 7, type, this.figarr[key][0], this.figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
-          this.gamearea.push(new Figure(color, 5, 7, type, this.figarr[key][0], this.figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
-        }
-      }
-      else if (key.substring(1, 3) == 'r') {
-        type = 'rook';
-        if (color == 'black') {
-          this.gamearea.push(new Figure(color, 0, 0, type, this.figarr[key][0], this.figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
-          this.gamearea.push(new Figure(color, 7, 0, type, this.figarr[key][0], this.figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
-        }
-        else {
-          this.gamearea.push(new Figure(color, 0, 7, type, this.figarr[key][0], this.figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
-          this.gamearea.push(new Figure(color, 7, 7, type, this.figarr[key][0], this.figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
-        }
-      }
-      else if (key.substring(1, 3) == 'q') {
-        type = 'queen';
-        if (color == 'black') {
-          this.gamearea.push(new Figure(color, 3, 0, type, this.figarr[key][0], this.figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
-        }
-        else {
-          this.gamearea.push(new Figure(color, 3, 7, type, this.figarr[key][0], this.figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
-        }
-      }
-      else if (key.substring(1, 3) == 'ki') {
-        type = 'king';
-        if (color == 'black') {
-          this.gamearea.push(new Figure(color, 4, 0, type, this.figarr[key][0], this.figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
-        }
-        else {
-          this.gamearea.push(new Figure(color, 4, 7, type, this.figarr[key][0], this.figarr[key][1], this.spriteWH, this.fieldW, this.fieldH));
-        }
-      }
-
-    }
-
-  }
-}
+import Board from './board.js';
 
 
-let chess = new Chess();
-
-console.log(chess.gamearea);
-
+let mouse = null;
 
 class Canvas extends React.Component {
 
-  componentDidMount() {
-    requestAnimationFrame(() => {this.updateCanvas()}); //-uncomment for startAnimation
-    // this.updateCanvas();
+  constructor() {
+    this.play = 1;
+    this.move = 0;
+    this.player = 0;
+    this.selected = null;
+
+    this.click = null;
+
+    this.cWidth = 480;
+    this.cHeight = 480;
+
+    this.imageAdress = 'https://raw.githubusercontent.com/yuko70/chess2d/master/img/';
+    this.fieldW = new Image();
+    this.fieldG = new Image();
+    this.fieldB = new Image();
+    this.fieldLB = new Image();
+
+    this.board = new Board();
   }
 
-  test() {
-    console.log('CANVAS');
+  click(e){
+    console.log(e);
+  }
+
+  componentDidMount() {
+    this.ctx = document.getElementById('canvas').getContext("2d");
+    this.ctx.fillStyle = "#FFF000";
+
+    document.getElementById('canvas').onclick = function() { mouse = event; }
+
+    this.fieldW.src = this.imageAdress + 'whiteg.png';
+    this.fieldG.src = this.imageAdress + 'greyg.png';
+    this.fieldB.src = this.imageAdress + 'blueg.png';
+    this.fieldLB.src = this.imageAdress + 'lightblueg.png';
+
+    requestAnimationFrame(() => {this.updateCanvas()});
   }
 
   updateCanvas() {
-    const canvas = document.getElementById('canvas')
-    const ctx = canvas.getContext("2d")
-    ctx.fillStyle = "#FFF000";
-    ctx.fillRect(0, 0, 480, 480);
-
-    let ii = 8;
-    let jj = 8;
-
-    for (let i = 0; i < 8; i++) {
-      ii--;
-      jj = 8;
-      for (let j = 0; j < 8; j++) {
-        jj--;
-       
-        if (chess.playercolor == 0) {
-          let x = 60 * i;
-          let y = 60 * j;
-        }
-        else {
-          let x = 60 * ii;
-          let y = 60 * jj;
-        }
-
-        if (chess.boardarea[i][j] == 0) {
-          drawImage(ctx, x, y, 'greyg.png');
-        }
-        else if (chess.boardarea[i][j] == 1) {
-          drawImage(ctx, x, y, 'whiteg.png');
-        }
-        // else if (chess.boardarea[i][j] == 2) {
-        //   drawImage(ctx, x, y, 'blueg.png');
-        // }
-        // else if (chess.boardarea[i][j] == 3) {
-        //   drawImage(ctx, x, y, 'lightblueg.png');
-        // }
-        // else if (chess.boardarea[i][j] == 4) {
-        //   drawImage(ctx, x, y, 'redg.png');
-        // }
-        for (let f in chess.gamearea) {
-          let figure = chess.gamearea[f];
-          // console.log(figure.moves);
-          if (figure.clicked == true) {
-            if (chess.playercolor == 0) {
-              drawImage(ctx, figure.x*60, figure.y*60, 'blueg.png');
-              // for (let xy in figure.moves) {
-              //   drawImage(ctx, xy[0]*60, xy[1]*60, 'lightblueg.png');
-              // }
-            }
-            else {
-              drawImage(ctx, (7-figure.x)*60, (7-figure.y)*60, 'blueg.png');
-              // for (let xy in figure.moves) {
-              //   drawImage(ctx, (7-xy[0])*60, (xy[1])*60, 'lightblueg.png');
-              // }
-            }
-            
-          }
-        }
-      }
-    
+    // Herna plochagp
+    this.ctx.fillRect(0, 0, 480, 480);
+    for ( let i = 0 ; i < 64 ; i+=1 ) {
+      if ( (i+parseInt(i/8))%2 === 0 ) this.ctx.drawImage(this.fieldW, 60*(i%8), 60*parseInt(i/8));
+      else this.ctx.drawImage(this.fieldG, 60*(i%8), 60*parseInt(i/8));
     }
     
-    drawImageFig(ctx, 60, 60);
+    // MOUSE
+    if (mouse !== null) {
+      let mx = Math.floor(mouse.x / 60);
+      let my = Math.floor(mouse.y / 60);
 
-    canvas.onclick = function () { click(event) };
-    requestAnimationFrame(() => {this.updateCanvas()}); //-uncomment for startAnimation
+      if ( mx >= 0 && mx <= 7 && my >= 0 && my <= 7 ) {
+        let X = mx;
+        let Y = my;
+        if ( this.player ) { X = 7-X; Y = 7-Y; }
+        if ( this.click === null && this.board.arr[Y][X] !== null && this.board.arr[Y][X].color === this.player  ){
+          this.click = {x: X, y: Y};
+          this.selected = this.board.arr[Y][X];
+          this.selected.options( this.board.arr, X, Y );
+        }
+        else if ( this.click !== null && X === this.click.x && Y === this.click.y ) {
+          this.click = null;
+          this.selected = null;
+        }
+      }
+      
+      mouse = null; 
+    }
+
+    if ( this.click !== null ) {
+      let X = this.click.x;
+      let Y = this.click.y;
+      if ( this.player ) { X = 7-X; Y = 7-Y; }
+
+      this.ctx.drawImage(this.fieldB, 60*X, 60*Y);
+    }
+
+    if ( this.selected !== null ) {
+      for ( let item in this.selected.opt ){
+        this.ctx.drawImage(this.fieldLB, 60 * this.selected.opt[item].x, 60 * this.selected.opt[item].y);
+      }
+    }
+
+    // figurky
+    for ( let y = 0; y < 8; y++ ) {
+      for ( let x = 0; x < 8; x++ ) {
+        let item = this.board.arr[y][x];
+        let X = x;
+        let Y = y;
+        if ( this.player ) { X = 7-X; Y = 7-Y; }
+        if ( item !== null ) { item.draw(this.ctx, X, Y); }
+      }
+    }
+
+
+    requestAnimationFrame(() => {this.updateCanvas()});
   }
 
   render() {
     return (
       <div>
-        <canvas id="canvas" width={chess.cWidth} height={chess.cHeight} />
+        <canvas id="canvas" width={this.cWidth} height={this.cHeight} />
       </div>
     )
   }
   
 }
-
+/*
 function click(event) {
 
   let x = event.offsetX;
@@ -251,53 +141,17 @@ function click(event) {
 
   }
 
-  // otacanie hernej plochy
-  if (chess.playercolor == 0) {
+  // otacanie hernej plochy   
+  /*if (chess.playercolor == 0) {
     chess.playercolor = 1;
   }
   else {
     chess.playercolor = 0
   }
-
-  // for (let f in chess.gamearea) {
-  //   let figure = chess.gamearea[f];
-  //   if (figure.x == 0 & figure.y == 1) {
-  //     figure.y += 1;
-  //   }
-  // }
   
   console.log(document.getElementById('canvas'));
 
  }
-
-static function drawImage(ctx, x, y, src) {
-  let img = new Image();
-  img.src = chess.imageAdress + src;
-  ctx.drawImage(img, x, y);
-}
-
-static function drawImageFig(ctx, sizex, sizey) {
-  // console.log(chess.gamearea)
-  let img = new Image();
-  img.src = chess.imageAdress + 'chessfig.png';
-  
-  
-  for (let f in chess.gamearea) {
-    let figure = chess.gamearea[f];
-     if (chess.playercolor == 0) {
-       ctx.drawImage(img, figure.spritex, figure.spritey, chess.spriteWH, chess.spriteWH, figure.x*sizex, figure.y*sizey, chess.fieldW, chess.fieldH);
-     }
-     else {
-       ctx.drawImage(img, figure.spritex, figure.spritey, chess.spriteWH, chess.spriteWH, (7-figure.x)*sizex, (7-figure.y)*sizey, chess.fieldW, chess.fieldH);
-     }
-    //  if (figure.clicked == true) {
-    //    chess.boardarea[figure.x][figure.y] = 2;
-    //  }
-    //  else {
-       // zafarbenie policka spravne naspat
-    //  }
-  }
-  
-}
+*/
 
 render(<Canvas />, document.getElementById('root'));
