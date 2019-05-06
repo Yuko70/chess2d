@@ -17,6 +17,7 @@ export default class Figure {
   options( arr, x, y ) {
     this.opt = [];
     if ( this.type === 'p' ) {
+      console.log(x, y);
       if (y === 6) {
         if ( arr[y-1][x] === null ) this.opt.push({x:x, y:y-1});
         if ( arr[y-2][x] === null ) this.opt.push({x:x, y:y-2});
@@ -24,8 +25,15 @@ export default class Figure {
       else {
         if ( arr[y-1][x] === null ) this.opt.push({x:x, y:y-1});
       }
+      if (y === 1) {
+        if ( arr[7-y-1][x] === null ) this.opt.push({x:7-x, y:7-y-1});
+        if ( arr[7-y-2][x] === null ) this.opt.push({x:7-x, y:7-y-2});
+      }
+      else {
+        if ( arr[7-y-1][x] === null ) this.opt.push({x:7-x, y:7-y-1});
+      }
     }
-    
+
     if ( this.type === 'v' ) {
       
     }
