@@ -8,6 +8,7 @@ export default class Figure {
     this.type = t;
     this.imgX = { 'p':0, 'v':390, 'k':130, 's':260, 'Q':520, 'K':650 };
     this.opt = [];
+    this.att = [];
   }
 
   draw( ctx, x, y ){
@@ -16,52 +17,33 @@ export default class Figure {
 
   options( arr, x, y ) {
     this.opt = [];
-    // let attack = ['p', 'v', 'k', 's', 'Q', 'K'];
+    this.att = [];
+
     if ( this.type === 'p' ) {
       console.log(x, y);
+      console.log(this.opt);
+      console.log(this.att);
 
-      // if (y === 6) {
-      //   // if ( arr[y-1][x] === null ) this.opt.push({x:x, y:y-1});
-      //   // if ( arr[y-2][x] === null ) this.opt.push({x:x, y:y-2});
-      //   if ( arr[y-1][x] === null ) {
-      //     this.opt.push({x:x, y:y-1});
-      //     if ( arr[y-2][x] === null ) this.opt.push({x:x, y:y-2});
-      //   }
-        
-      // }
-      // else {
-      //   if ( arr[y-1][x] === null ) this.opt.push({x:x, y:y-1});
-      // }
-      
-        // if ( arr[y-1][x] === null ) this.opt.push({x:x, y:y-1});
-        // if ( arr[y-2][x] === null ) this.opt.push({x:x, y:y-2});
-
+      // WHITE
+      // possible move
       if ( arr[y-1][x] === null ) { // pohyb vpred
         this.opt.push({x:x, y:y-1});
         if ( y === 6 && arr[y-2][x] === null ) this.opt.push({x:x, y:y-2});
       }
 
-      if (x > 1 && y > 1) {
-        // if ( arr[y-1][x-1].type === 'p' ) {
-
-        // }
-        // this.opt.push({x:x-1, y:y-1});
-        if (arr[y-1][x-1] !== null && arr[y-1][x-1].type !== 'K' ) {
-          console.log(arr[1][4].type);
-          /this.opt.push({x:x-1, y:y-1});
-          // console.log(arr[1][4].type);
+      // possible attack
+      if (x > 1 && y > 1 ) {
+        if (arr[y-1][x-1] !== null) {    // && arr[y-1][x-1].type !== 'K' // pozor na utok na krala zafarbit ano, utok -> sach
+          this.att.push({x:x-1, y:y-1});
         }
-          
+      }
+      if (x < 7 && y < 7 ) {
+        if (arr[y-1][x+1] !== null) { 
+          this.att.push({x:x+1, y:y-1});
+        }
       }
 
-        
-     
-
-
-
-
-
-
+      // BLAC
       if (y === 1) {
         if ( arr[7-y-1][x] === null ) this.opt.push({x:7-x, y:7-y-1});
         if ( arr[7-y-2][x] === null ) this.opt.push({x:7-x, y:7-y-2});
@@ -70,6 +52,12 @@ export default class Figure {
         if ( arr[7-y-1][x] === null ) this.opt.push({x:7-x, y:7-y-1});
       }
     }
+
+
+
+
+
+
 
     if ( this.type === 'v' ) {
       

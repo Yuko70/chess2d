@@ -25,6 +25,7 @@ class Canvas extends React.Component {
     this.fieldG = new Image();
     this.fieldB = new Image();
     this.fieldLB = new Image();
+    this.fieldR = new Image();
 
     this.board = new Board();
   }
@@ -43,6 +44,7 @@ class Canvas extends React.Component {
     this.fieldG.src = this.imageAdress + 'greyg.png';
     this.fieldB.src = this.imageAdress + 'blueg.png';
     this.fieldLB.src = this.imageAdress + 'lightblueg.png';
+    this.fieldR.src = this.imageAdress + 'redg.png';
 
     requestAnimationFrame(() => {this.updateCanvas()});
   }
@@ -91,6 +93,9 @@ class Canvas extends React.Component {
     if ( this.selected !== null ) {
       for ( let item in this.selected.opt ){
         this.ctx.drawImage(this.fieldLB, 60 * this.selected.opt[item].x, 60 * this.selected.opt[item].y);
+      }
+      for ( let item in this.selected.att ){
+        this.ctx.drawImage(this.fieldR, 60 * this.selected.att[item].x, 60 * this.selected.att[item].y);
       }
     }
 
