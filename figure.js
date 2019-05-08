@@ -141,6 +141,10 @@ export default class Figure {
       console.log(arr[x][y])
 
       
+
+
+
+
       
     }
     if ( this.type === 's' ) {
