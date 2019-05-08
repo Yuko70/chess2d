@@ -67,7 +67,7 @@ class Canvas extends React.Component {
         let X = mx;
         let Y = my;
         if ( this.player ) { X = 7-X; Y = 7-Y; }
-        console.log('mouse', 'X:', X, 'Y:', Y);
+        console.log('mouse', 'sX:', X, 'rY:', Y);
         if ( this.click === null && this.board.arr[Y][X] !== null && this.board.arr[Y][X].color === this.player  ){
           this.click = {x: X, y: Y};
           this.selected = this.board.arr[Y][X];
@@ -85,19 +85,40 @@ class Canvas extends React.Component {
     if ( this.click !== null ) {
       let X = this.click.x;
       let Y = this.click.y;
-      if ( this.player ) { X = 7-X; Y = 7-Y; }
+      if ( this.player) { X = 7-X; Y = 7-Y; }
 
       this.ctx.drawImage(this.fieldB, 60*X, 60*Y);
     }
 
-    if ( this.selected !== null ) {
-      for ( let item in this.selected.opt ){
-        this.ctx.drawImage(this.fieldLB, 60 * this.selected.opt[item].x, 60 * this.selected.opt[item].y);
-      }
-      for ( let item in this.selected.att ){
-        this.ctx.drawImage(this.fieldR, 60 * this.selected.att[item].x, 60 * this.selected.att[item].y);
+    if (this.player === 0) {
+      if ( this.selected !== null ) {
+        for ( let item in this.selected.opt ){
+          this.ctx.drawImage(this.fieldLB, 60 * this.selected.opt[item].x, 60 * this.selected.opt[item].y);
+        }
+        for ( let item in this.selected.att ){
+          this.ctx.drawImage(this.fieldR, 60 * this.selected.att[item].x, 60 * this.selected.att[item].y);
+        }
       }
     }
+    else {
+      if ( this.selected !== null ) {
+        for ( let item in this.selected.opt ){
+          this.ctx.drawImage(this.fieldLB, 60 * (7 - this.selected.opt[item].x), 60 * (7 - this.selected.opt[item].y));
+        }
+        for ( let item in this.selected.att ){
+          this.ctx.drawImage(this.fieldR, 60 * (7 - this.selected.opt[item].x), 60 * (7 - this.selected.opt[item].y));
+        }
+      }
+    }
+
+    // if ( this.selected !== null ) {
+    //   for ( let item in this.selected.opt ){
+    //     this.ctx.drawImage(this.fieldLB, 60 * this.selected.opt[item].x, 60 * this.selected.opt[item].y);
+    //   }
+    //   for ( let item in this.selected.att ){
+    //     this.ctx.drawImage(this.fieldR, 60 * this.selected.att[item].x, 60 * this.selected.att[item].y);
+    //   }
+    // }
 
     // figurky
     for ( let y = 0; y < 8; y++ ) {

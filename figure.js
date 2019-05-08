@@ -56,9 +56,9 @@ export default class Figure {
 
       // possible move
       if (y < 7) {
-        if ( arr[7-y-1][7-x] === null ) { // pohyb vpred
-          this.opt.push({x:7-x, y:7-y-1});
-          if ( y === 1 && arr[7-y-2][7-x] === null ) this.opt.push({x:7-x, y:7-y-2});
+        if ( arr[y+1][x] === null ) { // pohyb vpred
+          this.opt.push({x:x, y:y+1});
+          if ( y === 1 && arr[y+2][x] === null ) this.opt.push({x:x, y:y+2});
         }
       }
 
