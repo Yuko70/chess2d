@@ -285,7 +285,7 @@ export default class Figure {
 
       let ul = 0
       while (ul < 8) {
-        if (x-ul > -1 && y-ul < 8) {
+        if (x-ul > -1 && y+ul < 8) {
           if (arr[y+ul][x-ul] === null) {
             this.opt.push({x:x-ul, y:y+ul});
           }
