@@ -23,64 +23,55 @@ export default class Figure {
       console.log(x, y);
       console.log(this.opt);
       console.log(this.att);
+      console.log('color', this.color);
+      console.log(arr[x][y])
 
-      // // WHITE
-      // // possible move
-      // if (y > 1 ) {
-      //   if ( arr[y-1][x] === null ) { // pohyb vpred
-      //     this.opt.push({x:x, y:y-1});
-      //     if ( y === 6 && arr[y-2][x] === null ) this.opt.push({x:x, y:y-2});
-      //   }
-      // }
-
-      // // possible attack
-      // if (x > 1 && y > 1 ) {
-      //   if (arr[y-1][x-1] !== null) {    // && arr[y-1][x-1].type !== 'K' // pozor na utok na krala zafarbit ano, utok -> sach
-      //     this.att.push({x:x-1, y:y-1});
-      //   }
-      // }
-      // if (x < 7 && y < 7 ) {
-      //   if (arr[y-1][x+1] !== null) { 
-      //     this.att.push({x:x+1, y:y-1});
-      //   }
-      // }
-
-      // BLACK
-      // if (y === 1) {
-      //   if ( arr[7-y-1][x] === null ) this.opt.push({x:7-x, y:7-y-1});
-      //   if ( arr[7-y-2][x] === null ) this.opt.push({x:7-x, y:7-y-2});
-      // }
-      // else {
-      //   if ( arr[7-y-1][x] === null ) this.opt.push({x:7-x, y:7-y-1});
-      // }
-
-      // possible move
-      if (y < 7) {
-        if ( arr[y+1][x] === null ) { // pohyb vpred
-          this.opt.push({x:x, y:y+1});
-          if ( y === 1 && arr[y+2][x] === null ) this.opt.push({x:x, y:y+2});
+      if (this.color === 0) {
+        // WHITE
+        // possible move
+        if (y > 0 ) {
+          if ( arr[y-1][x] === null ) { // pohyb vpred
+            this.opt.push({x:x, y:y-1});
+            if ( y === 6 && arr[y-2][x] === null ) this.opt.push({x:x, y:y-2});
+          }
         }
-      }
 
-      // possible attack
-      if (x > 1 && y < 7 ) {
-        if (arr[y+1][x-1] !== null) {    // && arr[y-1][x-1].type !== 'K' // pozor na utok na krala zafarbit ano, utok -> sach
-          this.att.push({x:x-1, y:y+1});
+        // possible attack
+        if (x > 0 && y > 0 ) {
+          if (arr[y-1][x-1] !== null && arr[y-1][x-1].color !== arr[y][x].color) {    // && arr[y-1][x-1].type !== 'K' // pozor na utok na krala zafarbit ano, utok -> sach
+            this.att.push({x:x-1, y:y-1});
+          }
         }
-      }
-      if (x < 7 && y < ) {
-        if (arr[y+1][x+1] !== null) { 
-          this.att.push({x:x+1, y:y+1});
+        if (x < 7 && y > 0 ) {
+          if (arr[y-1][x+1] !== null && arr[y-1][x+1].color !== arr[y][x].color) { 
+            this.att.push({x:x+1, y:y-1});
+          }
         }
+      } 
+      else {
+        // BLACK
+        // possible move
+        if (y < 7) {
+          if ( arr[y+1][x] === null ) { // pohyb vpred
+            this.opt.push({x:x, y:y+1});
+            if ( y === 1 && arr[y+2][x] === null ) this.opt.push({x:x, y:y+2});
+          }
+        }
+
+        // possible attack
+        if (x > 0 && y < 7 ) {
+          if (arr[y+1][x-1] !== null && arr[y+1][x-1].color !== arr[y][x].color) {    // && arr[y-1][x-1].type !== 'K' // pozor na utok na krala zafarbit ano, utok -> sach
+            this.att.push({x:x-1, y:y+1});
+          }
+        }
+        if (x < 7 && y < 7 ) {
+          if (arr[y+1][x+1] !== null && arr[y+1][x+1].color !== arr[y][x].color) { 
+            this.att.push({x:x+1, y:y+1});
+          }
+        }
+
       }
-
-
-
-
-
-
-
-
+    //END PESIAK
     }
 
 
