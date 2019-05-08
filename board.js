@@ -54,8 +54,8 @@ export default class Board {
       [new Figure('p', 1), new Figure('p', 1), new Figure('p', 1), new Figure('p', 1), new Figure('p', 1), new Figure('p', 1), new Figure('p', 1), new Figure('p', 1)],
       [null, null, null, null, null, null, null, null],
       [null, null, new Figure('k', 0), null, null, null, null, null],
-      [null, null, null, null, null, null, null, null],
-      [null, null, null, null, null, null, null, null],
+      [null, null, null, null, null,  new Figure('k', 0), null, null],
+      [null, new Figure('p', 1), null, new Figure('p', 1), null, null, null, null],
       [new Figure('p', 0), new Figure('p', 0), new Figure('p', 0), new Figure('p', 0), new Figure('p', 0), new Figure('p', 0), new Figure('p', 0), new Figure('p', 0)],
       [new Figure('v', 0), new Figure('k', 0), new Figure('s', 0), new Figure('Q', 0), new Figure('K', 0), new Figure('s', 0), new Figure('k', 0), new Figure('v', 0)]
     ];

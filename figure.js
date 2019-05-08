@@ -140,7 +140,103 @@ export default class Figure {
       console.log('color', this.color);
       console.log(arr[x][y])
 
-      
+      // mouse sX: 2 rY: 3
+
+      // mouse sX: 0 rY: 4 
+      // mouse sX: 0 rY: 2 
+      // mouse sX: 1 rY: 1 
+      // mouse sX: 3 rY: 1 
+      // mouse sX: 4 rY: 2 
+      // mouse sX: 4 rY: 4 
+      // mouse sX: 3 rY: 5 
+      // mouse sX: 1 rY: 5
+
+      if (true) {
+        if (x > 1 && y < 7) { //LDj
+          if (arr[y+1][x-2] === null) {
+            this.opt.push({x:x-2, y:y+1});
+          }
+          else {
+            if (arr[y+1][x-2].color !== arr[y][x].color) {
+              this.att.push({x:x-2, y:y+1});
+            }
+          }
+        }
+        if (x > 1 && y > 0) { //LUj
+          if (arr[y-1][x-2] === null) {
+            this.opt.push({x:x-2, y:y-1});
+          }
+          else {
+            if (arr[y-1][x-2].color !== arr[y][x].color) {
+              this.att.push({x:x-2, y:y-1});
+            }
+          }
+        }
+        if (x > 0 && y > 1) { //ULj
+          if (arr[y-2][x-1] === null) {
+            this.opt.push({x:x-1, y:y-2});
+          }
+          else {
+            if (arr[y-2][x-1].color !== arr[y][x].color) {
+              this.att.push({x:x-1, y:y-2});
+            }
+          }
+        }
+        if (x < 7 && y > 1) { //URj
+          if (arr[y-2][x+1] === null) {
+            this.opt.push({x:x+1, y:y-2});
+          }
+          else {
+            if (arr[y-2][x+1].color !== arr[y][x].color) {
+              this.att.push({x:x+1, y:y-2});
+            }
+          }
+        }
+        if (x < 6 && y > 0) { //RUj
+          if (arr[y-1][x+2] === null) {
+            this.opt.push({x:x+2, y:y-1});
+          }
+          else {
+            if (arr[y-1][x+2].color !== arr[y][x].color) {
+              this.att.push({x:x+2, y:y-1});
+            }
+          }
+        }
+        if (x < 6 && y < 7) { //RDj
+          if (arr[y+1][x+2] === null) {
+            this.opt.push({x:x+2, y:y+1});
+          }
+          else {
+            if (arr[y+1][x+2].color !== arr[y][x].color) {
+              this.att.push({x:x+2, y:y+1});
+            }
+          }
+        }
+        if (x < 7 && y < 6) { //DRj
+          if (arr[y+2][x+1] === null) {
+            this.opt.push({x:x+1, y:y+2});
+          }
+          else {
+            if (arr[y+2][x+1].color !== arr[y][x].color) {
+              this.att.push({x:x+1, y:y+2});
+            }
+          }
+        }
+        if (x > 0 && y < 6) { //DLj
+          if (arr[y+2][x-1] === null) {
+            this.opt.push({x:x-1, y:y+2});
+          }
+          else {
+            if (arr[y+2][x-1].color !== arr[y][x].color) {
+              this.att.push({x:x-1, y:y+2});
+            }
+          }
+        }
+
+
+
+
+      }
 
 
 
