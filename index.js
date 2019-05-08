@@ -106,7 +106,7 @@ class Canvas extends React.Component {
           this.ctx.drawImage(this.fieldLB, 60 * (7 - this.selected.opt[item].x), 60 * (7 - this.selected.opt[item].y));
         }
         for ( let item in this.selected.att ){
-          this.ctx.drawImage(this.fieldR, 60 * (7 - this.selected.opt[item].x), 60 * (7 - this.selected.opt[item].y));
+          this.ctx.drawImage(this.fieldR, 60 * (7 - this.selected.att[item].x), 60 * (7 - this.selected.att[item].y));
         }
       }
     }

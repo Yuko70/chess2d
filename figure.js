@@ -62,6 +62,18 @@ export default class Figure {
         }
       }
 
+      // possible attack
+      if (x > 1 && y < 7 ) {
+        if (arr[y+1][x-1] !== null) {    // && arr[y-1][x-1].type !== 'K' // pozor na utok na krala zafarbit ano, utok -> sach
+          this.att.push({x:x-1, y:y+1});
+        }
+      }
+      if (x < 7 && y < ) {
+        if (arr[y+1][x+1] !== null) { 
+          this.att.push({x:x+1, y:y+1});
+        }
+      }
+
 
 
 
