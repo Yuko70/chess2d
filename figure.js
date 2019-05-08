@@ -231,7 +231,74 @@ export default class Figure {
       console.log('color', this.color);
       console.log(arr[x][y])
 
-      
+// mouse sX: 2 rY: 4 
+// mouse sX: 1 rY: 3 
+// mouse sX: 0 rY: 2
+
+      let ul = 0
+      while (ul < 8) {
+        if (x-ul > -1 && y-ul > -1) {
+          if (arr[y-ul][x-ul] === null) {
+            this.opt.push({x:x-ul, y:y-ul});
+          }
+          else {
+            if (arr[y-ul][x-ul].color !== arr[y][x].color) {
+              this.att.push({x:x-ul, y:y-ul});
+              break;
+            }
+          }
+        }
+        ul++;
+      }
+
+      let ul = 0
+      while (ul < 8) {
+        if (x+ul < 8 && y+ul < 8) {
+          if (arr[y+ul][x+ul] === null) {
+            this.opt.push({x:x+ul, y:y+ul});
+          }
+          else {
+            if (arr[y+ul][x+ul].color !== arr[y][x].color) {
+              this.att.push({x:x+ul, y:y+ul});
+              break;
+            }
+          }
+        }
+        ul++;
+      }
+
+      let ul = 0
+      while (ul < 8) {
+        if (x+ul < 8 && y-ul > -1) {
+          if (arr[y-ul][x+ul] === null) {
+            this.opt.push({x:x+ul, y:y-ul});
+          }
+          else {
+            if (arr[y-ul][x+ul].color !== arr[y][x].color) {
+              this.att.push({x:x+ul, y:y-ul});
+              break;
+            }
+          }
+        }
+        ul++;
+      }
+
+      let ul = 0
+      while (ul < 8) {
+        if (x-ul > -1 && y-ul < 8) {
+          if (arr[y+ul][x-ul] === null) {
+            this.opt.push({x:x-ul, y:y+ul});
+          }
+          else {
+            if (arr[y+ul][x-ul].color !== arr[y][x].color) {
+              this.att.push({x:x-ul, y:y+ul});
+              break;
+            }
+          }
+        }
+        ul++;
+      }
+
       
     }
     if ( this.type === 'Q' ) {
