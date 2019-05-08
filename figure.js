@@ -135,21 +135,11 @@ export default class Figure {
     }
 
     if ( this.type === 'k' ) {
-      console.log(this.opt);
-      console.log(this.att);
-      console.log('color', this.color);
-      console.log(arr[x][y])
+      // console.log(this.opt);
+      // console.log(this.att);
+      // console.log('color', this.color);
+      // console.log(arr[x][y])
 
-      // mouse sX: 2 rY: 3
-
-      // mouse sX: 0 rY: 4 
-      // mouse sX: 0 rY: 2 
-      // mouse sX: 1 rY: 1 
-      // mouse sX: 3 rY: 1 
-      // mouse sX: 4 rY: 2 
-      // mouse sX: 4 rY: 4 
-      // mouse sX: 3 rY: 5 
-      // mouse sX: 1 rY: 5
 
       if (true) {
         if (x > 1 && y < 7) { //LDj
@@ -232,18 +222,16 @@ export default class Figure {
             }
           }
         }
-
-
-
-
       }
+    }
 
-
-
+    if ( this.type === 's' ) {
+      console.log(this.opt);
+      console.log(this.att);
+      console.log('color', this.color);
+      console.log(arr[x][y])
 
       
-    }
-    if ( this.type === 's' ) {
       
     }
     if ( this.type === 'Q' ) {
