@@ -12,7 +12,7 @@ class Canvas extends React.Component {
   constructor() {
     this.play = 1;
     this.move = 0;
-    this.player = 0;
+    this.player = 1; // 0 white
     this.selected = null;
 
     this.click = null;
@@ -67,7 +67,7 @@ class Canvas extends React.Component {
         let X = mx;
         let Y = my;
         if ( this.player ) { X = 7-X; Y = 7-Y; }
-        console.log('mouse', X, Y);
+        console.log('mouse', 'X:', X, 'Y:', Y);
         if ( this.click === null && this.board.arr[Y][X] !== null && this.board.arr[Y][X].color === this.player  ){
           this.click = {x: X, y: Y};
           this.selected = this.board.arr[Y][X];

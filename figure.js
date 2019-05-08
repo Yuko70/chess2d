@@ -24,33 +24,51 @@ export default class Figure {
       console.log(this.opt);
       console.log(this.att);
 
-      // WHITE
+      // // WHITE
+      // // possible move
+      // if (y > 1 ) {
+      //   if ( arr[y-1][x] === null ) { // pohyb vpred
+      //     this.opt.push({x:x, y:y-1});
+      //     if ( y === 6 && arr[y-2][x] === null ) this.opt.push({x:x, y:y-2});
+      //   }
+      // }
+
+      // // possible attack
+      // if (x > 1 && y > 1 ) {
+      //   if (arr[y-1][x-1] !== null) {    // && arr[y-1][x-1].type !== 'K' // pozor na utok na krala zafarbit ano, utok -> sach
+      //     this.att.push({x:x-1, y:y-1});
+      //   }
+      // }
+      // if (x < 7 && y < 7 ) {
+      //   if (arr[y-1][x+1] !== null) { 
+      //     this.att.push({x:x+1, y:y-1});
+      //   }
+      // }
+
+      // BLACK
+      // if (y === 1) {
+      //   if ( arr[7-y-1][x] === null ) this.opt.push({x:7-x, y:7-y-1});
+      //   if ( arr[7-y-2][x] === null ) this.opt.push({x:7-x, y:7-y-2});
+      // }
+      // else {
+      //   if ( arr[7-y-1][x] === null ) this.opt.push({x:7-x, y:7-y-1});
+      // }
+
       // possible move
-      if ( arr[y-1][x] === null ) { // pohyb vpred
-        this.opt.push({x:x, y:y-1});
-        if ( y === 6 && arr[y-2][x] === null ) this.opt.push({x:x, y:y-2});
-      }
-
-      // possible attack
-      if (x > 1 && y > 1 ) {
-        if (arr[y-1][x-1] !== null) {    // && arr[y-1][x-1].type !== 'K' // pozor na utok na krala zafarbit ano, utok -> sach
-          this.att.push({x:x-1, y:y-1});
-        }
-      }
-      if (x < 7 && y < 7 ) {
-        if (arr[y-1][x+1] !== null) { 
-          this.att.push({x:x+1, y:y-1});
+      if (y < 7) {
+        if ( arr[7-y-1][7-x] === null ) { // pohyb vpred
+          this.opt.push({x:7-x, y:7-y-1});
+          if ( y === 1 && arr[7-y-2][7-x] === null ) this.opt.push({x:7-x, y:7-y-2});
         }
       }
 
-      // BLAC
-      if (y === 1) {
-        if ( arr[7-y-1][x] === null ) this.opt.push({x:7-x, y:7-y-1});
-        if ( arr[7-y-2][x] === null ) this.opt.push({x:7-x, y:7-y-2});
-      }
-      else {
-        if ( arr[7-y-1][x] === null ) this.opt.push({x:7-x, y:7-y-1});
-      }
+
+
+
+
+
+
+
     }
 
 
