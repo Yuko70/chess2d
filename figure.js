@@ -20,12 +20,6 @@ export default class Figure {
     this.att = [];
 
     if ( this.type === 'p' ) {
-      console.log(x, y);
-      console.log(this.opt);
-      console.log(this.att);
-      console.log('color', this.color);
-      console.log(arr[x][y])
-
       if (this.color === 0) {
         // WHITE
         // possible move
@@ -69,18 +63,65 @@ export default class Figure {
             this.att.push({x:x+1, y:y+1});
           }
         }
-
       }
     //END PESIAK
     }
 
-
-
-
-
-
-
     if ( this.type === 'v' ) {
+      //console.log(x, y);
+      console.log(this.opt);
+      console.log(this.att);
+      console.log('color', this.color);
+      console.log(arr[x][y])
+
+      if (this.color === 0) { 
+        for (let sxl = x-1; sxl > -1; sxl--) {
+          if (sxl !== x) {
+            if (arr[y][sxl] === null) {
+              console.log('sxl', sxl);
+              this.opt.push({x:sxl, y:y});
+            }
+            else {
+              if (arr[y][sxl].color !== arr[y][x].color) {
+                this.att.push({x:sxl, y:y});
+              }
+              break;
+            }
+          }
+        }
+        for (let sxr = x+1; sxr < 8; sxr++) {
+          if (sxr !== x) {
+            if (arr[y][sxr] === null) {
+              console.log('sxr', sxr);
+              this.opt.push({x:sxr, y:y});
+            }
+            else {
+              if (arr[y][sxr].color !== arr[y][x].color) {
+                this.att.push({x:sxr, y:y});
+              }
+              break;
+            }
+          }
+        }
+        for (let syu = y-1; syu > -1; syu--) {
+          if (syu !== y) {
+            if (arr[syu][x] === null) {
+              console.log('syu', syu);
+              this.opt.push({x:x, y:syu});
+            }
+            else {
+              if (arr[syu][x].color !== arr[y][x].color) {
+                this.att.push({x:x, y:syu});
+              }
+              break;
+            }
+          }
+        }
+      }
+      else {
+
+      }
+
       
     }
     if ( this.type === 'k' ) {
