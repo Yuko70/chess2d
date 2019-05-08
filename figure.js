@@ -69,12 +69,12 @@ export default class Figure {
 
     if ( this.type === 'v' ) {
       //console.log(x, y);
-      console.log(this.opt);
-      console.log(this.att);
-      console.log('color', this.color);
-      console.log(arr[x][y])
+      // console.log(this.opt);
+      // console.log(this.att);
+      // console.log('color', this.color);
+      // console.log(arr[x][y])
 
-      if (this.color === 0) { 
+      if (true) { //this.color === 0 "zbytocne funguje aj pre cierne"
         for (let sxl = x-1; sxl > -1; sxl--) {
           if (sxl !== x) {
             if (arr[y][sxl] === null) {
@@ -117,14 +117,30 @@ export default class Figure {
             }
           }
         }
-      }
-      else {
+        for (let syd = y+1; syd < 8; syd++) {
+          if (syd !== y) {
+            if (arr[syd][x] === null) {
+              console.log('syd', syd);
+              this.opt.push({x:x, y:syd});
+            }
+            else {
+              if (arr[syd][x].color !== arr[y][x].color) {
+                this.att.push({x:x, y:syd});
+              }
+              break;
+            }
+          }
+        }
+      }      
+    }
 
-      }
+    if ( this.type === 'k' ) {
+      console.log(this.opt);
+      console.log(this.att);
+      console.log('color', this.color);
+      console.log(arr[x][y])
 
       
-    }
-    if ( this.type === 'k' ) {
       
     }
     if ( this.type === 's' ) {
