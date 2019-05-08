@@ -12,7 +12,7 @@ class Canvas extends React.Component {
   constructor() {
     this.play = 1;
     this.move = 0;
-    this.player = 0; // 0 white
+    this.player = 1; // 0 white
     this.selected = null;
 
     this.click = null;
