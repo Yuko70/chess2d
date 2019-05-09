@@ -302,6 +302,71 @@ export default class Figure {
       
     }
     if ( this.type === 'Q' ) {
+      console.log(this.opt);
+      console.log(this.att);
+      console.log('color', this.color);
+      console.log(arr[x][y])
+
+      if (true) { //this.color === 0 "zbytocne funguje aj pre cierne"
+        for (let sxl = x-1; sxl > -1; sxl--) {
+          if (sxl !== x) {
+            if (arr[y][sxl] === null) {
+              console.log('sxl', sxl);
+              this.opt.push({x:sxl, y:y});
+            }
+            else {
+              if (arr[y][sxl].color !== arr[y][x].color) {
+                this.att.push({x:sxl, y:y});
+              }
+              break;
+            }
+          }
+        }
+        for (let sxr = x+1; sxr < 8; sxr++) {
+          if (sxr !== x) {
+            if (arr[y][sxr] === null) {
+              console.log('sxr', sxr);
+              this.opt.push({x:sxr, y:y});
+            }
+            else {
+              if (arr[y][sxr].color !== arr[y][x].color) {
+                this.att.push({x:sxr, y:y});
+              }
+              break;
+            }
+          }
+        }
+        for (let syu = y-1; syu > -1; syu--) {
+          if (syu !== y) {
+            if (arr[syu][x] === null) {
+              console.log('syu', syu);
+              this.opt.push({x:x, y:syu});
+            }
+            else {
+              if (arr[syu][x].color !== arr[y][x].color) {
+                this.att.push({x:x, y:syu});
+              }
+              break;
+            }
+          }
+        }
+        for (let syd = y+1; syd < 8; syd++) {
+          if (syd !== y) {
+            if (arr[syd][x] === null) {
+              console.log('syd', syd);
+              this.opt.push({x:x, y:syd});
+            }
+            else {
+              if (arr[syd][x].color !== arr[y][x].color) {
+                this.att.push({x:x, y:syd});
+              }
+              break;
+            }
+          }
+        }
+      }
+      
+      
       
     }
     if ( this.type === 'K' ) {
