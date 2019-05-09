@@ -240,13 +240,21 @@ export default class Figure {
         if (x-ul > -1 && y-ul > -1) {
           if (arr[y-ul][x-ul] === null) {
             this.opt.push({x:x-ul, y:y-ul});
+            
           }
-          else {
+          if (arr[y-ul][x-ul] !== null) {
+            break;
+            
+          }
+
+
             if (arr[y-ul][x-ul].color !== arr[y][x].color) {
               this.att.push({x:x-ul, y:y-ul});
               break;
             }
-          }
+            
+
+          
         }
         ul++;
       }
