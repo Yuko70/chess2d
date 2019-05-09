@@ -370,6 +370,64 @@ export default class Figure {
       
     }
     if ( this.type === 'K' ) {
+      console.log(this.opt);
+      console.log(this.att);
+      console.log('color', this.color);
+      console.log(arr[x][y])
+
+
+
+
+      if (x > 0 && y > 0) {
+        if (arr[y-1][x-1] === null) {
+            this.opt.push({x:x-1, y:y-1});
+          }
+        else {
+          if (arr[y-1][x-1].color !== arr[y][x].color) {
+            this.att.push({x:x-1, y:y-1});
+          }
+        }
+      }
+      if (y > 0) {
+        if (arr[y-1][x] === null) {
+            this.opt.push({x:x, y:y-1});
+          }
+        else {
+          if (arr[y-1][x].color !== arr[y][x].color) {
+            this.att.push({x:x, y:y-1});
+          }
+        }
+      }
+      if (x < 7 && y > 0) {
+        if (arr[y-1][x+1] === null) {
+            this.opt.push({x:x+1, y:y-1});
+          }
+        else {
+          if (arr[y-1][x+1].color !== arr[y][x].color) {
+            this.att.push({x:x+1, y:y-1});
+          }
+        }
+      }
+      if (x < 7) {
+        if (arr[y][x+1] === null) {
+            this.opt.push({x:x+1, y:y});
+          }
+        else {
+          if (arr[y][x+1].color !== arr[y][x].color) {
+            this.att.push({x:x+1, y:y});
+          }
+        }
+      }
+      if (x < 7 && y < 7) {
+        if (arr[y+1][x+1] === null) {
+            this.opt.push({x:x+1, y:y+1});
+          }
+        else {
+          if (arr[y+1][x+1].color !== arr[y][x].color) {
+            this.att.push({x:x+1, y:y+1});
+          }
+        }
+      }
       
     }
   }
