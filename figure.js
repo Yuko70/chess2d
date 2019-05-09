@@ -365,6 +365,70 @@ export default class Figure {
           }
         }
       }
+
+      let ul = 0
+      while (ul < 8) {
+        if (x-ul > -1 && y-ul > -1) {
+          if (arr[y-ul][x-ul] === null) {
+            this.opt.push({x:x-ul, y:y-ul});
+          }
+          else {
+            if (arr[y-ul][x-ul].color !== arr[y][x].color) {
+              this.att.push({x:x-ul, y:y-ul});
+              break;
+            }
+          }
+        }
+        ul++;
+      }
+
+      let ul = 0
+      while (ul < 8) {
+        if (x+ul < 8 && y+ul < 8) {
+          if (arr[y+ul][x+ul] === null) {
+            this.opt.push({x:x+ul, y:y+ul});
+          }
+          else {
+            if (arr[y+ul][x+ul].color !== arr[y][x].color) {
+              this.att.push({x:x+ul, y:y+ul});
+              break;
+            }
+          }
+        }
+        ul++;
+      }
+
+      let ul = 0
+      while (ul < 8) {
+        if (x+ul < 8 && y-ul > -1) {
+          if (arr[y-ul][x+ul] === null) {
+            this.opt.push({x:x+ul, y:y-ul});
+          }
+          else {
+            if (arr[y-ul][x+ul].color !== arr[y][x].color) {
+              this.att.push({x:x+ul, y:y-ul});
+              break;
+            }
+          }
+        }
+        ul++;
+      }
+
+      let ul = 0
+      while (ul < 8) {
+        if (x-ul > -1 && y+ul < 8) {
+          if (arr[y+ul][x-ul] === null) {
+            this.opt.push({x:x-ul, y:y+ul});
+          }
+          else {
+            if (arr[y+ul][x-ul].color !== arr[y][x].color) {
+              this.att.push({x:x-ul, y:y+ul});
+              break;
+            }
+          }
+        }
+        ul++;
+      }
       
       
       
@@ -425,6 +489,36 @@ export default class Figure {
         else {
           if (arr[y+1][x+1].color !== arr[y][x].color) {
             this.att.push({x:x+1, y:y+1});
+          }
+        }
+      }
+      if (y < 7) {
+        if (arr[y+1][x] === null) {
+            this.opt.push({x:x, y:y+1});
+          }
+        else {
+          if (arr[y+1][x].color !== arr[y][x].color) {
+            this.att.push({x:x, y:y+1});
+          }
+        }
+      }
+      if (x > 0 && y < 7) {
+        if (arr[y+1][x-1] === null) {
+            this.opt.push({x:x-1, y:y+1});
+          }
+        else {
+          if (arr[y+1][x-1].color !== arr[y][x].color) {
+            this.att.push({x:x-1, y:y+1});
+          }
+        }
+      }
+      if (x > 0) {
+        if (arr[y][x-1] === null) {
+            this.opt.push({x:x-1, y:y});
+          }
+        else {
+          if (arr[y][x-1].color !== arr[y][x].color) {
+            this.att.push({x:x-1, y:y});
           }
         }
       }
