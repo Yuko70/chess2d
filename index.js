@@ -41,10 +41,10 @@ class Canvas extends React.Component {
     document.getElementById('canvas').onclick = function() { mouse = event; }
 
     this.fieldW.src = this.imageAdress + 'whitegb.png';
-    this.fieldG.src = this.imageAdress + 'greyg.png';
-    this.fieldB.src = this.imageAdress + 'blueg.png';
-    this.fieldLB.src = this.imageAdress + 'lightblueg.png';
-    this.fieldR.src = this.imageAdress + 'redg.png';
+    this.fieldG.src = this.imageAdress + 'greygb.png';
+    this.fieldB.src = this.imageAdress + 'bluegb.png';
+    this.fieldLB.src = this.imageAdress + 'lightbluegb.png';
+    this.fieldR.src = this.imageAdress + 'redgb.png';
 
     requestAnimationFrame(() => {this.updateCanvas()});
   }
