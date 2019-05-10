@@ -88,7 +88,8 @@ class Canvas extends React.Component {
           //  console.log('values', Object.values(this.selected.opt));
           //  console.log(this.selected.opt.includes({X, Y}));
           //  console.log({X, Y});
-           if (this.selected.opt.some(item => item.x === X) && this.selected.opt.some(item => item.y === Y)) {
+           if ( (this.selected.opt.some(item => item.x === X) && this.selected.opt.some(item => item.y === Y)) || 
+                (this.selected.att.some(item => item.x === X) && this.selected.a.some(item => item.y === Y)) ) {
              console.log('move to', 'sX:', X, 'rY:', Y); //move
              console.log('you cxan move here');
              console.log('position of selected', this.click);
