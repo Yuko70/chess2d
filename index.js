@@ -12,7 +12,7 @@ class Canvas extends React.Component {
   constructor() {
     this.play = 1;
     this.move = 0;
-    this.player = 1; // 0 white
+    this.player = 0; // 0 white
     this.selected = null;
 
     this.click = null;
@@ -67,15 +67,39 @@ class Canvas extends React.Component {
         let X = mx;
         let Y = my;
         if ( this.player ) { X = 7-X; Y = 7-Y; }
-        console.log('mouse', 'sX:', X, 'rY:', Y);
+        console.log('mouse', 'sX:', X, 'rY:', Y); //move
         if ( this.click === null && this.board.arr[Y][X] !== null && this.board.arr[Y][X].color === this.player  ){
           this.click = {x: X, y: Y};
           this.selected = this.board.arr[Y][X];
           this.selected.options( this.board.arr, X, Y );
+          // console.log('this.click', this.click);
+          // console.log('this.selected', this.selected);
+          // console.log('this.selected.opt', this.selected.opt);
         }
         else if ( this.click !== null && X === this.click.x && Y === this.click.y ) {
           this.click = null;
           this.selected = null;
+        }
+        else if (this.click !== null) {
+           
+
+          //  items.some(item => item.a === '3')
+          //  console.log('some', this.selected.opt.some(item => item.x === X));
+          //  console.log('values', Object.values(this.selected.opt));
+          //  console.log(this.selected.opt.includes({X, Y}));
+          //  console.log({X, Y});
+           if (this.selected.opt.some(item => item.x === X) && this.selected.opt.some(item => item.y === Y)) {
+             console.log('move to', 'sX:', X, 'rY:', Y); //move
+             console.log('you cxan move here');
+             console.log('position of selected', this.click);
+             console.log('gamearr', this.board.arr[this.click.y][this.click.x]);
+            //  this.board.arr[X][Y] = this.board.arr[this.click.x][this.click.y];
+            console.log(this.board.arr[X][Y] );
+
+
+           }
+
+
         }
       }
       
