@@ -247,7 +247,6 @@ export default class Figure {
             }
             break;
           }
-
         }
         ul++;
       }
@@ -367,7 +366,7 @@ export default class Figure {
         }
       }
 
-      let ul = 0
+      let ul = 1
       while (ul < 8) {
         if (x-ul > -1 && y-ul > -1) {
           if (arr[y-ul][x-ul] === null) {
@@ -376,14 +375,14 @@ export default class Figure {
           else {
             if (arr[y-ul][x-ul].color !== arr[y][x].color) {
               this.att.push({x:x-ul, y:y-ul});
-              break;
             }
+            break;
           }
         }
         ul++;
       }
 
-      let ul = 0
+      let ul = 1
       while (ul < 8) {
         if (x+ul < 8 && y+ul < 8) {
           if (arr[y+ul][x+ul] === null) {
@@ -392,14 +391,14 @@ export default class Figure {
           else {
             if (arr[y+ul][x+ul].color !== arr[y][x].color) {
               this.att.push({x:x+ul, y:y+ul});
-              break;
             }
+            break;
           }
         }
         ul++;
       }
 
-      let ul = 0
+      let ul = 1;
       while (ul < 8) {
         if (x+ul < 8 && y-ul > -1) {
           if (arr[y-ul][x+ul] === null) {
@@ -408,14 +407,14 @@ export default class Figure {
           else {
             if (arr[y-ul][x+ul].color !== arr[y][x].color) {
               this.att.push({x:x+ul, y:y-ul});
-              break;
             }
+            break;
           }
         }
         ul++;
       }
 
-      let ul = 0
+      let ul = 1;
       while (ul < 8) {
         if (x-ul > -1 && y+ul < 8) {
           if (arr[y+ul][x-ul] === null) {
@@ -424,8 +423,8 @@ export default class Figure {
           else {
             if (arr[y+ul][x-ul].color !== arr[y][x].color) {
               this.att.push({x:x-ul, y:y+ul});
-              break;
             }
+            break;
           }
         }
         ul++;
