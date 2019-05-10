@@ -40,7 +40,7 @@ class Canvas extends React.Component {
 
     document.getElementById('canvas').onclick = function() { mouse = event; }
 
-    this.fieldW.src = this.imageAdress + 'whiteg.png';
+    this.fieldW.src = this.imageAdress + 'whitegb.png';
     this.fieldG.src = this.imageAdress + 'greyg.png';
     this.fieldB.src = this.imageAdress + 'blueg.png';
     this.fieldLB.src = this.imageAdress + 'lightblueg.png';
