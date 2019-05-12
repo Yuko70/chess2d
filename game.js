@@ -1,8 +1,16 @@
 // import Canvas from './index.js'
-
+import React, { Component } from 'react';
 // let x = document.getElementById("root");
 
 // let canvaso = new Canvas();
+
+// class Game extends canvasRef {
+//   constructor(props) {
+//     super(props);
+//     this.state = {
+//       counter: 0
+//     }
+//   }
 
 function potvrdTah() {
   console.log('tah potvrdeny');
@@ -13,7 +21,7 @@ function potvrdTah() {
   console.log('context',context);
   // console.log('canvas.player',canvas.test());
   // console.log('context.player',context.test());
-  console.log(Canvas);
+  console.log(canvasRef);
 }
 
 function odznacTah() {

@@ -9,6 +9,8 @@ import './game.js';
 
 
 let mouse = null;
+// let canvasRef = null;
+
 
 class Canvas extends React.Component {
 
@@ -32,7 +34,7 @@ class Canvas extends React.Component {
 
     this.board = new Board();
 
-    this.exampleRef = React.createRef();
+    // this.canvasRef = React.createRef();
   }
 
   click(e){
@@ -77,6 +79,7 @@ class Canvas extends React.Component {
         let Y = my;
         if ( this.player ) { X = 7-X; Y = 7-Y; }
         console.log('mouse', 'sX:', X, 'rY:', Y); //move
+        console.log('canvas ref from render', this.player);
         if ( this.click === null && this.board.arr[Y][X] !== null && this.board.arr[Y][X].color === this.player  ){
           this.click = {x: X, y: Y};
           this.selected = this.board.arr[Y][X];
@@ -166,7 +169,7 @@ class Canvas extends React.Component {
   render() {
     return (
       <div>
-        <canvas id="canvas" width={this.cWidth} height={this.cHeight} player={this.exampleRef} ref={this.exampleRef} />
+        <canvas id="canvas" width={this.cWidth} height={this.cHeight} />
       </div>
     )
   }
