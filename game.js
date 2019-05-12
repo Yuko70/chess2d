@@ -7,7 +7,7 @@ function potvrdTah() {
 
   let canvas = document.getElementById("canvas");
   let context = canvas.getContext('2d');
-  console.log('canvas',canvas);
+  console.log('canvas',canvas.player);
   console.log('context',context);
   // console.log('canvas.player',canvas.test());
   // console.log('context.player',context.test());
