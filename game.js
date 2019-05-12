@@ -1,13 +1,15 @@
-
+// import Canvas from './index.js'
 
 // let x = document.getElementById("root");
+
+// let canvaso = new Canvas();
 
 function potvrdTah() {
   console.log('tah potvrdeny');
 
   let canvas = document.getElementById("canvas");
   let context = canvas.getContext('2d');
-  console.log('canvas',canvas.player);
+  console.log('canvas',canvas);
   console.log('context',context);
   // console.log('canvas.player',canvas.test());
   // console.log('context.player',context.test());
