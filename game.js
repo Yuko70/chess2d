@@ -6,7 +6,7 @@ function potvrdTah() {
   console.log('tah potvrdeny');
 
   let canvas = document.getElementById("canvas").getContext('2d');
-  console.log(canvas.player);
+  console.log('canvas.player',canvas.pla);
 }
 
 function odznacTah() {

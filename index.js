@@ -160,7 +160,7 @@ class Canvas extends React.Component {
   render() {
     return (
       <div>
-        <canvas id="canvas" width={this.cWidth} height={this.cHeight} />
+        <canvas id="canvas" width={this.cWidth} height={this.cHeight} player={this.player} />
       </div>
     )
   }
