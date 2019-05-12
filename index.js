@@ -4,8 +4,10 @@ import './style.css';
 
 import Board from './board.js';
 
+import Game from './game.js';
 
-import './game.js';
+
+// import './game.js';
 
 
 let mouse = null;
@@ -34,6 +36,8 @@ class Canvas extends React.Component {
 
     this.board = new Board();
 
+    this.game = null;
+
     // this.canvasRef = React.createRef();
   }
 
@@ -58,6 +62,8 @@ class Canvas extends React.Component {
     this.fieldR.src = this.imageAdress + 'redgb.png';
 
     requestAnimationFrame(() => {this.updateCanvas()});
+    this.game = new Game(this.player);
+
   }
 
   updateCanvas() {
