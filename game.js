@@ -5,8 +5,12 @@
 function potvrdTah() {
   console.log('tah potvrdeny');
 
-  let canvas = document.getElementById("canvas").getContext('2d');
-  console.log('canvas.player',canvas.pla);
+  let canvas = document.getElementById("canvas");
+  let context = canvas.getContext('2d');
+  console.log('canvas',canvas);
+  console.log('context',context);
+  console.log('canvas.player',canvas.wigth);
+  console.log('context.player',t.player);
 }
 
 function odznacTah() {
