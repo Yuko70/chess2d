@@ -5,6 +5,9 @@ import './style.css';
 import Board from './board.js';
 
 
+import './game.js';
+
+
 let mouse = null;
 
 class Canvas extends React.Component {
