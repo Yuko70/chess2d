@@ -1,5 +1,7 @@
 // import Canvas from './index.js'
 // import React, { Component } from 'react';
+import React, { Component } from 'react';
+import { render } from 'react-dom';
 // let x = document.getElementById("root");
 
 // let canvaso = new Canvas();
@@ -12,15 +14,15 @@
 //     }
 //   }
 
-export default class Game {
+export default class Game extends React.Component  {
   constructor( player ) {
     this.playerG = player;
 
-    this.btn1 = document.getElementById('potvrdTah');
-    btn1.addEventListener('click', potvrdTah);
+  //   this.btn1 = document.getElementById('potvrdTah');
+  //   btn1.addEventListener('click', potvrdTah);
 
-    this.btn2 = document.getElementById('odznacTah');
-    btn2.addEventListener('click', odznacTah);
+  //   this.btn2 = document.getElementById('odznacTah');
+  //   btn2.addEventListener('click', odznacTah);
   }
 
   potvrdTah() {
@@ -28,11 +30,11 @@ export default class Game {
 
     // let canvas = document.getElementById("canvas");
     // let context = canvas.getContext('2d');
-    console.log('canvas',canvas);
-    console.log('context',context);
+    // console.log('canvas',canvas);
+    // console.log('context',context);
     // console.log('canvas.player',canvas.test());
     // console.log('context.player',context.test());
-    console.log('this.playerG',this.playerG);
+    // console.log('this.playerG',this.playerG);
   }
 
 
@@ -40,7 +42,18 @@ export default class Game {
     console.log('tah odznaceny');
   }
 
+
+  render() {
+    return (
+      <div>
+      <input id="potvrdTah" type='button' value="Potvrď ŤAH" onClick={this.potvrdTah} />
+      <input id="odznacTah" type='button' value="Odznač ŤAH" onClick={this.odznacTah} />
+      </div>
+    );
+  }
 }
+
+render(<Game />, document.getElementById('control'));
 
 // function potvrdTah() {
 //   console.log('tah potvrdeny');

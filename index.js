@@ -36,7 +36,8 @@ class Canvas extends React.Component {
 
     this.board = new Board();
 
-    this.game = null;
+    // this.game = null;//
+    this.game = new Game(this.player);
 
     // this.canvasRef = React.createRef();
   }
@@ -62,7 +63,7 @@ class Canvas extends React.Component {
     this.fieldR.src = this.imageAdress + 'redgb.png';
 
     requestAnimationFrame(() => {this.updateCanvas()});
-    this.game = new Game(this.player);
+
 
   }
 
