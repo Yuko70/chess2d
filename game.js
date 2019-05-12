@@ -9,8 +9,9 @@ function potvrdTah() {
   let context = canvas.getContext('2d');
   console.log('canvas',canvas);
   console.log('context',context);
-  console.log('canvas.player',canvas.wigth);
-  console.log('context.player',t.player);
+  // console.log('canvas.player',canvas.test());
+  // console.log('context.player',context.test());
+  console.log(Canvas);
 }
 
 function odznacTah() {

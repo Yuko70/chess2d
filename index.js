@@ -31,10 +31,16 @@ class Canvas extends React.Component {
     this.fieldR = new Image();
 
     this.board = new Board();
+
+    this.exampleRef = React.createRef();
   }
 
   click(e){
     console.log(e);
+  }
+
+  test(){
+    console.log('test');
   }
 
   componentDidMount() {
@@ -160,48 +166,12 @@ class Canvas extends React.Component {
   render() {
     return (
       <div>
-        <canvas id="canvas" width={this.cWidth} height={this.cHeight} player={this.player} />
+        <canvas id="canvas" width={this.cWidth} height={this.cHeight} player={this.exampleRef} ref={this.exampleRef} />
       </div>
     )
   }
   
 }
-/*
-function click(event) {
 
-  let x = event.offsetX;
-  let y = event.offsetY;
-
-  if (chess.playercolor == 0) {
-    let lx = Math.floor(x / chess.cWidth * 8);
-    let ly = Math.floor(y / chess.cHeight * 8);
-  }
-  else {
-    let lx = Math.floor( (chess.cWidth - x) / chess.cWidth * 8 );
-    let ly = Math.floor( (chess.cHeight - y) / chess.cHeight * 8 );
-  }
-
-  console.log("x coords: " + lx + ", y coords: " + ly);
-
-  for (let f in chess.gamearea) {
-    let figure = chess.gamearea[f];
-    if (figure.x == lx & figure.y == ly) {
-      figure.clicked = !figure.clicked;
-    }
-
-  }
-
-  // otacanie hernej plochy   
-  /*if (chess.playercolor == 0) {
-    chess.playercolor = 1;
-  }
-  else {
-    chess.playercolor = 0
-  }
-  
-  console.log(document.getElementById('canvas'));
-
- }
-*/
 
 render(<Canvas />, document.getElementById('root'));
