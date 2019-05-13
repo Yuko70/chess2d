@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import { render } from 'react-dom';
 import './style.css';
 
+
 import Board from './board.js';
+
+import { database } from "./config";
 
 
 
@@ -38,6 +41,8 @@ class Canvas extends React.Component {
     this.prevD = null;
     this.prevDx = null;
     this.prevDy = null;
+
+    
 
   }
 
@@ -218,7 +223,21 @@ class Canvas extends React.Component {
     this.prevD = null;
     this.prevDx = null;
     this.prevDy = null;
-    
+    this.move = 0;
+  }
+
+  saveName() {
+    let c = {
+    name1: document.getElementById("player1").value,
+    name2: document.getElementById("player2").value,
+  };
+  database.collection('names').doc('data').update({
+    'names': firebase.firestore.FieldValue.arrayUnion(c)
+  }).then(() => {
+    //console.log("Data pushed to DB");
+  }).catch((err) => {
+    console.log(err);
+  });
   }
 
 
@@ -234,6 +253,7 @@ class Canvas extends React.Component {
         </div>
         <div>
           <input id="newGame" type='button' value="Nová HRA" onClick={this.newGame.bind(this)} />
+          <input id="save" type='button' value="Ulož meno" onClick={this.saveName.bind(this)} />
         </div>
       </div>
     )

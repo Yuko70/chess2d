@@ -13,7 +13,7 @@ const firebaseConfig = {
 
 // Initialize Firebase
 if (!firebase.apps.length) {
-  firebase.initializeApp(config)
+  firebase.initializeApp(firebaseConfig)
 }
 
 export const database = firebase.firestore()
