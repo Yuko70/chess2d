@@ -27,30 +27,30 @@ export default class Game extends React.Component  {
   //   btn2.addEventListener('click', odznacTah);
   }
 
-  potvrdTah() {
-    console.log('tah potvrdeny');
-    console.log('this.playerG', this.playerG);
+  // potvrdTah() {
+  //   console.log('tah potvrdeny');
+  //   console.log('this.playerG', this.playerG);
 
-    // let canvas = document.getElementById("canvas");
-    // let context = canvas.getContext('2d');
-    // console.log('canvas',canvas);
-    // console.log('context',context);
-    // console.log('canvas.player',canvas.test());
-    // console.log('context.player',context.test());
+  //   // let canvas = document.getElementById("canvas");
+  //   // let context = canvas.getContext('2d');
+  //   // console.log('canvas',canvas);
+  //   // console.log('context',context);
+  //   // console.log('canvas.player',canvas.test());
+  //   // console.log('context.player',context.test());
    
-  }
+  // }
 
 
-  odznacTah() {
-    console.log('tah odznaceny');
-  }
+  // odznacTah() {
+  //   console.log('tah odznaceny');
+  // }
 
 
   render() {
     return (
       <div>
-      <input id="potvrdTah" type='button' value="Potvrď ŤAH" onClick={this.potvrdTah.bind(this)} />
-      <input id="odznacTah" type='button' value="Odznač ŤAH" onClick={this.odznacTah.bind(this)} />
+      // <input id="potvrdTah" type='button' value="Potvrď ŤAH" onClick={this.potvrdTah.bind(this)} />
+      // <input id="odznacTah" type='button' value="Odznač ŤAH" onClick={this.odznacTah.bind(this)} />
       </div>
     );
   }

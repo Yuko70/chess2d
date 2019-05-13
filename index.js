@@ -4,7 +4,7 @@ import './style.css';
 
 import Board from './board.js';
 
-import Game from './game.js';
+// import Game from './game.js';
 
 
 // import './game.js';
@@ -37,8 +37,8 @@ class Canvas extends React.Component {
     this.board = new Board();
 
     // this.game = null;//
-    this.game = new Game();
-    this.game.playerG = this.player;
+    // this.game = new Game();
+    // this.game.playerG = this.player;
 
     // this.canvasRef = React.createRef();
   }
@@ -175,10 +175,35 @@ class Canvas extends React.Component {
     requestAnimationFrame(() => {this.updateCanvas()});
   }
 
+
+  potvrdTah() {
+    console.log('tah potvrdeny');
+    console.log('this.playerG', this.player);
+
+    // let canvas = document.getElementById("canvas");
+    // let context = canvas.getContext('2d');
+    // console.log('canvas',canvas);
+    // console.log('context',context);
+    // console.log('canvas.player',canvas.test());
+    // console.log('context.player',context.test());
+   
+  }
+
+
+  odznacTah() {
+    console.log('tah odznaceny');
+  }
+
+
+
   render() {
     return (
       <div>
         <canvas id="canvas" width={this.cWidth} height={this.cHeight} />
+      </div>,
+      <div>
+        <input id="potvrdTah" type='button' value="Potvrď ŤAH" onClick={this.potvrdTah} />
+        <input id="odznacTah" type='button' value="Odznač ŤAH" onClick={this.odznacTah} />
       </div>
     )
   }
