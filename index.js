@@ -36,9 +36,15 @@ class Canvas extends React.Component {
 
     this.board = new Board();
 
-    // this.lastM = [...this.board.arr];
-    this.lastM = Array.from(this.board.arr);
+    this.lastM = [...this.board.arr];
+    // this.lastM = Array.from(this.board.arr);
     // Array.from
+    this.prevS = null;
+    this.prevSx = null;
+    this.prevSy = null;
+    this.prevD = null;
+    this.prevDx = null;
+    this.prevDy = null;
     console.log(this.lastM);
 
 
@@ -108,7 +114,20 @@ class Canvas extends React.Component {
             // //  this.board.arr[X][Y] = this.board.arr[this.click.x][this.click.y];
             // console.log(this.board.arr[Y][X] );
 
-            
+
+            this.prevS = this.board.arr[this.click.y][this.click.x];
+            this.prevSx = this.click.x;
+            this.prevSy = this.click.y;
+            this.prevD = this.board.arr[Y][X];
+            this.prevDx = X;
+            this.prevDy = Y;
+
+            // console.log('click',this.click, 'board', this.board.arr[Y][X], 'board2',this.board.arr[this.click.y][this.click.x]);
+
+            console.log(this.prevS, this.prevSx, this.prevSy);
+
+            console.log(this.prevD, this.prevDx, this.prevDy)
+
 
             this.board.arr[Y][X] = this.board.arr[this.click.y][this.click.x];
             this.board.arr[this.click.y][this.click.x] = null;
@@ -179,14 +198,19 @@ class Canvas extends React.Component {
   potvrdTah() {
     console.log('tah potvrdeny');
     console.log('this.player', this.player);
-    if (this.player === 0 ) {
+
+    if (this.move === 1) {
+      if (this.player === 0 ) {
       this.player = 1;
-    } 
-    else {
-      this.player = 0;
+      } 
+      else {
+        this.player = 0;
+      }
+      this.move = 0;
+      this.lastM = [...this.board.arr];
     }
-    this.move = 0;
-    this.lastM = [...this.board.arr];
+    
+    
     console.log('lastM', this.lastM);
 
 
@@ -204,8 +228,10 @@ class Canvas extends React.Component {
     console.log('tah odznaceny');
     if (this.move === 1) {
       console.log(this.lastM);
-      this.board.arr = Array.from(this.lastM);
+      // this.board.arr = Array.from(this.lastM);
       this.move = 0;
+      this.board.arr[this.prevSy][this.prevSx] = this.prevS;
+      this.board.arr[this.prevDy][this.prevDx] = this.prevD;
     }
     
   }
