@@ -36,11 +36,6 @@ class Canvas extends React.Component {
 
     this.board = new Board();
 
-    // this.game = null;//
-    // this.game = new Game();
-    // this.game.playerG = this.player;
-
-    // this.canvasRef = React.createRef();
   }
 
   click(e){
@@ -179,6 +174,13 @@ class Canvas extends React.Component {
   potvrdTah() {
     console.log('tah potvrdeny');
     console.log('this.player', this.player);
+    if (this.player === 0 ) {
+      this.player = 1;
+    } 
+    else {
+      this.player = 0;
+    }
+
 
     // let canvas = document.getElementById("canvas");
     // let context = canvas.getContext('2d');
