@@ -247,7 +247,9 @@ class Canvas extends React.Component {
   }
 
   loadName() {
-
+    console.log(this.Data[0]);
+    document.getElementById("player1").value = this.Data[0].name1;
+    document.getElementById("player2").value = this.Data[0].name2;
   }
 
 
