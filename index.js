@@ -210,6 +210,16 @@ class Canvas extends React.Component {
     }
   }
 
+  newGame() {
+    this.board = new Board();
+    this.prevS = null;
+    this.prevSx = null;
+    this.prevSy = null;
+    this.prevD = null;
+    this.prevDx = null;
+    this.prevDy = null;
+    
+  }
 
 
   render() {
@@ -221,6 +231,9 @@ class Canvas extends React.Component {
         <div id="control">
           <input id="potvrdTah" type='button' value="Potvrď ŤAH" onClick={this.potvrdTah.bind(this)} />
           <input id="odznacTah" type='button' value="Odznač ŤAH" onClick={this.odznacTah.bind(this)} />
+        </div>
+        <div>
+          <input id="newGame" type='button' value="Nová HRA" onClick={this.newGame.bind(this)} />
         </div>
       </div>
     )
