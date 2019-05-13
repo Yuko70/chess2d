@@ -88,7 +88,7 @@ class Canvas extends React.Component {
         if ( this.player ) { X = 7-X; Y = 7-Y; }
         console.log('mouse', 'sX:', X, 'rY:', Y); //move
         console.log('this.player', this.player);
-        console.log('playerG', this.game.playerG);
+        // console.log('playerG', this.game.playerG);
         if ( this.click === null && this.board.arr[Y][X] !== null && this.board.arr[Y][X].color === this.player  ){
           this.click = {x: X, y: Y};
           this.selected = this.board.arr[Y][X];
@@ -202,7 +202,7 @@ class Canvas extends React.Component {
         <canvas id="canvas" width={this.cWidth} height={this.cHeight} />
 
         <input id="potvrdTah" type='button' value="Potvrď ŤAH" onClick={this.potvrdTah.bind(this)} />
-        <input id="odznacTah" type='button' value="Odznač ŤAH" onClick={this.odznacTah} />
+        <input id="odznacTah" type='button' value="Odznač ŤAH" onClick={this.odznacTah.bind(this)} />
       </div>
     )
   }
@@ -211,3 +211,4 @@ class Canvas extends React.Component {
 
 
 render(<Canvas />, document.getElementById('root'));
+
