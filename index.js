@@ -12,6 +12,10 @@ import { database } from "./config";
 let mouse = null;
 // let canvasRef = null;
 
+// registracia uzivatela
+// prihlasenie uzivatela
+// nasledne si vylistuje podla mena svoje rozohrate partie a vyberie si partiu ktoru bude hrat - cize nacitanie a ulozenie partie plus nejaky dizajn(responyiv)
+
 
 class Canvas extends React.Component {
 
@@ -42,7 +46,6 @@ class Canvas extends React.Component {
     this.prevDx = null;
     this.prevDy = null;
 
-    
   }
 
   click(e){
