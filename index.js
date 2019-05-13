@@ -101,7 +101,7 @@ class Canvas extends React.Component {
             //  console.log('you cxan move here');
             //  console.log('position of selected', this.click);
             //  console.log('gamearr', this.board.arr[this.click.y][this.click.x]);
-            // //  this.board.arr[X][Y] = this.board.arr[this.click.x][this.click.y];
+            //  his.board.arr[X][Y] = this.board.arr[this.click.x][this.click.y];
             // console.log(this.selected.opt );
             // console.log(this.selected.opt.some(item => item.x === X));
             // console.log(this.selected.opt.some(item => item.y === Y));
