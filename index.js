@@ -36,14 +36,17 @@ class Canvas extends React.Component {
 
     this.board = new Board();
 
+    // this.lastM = [...this.board.arr];
+    this.lastM = Array.from(this.board.arr);
+    // Array.from
+    console.log(this.lastM);
+
+
+
   }
 
   click(e){
     console.log(e);
-  }
-
-  test(){
-    console.log('test');
   }
 
   componentDidMount() {
@@ -59,7 +62,6 @@ class Canvas extends React.Component {
     this.fieldR.src = this.imageAdress + 'redgb.png';
 
     requestAnimationFrame(() => {this.updateCanvas()});
-
 
   }
 
@@ -83,8 +85,8 @@ class Canvas extends React.Component {
         if ( this.player ) { X = 7-X; Y = 7-Y; }
         console.log('mouse', 'sX:', X, 'rY:', Y); //move
         console.log('this.player', this.player);
-        // console.log('playerG', this.game.playerG);
-        if ( this.click === null && this.board.arr[Y][X] !== null && this.board.arr[Y][X].color === this.player  ){
+
+        if ( this.click === null && this.board.arr[Y][X] !== null && this.board.arr[Y][X].color === this.player  && this.move !== 1){
           this.click = {x: X, y: Y};
           this.selected = this.board.arr[Y][X];
           this.selected.options( this.board.arr, X, Y );
@@ -96,7 +98,7 @@ class Canvas extends React.Component {
           this.click = null;
           this.selected = null;
         }
-        else if (this.click !== null) {
+        else if (this.click !== null && this.move !== 1) {
            if ( (this.selected.opt.some(item => item.x === X) && this.selected.opt.some(item => item.y === Y)) || 
                 (this.selected.att.some(item => item.x === X) && this.selected.att.some(item => item.y === Y)) ) {
             //  console.log('move to', 'sX:', X, 'rY:', Y); //move
@@ -106,10 +108,13 @@ class Canvas extends React.Component {
             // //  this.board.arr[X][Y] = this.board.arr[this.click.x][this.click.y];
             // console.log(this.board.arr[Y][X] );
 
+            
+
             this.board.arr[Y][X] = this.board.arr[this.click.y][this.click.x];
             this.board.arr[this.click.y][this.click.x] = null;
             this.click = null;
             this.selected = null;
+            this.move = 1;
            }
         }
       }
@@ -180,6 +185,9 @@ class Canvas extends React.Component {
     else {
       this.player = 0;
     }
+    this.move = 0;
+    this.lastM = [...this.board.arr];
+    console.log('lastM', this.lastM);
 
 
     // let canvas = document.getElementById("canvas");
@@ -194,6 +202,12 @@ class Canvas extends React.Component {
 
   odznacTah() {
     console.log('tah odznaceny');
+    if (this.move === 1) {
+      console.log(this.lastM);
+      this.board.arr = Array.from(this.lastM);
+      this.move = 0;
+    }
+    
   }
 
 
@@ -201,10 +215,13 @@ class Canvas extends React.Component {
   render() {
     return (
       <div>
-        <canvas id="canvas" width={this.cWidth} height={this.cHeight} />
-
-        <input id="potvrdTah" type='button' value="Potvrď ŤAH" onClick={this.potvrdTah.bind(this)} />
-        <input id="odznacTah" type='button' value="Odznač ŤAH" onClick={this.odznacTah.bind(this)} />
+        <div>
+          <canvas id="canvas" width={this.cWidth} height={this.cHeight} />
+        </div>
+        <div id="control">
+          <input id="potvrdTah" type='button' value="Potvrď ŤAH" onClick={this.potvrdTah.bind(this)} />
+          <input id="odznacTah" type='button' value="Odznač ŤAH" onClick={this.odznacTah.bind(this)} />
+        </div>
       </div>
     )
   }
