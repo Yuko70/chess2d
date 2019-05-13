@@ -43,7 +43,6 @@ class Canvas extends React.Component {
     this.prevDy = null;
 
     
-
   }
 
   click(e){
@@ -90,16 +89,13 @@ class Canvas extends React.Component {
         let X = mx;
         let Y = my;
         if ( this.player ) { X = 7-X; Y = 7-Y; }
-        // console.log('mouse', 'sX:', X, 'rY:', Y); //move
-        // console.log('this.player', this.player);
+
 
         if ( this.click === null && this.board.arr[Y][X] !== null && this.board.arr[Y][X].color === this.player  && this.move !== 1){
           this.click = {x: X, y: Y};
           this.selected = this.board.arr[Y][X];
           this.selected.options( this.board.arr, X, Y );
-          // console.log('this.click', this.click);
-          // console.log('this.selected', this.selected);
-          // console.log('this.selected.opt', this.selected.opt);
+
         }
         else if ( this.click !== null && X === this.click.x && Y === this.click.y ) {
           this.click = null;
@@ -108,14 +104,6 @@ class Canvas extends React.Component {
         else if (this.click !== null && this.move !== 1) {
            if ( (this.selected.opt.some(item => item.x === X) && this.selected.opt.some(item => item.y === Y)) || 
                 (this.selected.att.some(item => item.x === X) && this.selected.att.some(item => item.y === Y)) ) {
-            //  console.log('move to', 'sX:', X, 'rY:', Y); //move
-            //  console.log('you cxan move here');
-            //  console.log('position of selected', this.click);
-            //  console.log('gamearr', this.board.arr[this.click.y][this.click.x]);
-            //  his.board.arr[X][Y] = this.board.arr[this.click.x][this.click.y];
-            // console.log(this.selected.opt );
-            // console.log(this.selected.opt.some(item => item.x === X));
-            // console.log(this.selected.opt.some(item => item.y === Y));
 
             this.prevS = this.board.arr[this.click.y][this.click.x];
             this.prevSx = this.click.x;
@@ -124,9 +112,6 @@ class Canvas extends React.Component {
             this.prevDx = X;
             this.prevDy = Y;
 
-            // console.log('click',this.click, 'board', this.board.arr[Y][X], 'board2',this.board.arr[this.click.y][this.click.x]);
-            // console.log(this.prevS, this.prevSx, this.prevSy);
-            // console.log(this.prevD, this.prevDx, this.prevDy)
 
             this.board.arr[Y][X] = this.board.arr[this.click.y][this.click.x];
             this.board.arr[this.click.y][this.click.x] = null;
@@ -187,8 +172,6 @@ class Canvas extends React.Component {
 
 
   potvrdTah() {
-    // console.log('tah potvrdeny');
-    // console.log('this.player', this.player);
     if (this.move === 1) {
       if (this.player === 0 ) {
       this.player = 1;
@@ -200,21 +183,11 @@ class Canvas extends React.Component {
       this.lastM = [...this.board.arr];
     }
     
-    // console.log('lastM', this.lastM);
-    // let canvas = document.getElementById("canvas");
-    // let context = canvas.getContext('2d');
-    // console.log('canvas',canvas);
-    // console.log('context',context);
-    // console.log('canvas.player',canvas.test());
-    // console.log('context.player',context.test());
   }
 
 
   odznacTah() {
-    // console.log('tah odznaceny');
     if (this.move === 1) {
-      // console.log(this.lastM);
-      // this.board.arr = Array.from(this.lastM);
       this.move = 0;
       this.board.arr[this.prevSy][this.prevSx] = this.prevS;
       this.board.arr[this.prevDy][this.prevDx] = this.prevD;
