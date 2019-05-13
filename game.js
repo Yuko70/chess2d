@@ -15,9 +15,10 @@ import { render } from 'react-dom';
 //   }
 
 export default class Game extends React.Component  {
-  constructor( player ) {
-    // super(player);
-    this.playerG = player;
+  constructor(  ) { //player
+    super();
+    this.playerG = null;
+    // this.playerG = player;
     // this.onToggleLoop = this.onToggleLoop.bind(this);
   //   this.btn1 = document.getElementById('potvrdTah');
   //   btn1.addEventListener('click', potvrdTah);
@@ -28,7 +29,7 @@ export default class Game extends React.Component  {
 
   potvrdTah() {
     console.log('tah potvrdeny');
-    console.log('this.playerG',this.playerG);
+    console.log('this.playerG', this.playerG);
 
     // let canvas = document.getElementById("canvas");
     // let context = canvas.getContext('2d');
@@ -48,8 +49,8 @@ export default class Game extends React.Component  {
   render() {
     return (
       <div>
-      <input id="potvrdTah" type='button' value="Potvrď ŤAH" onClick={this.potvrdTah} />
-      <input id="odznacTah" type='button' value="Odznač ŤAH" onClick={this.odznacTah} />
+      <input id="potvrdTah" type='button' value="Potvrď ŤAH" onClick={this.potvrdTah.bind(this)} />
+      <input id="odznacTah" type='button' value="Odznač ŤAH" onClick={this.odznacTah.bind(this)} />
       </div>
     );
   }

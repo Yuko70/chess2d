@@ -37,7 +37,8 @@ class Canvas extends React.Component {
     this.board = new Board();
 
     // this.game = null;//
-    this.game = new Game(this.player);
+    this.game = new Game();
+    this.game.playerG = this.player;
 
     // this.canvasRef = React.createRef();
   }
@@ -86,7 +87,8 @@ class Canvas extends React.Component {
         let Y = my;
         if ( this.player ) { X = 7-X; Y = 7-Y; }
         console.log('mouse', 'sX:', X, 'rY:', Y); //move
-        console.log('canvas ref from render', this.player);
+        console.log('this.player', this.player);
+        console.log('playerG', this.game.playerG);
         if ( this.click === null && this.board.arr[Y][X] !== null && this.board.arr[Y][X].color === this.player  ){
           this.click = {x: X, y: Y};
           this.selected = this.board.arr[Y][X];
