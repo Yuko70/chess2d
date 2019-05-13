@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 import './style.css';
-
+import * as firebase from 'firebase/app';
 
 import Board from './board.js';
 
@@ -63,6 +63,12 @@ class Canvas extends React.Component {
     this.fieldR.src = this.imageAdress + 'redgb.png';
 
     requestAnimationFrame(() => {this.updateCanvas()});
+
+    this.db1 = database
+      .collection("names")
+      .doc('data').onSnapshot((snapshot) => {
+        this.Data = snapshot.data().names;
+      })
 
   }
 
@@ -240,6 +246,10 @@ class Canvas extends React.Component {
   });
   }
 
+  loadName() {
+
+  }
+
 
   render() {
     return (
@@ -254,6 +264,7 @@ class Canvas extends React.Component {
         <div>
           <input id="newGame" type='button' value="Nová HRA" onClick={this.newGame.bind(this)} />
           <input id="save" type='button' value="Ulož meno" onClick={this.saveName.bind(this)} />
+          <input id="load" type='button' value="Načítaj meno" onClick={this.loadName.bind(this)} />
         </div>
       </div>
     )
