@@ -178,7 +178,7 @@ class Canvas extends React.Component {
 
   potvrdTah() {
     console.log('tah potvrdeny');
-    console.log('this.playerG', this.player);
+    console.log('this.player', this.player);
 
     // let canvas = document.getElementById("canvas");
     // let context = canvas.getContext('2d');
@@ -200,9 +200,8 @@ class Canvas extends React.Component {
     return (
       <div>
         <canvas id="canvas" width={this.cWidth} height={this.cHeight} />
-      </div>,
-      <div>
-        <input id="potvrdTah" type='button' value="Potvrď ŤAH" onClick={this.potvrdTah} />
+
+        <input id="potvrdTah" type='button' value="Potvrď ŤAH" onClick={this.potvrdTah.bind(this)} />
         <input id="odznacTah" type='button' value="Odznač ŤAH" onClick={this.odznacTah} />
       </div>
     )
