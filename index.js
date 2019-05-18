@@ -246,12 +246,6 @@ class Canvas extends React.Component {
           <input id="odznacTah" type='button' value="Odznač ŤAH" onClick={this.odznacTah.bind(this)} />
         </div>
 
-        <div>
-          <input id="newGame" type='button' value="Nová HRA" onClick={this.newGame.bind(this)} />
-          <input id="save" type='button' value="Ulož meno" onClick={this.saveName.bind(this)} />
-          <input id="load" type='button' value="Načítaj meno" onClick={this.loadName.bind(this)} />
-        </div>
-
         <div id="register-form">
         <p>Registrácia</p>
           Player1:<input type="text" id="player1" value=""/>
@@ -260,11 +254,17 @@ class Canvas extends React.Component {
           <input id="register" type='button' value="Registruj" onClick={this.registration.bind(this)} />
         </div>
         
-        <div id="login-fo">
+        <div id="login-form">
           <p>Prihlásenie</p>
+
+          
+          <input id="save" type='button' value="Ulož meno" onClick={this.saveName.bind(this)} />
+          <input id="load" type='button' value="Načítaj meno" onClick={this.loadName.bind(this)} />
+
           Meno jedneho z hráčov:<input type="text" id="player1" value=""/>
           Heslo:<input type="text" id="password" value=""/>
           <input id="login" type='button' value="Prihlás" onClick={this.registration.bind(this)} />
+          <input id="newGame" type='button' value="Nová HRA" onClick={this.newGame.bind(this)} />
           Názov hry:<input type="text" id="player1" value=""/>
           <input id="login" type='button' value="Uložit hru" onClick={this.registration.bind(this)} />
           <select>
