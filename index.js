@@ -206,6 +206,7 @@ class Canvas extends React.Component {
     this.prevDx = null;
     this.prevDy = null;
     this.move = 0;
+    this.player = 0;
   }
 
   saveName() {
@@ -243,6 +244,9 @@ class Canvas extends React.Component {
           <input id="newGame" type='button' value="Nová HRA" onClick={this.newGame.bind(this)} />
           <input id="save" type='button' value="Ulož meno" onClick={this.saveName.bind(this)} />
           <input id="load" type='button' value="Načítaj meno" onClick={this.loadName.bind(this)} />
+        </div>
+        <div id="register">
+          
         </div>
       </div>
     )
