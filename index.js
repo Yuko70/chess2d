@@ -240,27 +240,38 @@ class Canvas extends React.Component {
         <div>
           <canvas id="canvas" width={this.cWidth} height={this.cHeight} />
         </div>
+
         <div id="control">
           <input id="potvrdTah" type='button' value="Potvrď ŤAH" onClick={this.potvrdTah.bind(this)} />
           <input id="odznacTah" type='button' value="Odznač ŤAH" onClick={this.odznacTah.bind(this)} />
         </div>
+
         <div>
           <input id="newGame" type='button' value="Nová HRA" onClick={this.newGame.bind(this)} />
           <input id="save" type='button' value="Ulož meno" onClick={this.saveName.bind(this)} />
           <input id="load" type='button' value="Načítaj meno" onClick={this.loadName.bind(this)} />
         </div>
+
+        <div id="register-form">
         <p>Registrácia</p>
-        <div id="register">
           Player1:<input type="text" id="player1" value=""/>
           Player2:<input type="text" id="player2" value=""/>
           Heslo:<input type="text" id="player2" value=""/>
           <input id="register" type='button' value="Registruj" onClick={this.registration.bind(this)} />
         </div>
-        <p>Prihlásenie</p>
-        <div id="login">
+        
+        <div id="login-fo">
+          <p>Prihlásenie</p>
           Meno jedneho z hráčov:<input type="text" id="player1" value=""/>
           Heslo:<input type="text" id="password" value=""/>
-          <input id="l" type='button' value="Prihlás" onClick={this.registration.bind(this)} />
+          <input id="login" type='button' value="Prihlás" onClick={this.registration.bind(this)} />
+          Názov hry:<input type="text" id="player1" value=""/>
+          <input id="login" type='button' value="Uložit hru" onClick={this.registration.bind(this)} />
+          <select>
+            <option value="volvo">hra1...</option>
+            <option value="saab">hra2...</option>
+          </select>
+           <input id="login" type='button' value="Načítaj hru" onClick={this.registration.bind(this)} />
         </div>
       </div>
     )
