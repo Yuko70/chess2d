@@ -229,6 +229,10 @@ class Canvas extends React.Component {
     document.getElementById("player2").value = this.Data[0].name2;
   }
 
+  registration() {
+
+  }
+
 
   render() {
     return (
@@ -245,8 +249,18 @@ class Canvas extends React.Component {
           <input id="save" type='button' value="Ulož meno" onClick={this.saveName.bind(this)} />
           <input id="load" type='button' value="Načítaj meno" onClick={this.loadName.bind(this)} />
         </div>
+        <p>Registrácia</p>
         <div id="register">
-          
+          Player1:<input type="text" id="player1" value=""/>
+          Player2:<input type="text" id="player2" value=""/>
+          Heslo:<input type="text" id="player2" value=""/>
+          <input id="register" type='button' value="Registruj" onClick={this.registration.bind(this)} />
+        </div>
+        <p>Prihlásenie</p>
+        <div id="login">
+          Meno jedneho z hráčov:<input type="text" id="player1" value=""/>
+          Heslo:<input type="text" id="password" value=""/>
+          <input id="l" type='button' value="Prihlás" onClick={this.registration.bind(this)} />
         </div>
       </div>
     )
