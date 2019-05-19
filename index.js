@@ -250,11 +250,11 @@ class Canvas extends React.Component {
     let userPass = document.getElementById("password-log").value;
     console.log(userPass);
 
-    firebase.auth().createUserWithEmailAndPassword(userEmail, userPass).catch(function(error) {
+    firebase.auth().signInWithEmailAndPassword(userEmail, userPass).catch(function(error) {
       // Handle Errors here.
       let errorCode = error.code;
       let errorMessage = error.message;
-      window.alert("Error: ", errorCode, errorMessage);
+      window.alert("Error: " + errorCode + " " + errorMessage);
       // ...
     });
 
