@@ -230,14 +230,45 @@ class Canvas extends React.Component {
   }
 
   registration() {
-    firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+
+    console.log('button work');
+
+    // firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+    //   // Handle Errors here.
+    //   var errorCode = error.code;
+    //   var errorMessage = error.message;
+    //   // ...
+    // });
+
+  }
+
+  login() {
+
+    console.log('login button work');
+    let userEmail = document.getElementById("email-log").value;
+    console.log(userEmail);
+    let userPass = document.getElementById("password-log").value;
+    console.log(userPass);
+
+    firebase.auth().createUserWithEmailAndPassword(userEmail, userPass).catch(function(error) {
       // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
+      let errorCode = error.code;
+      let errorMessage = error.message;
+      window.alert("Error: ", errorCode, errorMessage);
       // ...
     });
 
+
   }
+
+//   firebase.auth().onAuthStateChanged(function(user) {
+//   if (user) {
+//     // User is signed in.
+//   } else {
+//     // No user is signed in.
+//   }
+// });
+
 
 
   render() {
@@ -254,16 +285,19 @@ class Canvas extends React.Component {
 
         <div id="register-form">
         <p>Registrácia</p>
-          Player1:<input type="text" id="player1" value=""/>
-          Player2:<input type="text" id="player2" value=""/>
-          Heslo:<input type="text" id="player2" value=""/>
-          <input id="register" type='button' value="Registruj" onClick={this.registration.bind(this)} />
+          Email:<input type="email" id="email-reg" placeholder="email..."/>
+          Heslo:<input type="password" id="password-reg" placeholder="password..."/>
+          <input id="register-btn" type='button' value="Registruj" onClick={this.registration.bind(this)} />
         </div>
         
         <div id="login-form">
           <p>Prihlásenie</p>
+          Email:<input type="email" id="email-log" placeholder="email..."/>
+          Heslo:<input type="password" id="password-log" placeholder="password..."/>
+          <input id="login-btn" type='button' value="Prihlásenie" onClick={this.login.bind(this)} />
 
-          
+
+
           <input id="save" type='button' value="Ulož meno" onClick={this.saveName.bind(this)} />
           <input id="load" type='button' value="Načítaj meno" onClick={this.loadName.bind(this)} />
 
