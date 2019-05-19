@@ -4,7 +4,16 @@ h1, p {
 
 #canvas {
     border:2px solid black;
+    display: none;
 }
+
+#control {
+  display: none;
+}
+
+/* #root {
+  display: block;
+} */
 
 /* #register-form {
   position: relative;

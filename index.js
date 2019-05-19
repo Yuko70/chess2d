@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { render } from 'react-dom';
 import './style.css';
 import * as firebase from 'firebase/app';
+import 'firebase/auth'
 
 import Board from './board.js';
 
@@ -261,13 +262,17 @@ class Canvas extends React.Component {
 
   }
 
-//   firebase.auth().onAuthStateChanged(function(user) {
-//   if (user) {
-//     // User is signed in.
-//   } else {
-//     // No user is signed in.
-//   }
-// });
+  update() {
+  firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    // User is signed in.
+  } else {
+    // No user is signed in.
+  }
+});
+  }
+
+
 
 
 
