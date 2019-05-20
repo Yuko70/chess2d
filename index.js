@@ -295,19 +295,19 @@ class Canvas extends React.Component {
     let reverseGA = [];
     let riadokGA = [];
     for (let i=1; i<65; i++) {
-      if (gameArr === "0") { riadokGA.push(null);}
-      if (gameArr === "1") { riadokGA.push(new Figure('v', 1));}
-      if (gameArr === "2") { riadokGA.push(new Figure('k', 1));}
-      if (gameArr === "3") { riadokGA.push(new Figure('s', 1));}
-      if (gameArr === "4") { riadokGA.push(new Figure('Q', 1));}
-      if (gameArr === "5") { riadokGA.push(new Figure('K', 1));}
-      if (gameArr === "6") { riadokGA.push(new Figure('p', 1));}
-      if (gameArr === "a") { riadokGA.push(new Figure('v', 0));}
-      if (gameArr === "b") { riadokGA.push(new Figure('k', 0));}
-      if (gameArr === "c") { riadokGA.push(new Figure('s', 0));}
-      if (gameArr === "d") { riadokGA.push(new Figure('Q', 0));}
-      if (gameArr === "e") { riadokGA.push(new Figure('K', 0));}
-      if (gameArr === "f") { riadokGA.push(new Figure('p', 0));}
+      if (gameArr[i-1] === "0") { riadokGA.push(null);}
+      if (gameArr[i-1] === "1") { riadokGA.push(new Figure('v', 1));}
+      if (gameArr[i-1] === "2") { riadokGA.push(new Figure('k', 1));}
+      if (gameArr[i-1] === "3") { riadokGA.push(new Figure('s', 1));}
+      if (gameArr[i-1] === "4") { riadokGA.push(new Figure('Q', 1));}
+      if (gameArr[i-1] === "5") { riadokGA.push(new Figure('K', 1));}
+      if (gameArr[i-1] === "6") { riadokGA.push(new Figure('p', 1));}
+      if (gameArr[i-1] === "a") { riadokGA.push(new Figure('v', 0));}
+      if (gameArr[i-1] === "b") { riadokGA.push(new Figure('k', 0));}
+      if (gameArr[i-1] === "c") { riadokGA.push(new Figure('s', 0));}
+      if (gameArr[i-1] === "d") { riadokGA.push(new Figure('Q', 0));}
+      if (gameArr[i-1] === "e") { riadokGA.push(new Figure('K', 0));}
+      if (gameArr[i-1] === "f") { riadokGA.push(new Figure('p', 0));}
       
       if (i%8===0) {
         console.log(riadokGA);
@@ -315,6 +315,7 @@ class Canvas extends React.Component {
         riadokGA = [];
       }
     }
+    this.board.arr = [...reverseGA];
 
     console.log("reverseGA", reverseGA);
 
