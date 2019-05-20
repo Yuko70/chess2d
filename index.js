@@ -220,12 +220,72 @@ class Canvas extends React.Component {
     name2: document.getElementById("player2").value,
   };
   database.collection('names').doc('data').update({
-    'names': firebase.firestore.FieldValue.arrayUnion(c)
+    'gameName': 'test'
+
   }).then(() => {
     //console.log("Data pushed to DB");
   }).catch((err) => {
     console.log(err);
   });
+  }
+
+  saveGame() {
+    // let database = firebase.database();
+    let user = firebase.auth().currentUser;
+    let gameName = document.getElementById("gameName").value
+
+    console.log("save game", user, gameName);
+
+    let dbData = {
+      nameOfGame: gameName,
+      test: "bla bla",
+    };
+
+
+    
+
+    if (firebase.auth().currentUser !== null && gameName !== "") {
+      database.collection('chess').doc('data').update({
+      'chessData': dbData
+    })
+    .then(() => {
+      //console.log("Data pushed to DB");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+
+    }
+
+
+    // database.collection('names').doc('data').update({
+    //   'names': firebase.firestore.FieldValue.arrayUnion(c)
+    // })
+    // .then(() => {
+    //   //console.log("Data pushed to DB");
+    // })
+    // .catch((err) => {
+    //   console.log(err);
+    // });
+
+    // function writeUserData(userId, email) {
+    //   firebase.database().ref('users/' + userId).set({
+    //     username: name,
+    //     email: email,
+    //     profile_picture : imageUrl
+    //   });
+
+
+
+
+  }
+
+  loadGame() {
+
+  }
+
+  loadSavedGames() {
+
   }
 
   loadName() {
@@ -336,13 +396,13 @@ class Canvas extends React.Component {
 
         <div id="control2">
           <input id="newGame" type='button' value="Nová HRA" onClick={this.newGame.bind(this)} />
-          Názov hry:<input type="text" id="player1" value=""/>
-          <input id="login" type='button' value="Uložit hru" onClick={this.registration.bind(this)} />
+          Názov hry:<input type="text" id="gameName" placeholder="nazov hry..."/>
+          <input id="login" type='button' value="Uložit hru" onClick={this.saveGame.bind(this)} />
           <select id="savedGames">
             <option value="volvo">hra1...</option>
             <option value="saab">hra2...</option>
           </select>
-           <input id="login" type='button' value="Načítaj hru" onClick={this.registration.bind(this)} />
+           <input id="login" type='button' value="Načítaj hru" onClick={this.loadGame.bind(this)} />
         </div>
 
         <div id="login-form">
