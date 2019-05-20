@@ -236,20 +236,7 @@ class Canvas extends React.Component {
 
     console.log("save game", user, gameName, user.toString());
 
-    // let dbData = {
-    //   nameOfGame: gameName,
-    //   test: "bla bla",
-    // };
 
-    // this.board = new Board();
-    // this.prevS = null;
-    // this.prevSx = null;
-    // this.prevSy = null;
-    // this.prevD = null;
-    // this.prevDx = null;
-    // this.prevDy = null;
-    // this.move = 0;
-    // this.player = 0;
 
     let gameData = {
       prevS: this.prevS,
@@ -275,19 +262,27 @@ class Canvas extends React.Component {
              User: user.toString() },
     };
 
+    // let key = database.ref(user);
 
-    if (firebase.auth().currentUser !== null && gameName !== "") {
-      database.collection('chess').doc('data').s({
-      'chessData': dbData
-    })
-    .then(() => {
-      //console.log("Data pushed to DB");
-    })
-    .catch((err) => {
-      console.log(err);
-    });
 
-    }
+    // if (firebase.auth().currentUser !== null && gameName !== "") {
+    //   database.collection('chess').doc('data').update(key,{
+    //   'chessData': dbData
+    // })
+    // .then(() => {
+    //   //console.log("Data pushed to DB");
+    // })
+    // .catch((err) => {
+    //   console.log(err);
+    // });
+
+    firebase.database().ref("/user/"+user).set({
+      userID: user,
+      GameName: gameName
+    }).then(() => console.log('Set existing user done'))
+      .catch((error) => console.log(error.message))
+
+    
 
 
     // database.collection('names').doc('data').update({
