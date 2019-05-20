@@ -197,15 +197,15 @@ class Canvas extends React.Component {
     this.player = 0;
   }
 
-    refreshGame( board, player, move) {
+    refreshGame( board, prevS, prevSx, prevSy, prevD, prevDx, prevDy, move, player) {
     this.board = new Board();
     this.board.arr = board;
-    this.prevS = null;
-    this.prevSx = null;
-    this.prevSy = null;
-    this.prevD = null;
-    this.prevDx = null;
-    this.prevDy = null;
+    this.prevS = prevS;
+    this.prevSx = prevSx;
+    this.prevSy = prevSy;
+    this.prevD = prevD;
+    this.prevDx = prevDx;
+    this.prevDy = prevDy;
     this.move = move;
     this.player = player;
   }
@@ -395,21 +395,35 @@ class Canvas extends React.Component {
         let prevSn = null;
         let prevDn = null;
 
-        if (gameArr[64] === "n") { riadokGA.push(null);}
-        if (gameArr[64] === "1") { riadokGA.push(new Figure('v', 1));}
-        if (gameArr[64] === "2") { riadokGA.push(new Figure('k', 1));}
-        if (gameArr[64] === "3") { riadokGA.push(new Figure('s', 1));}
-        if (gameArr[64] === "4") { riadokGA.push(new Figure('Q', 1));}
-        if (gameArr[64] === "5") { riadokGA.push(new Figure('K', 1));}
-        if (gameArr[64] === "6") { riadokGA.push(new Figure('p', 1));}
-        if (gameArr[64] === "a") { riadokGA.push(new Figure('v', 0));}
-        if (gameArr[64] === "b") { riadokGA.push(new Figure('k', 0));}
-        if (gameArr[64] === "c") { riadokGA.push(new Figure('s', 0));}
-        if (gameArr[64] === "d") { riadokGA.push(new Figure('Q', 0));}
-        if (gameArr[64] === "e") { riadokGA.push(new Figure('K', 0));}
-        if (gameArr[64] === "f") { riadokGA.push(new Figure('p', 0));}
+        if (gameArr[64] === "n") { prevSn = null;}
+        if (gameArr[64] === "1") { prevSn = new Figure('v', 1);}
+        if (gameArr[64] === "2") { prevSn = new Figure('k', 1);}
+        if (gameArr[64] === "3") { prevSn = new Figure('s', 1);}
+        if (gameArr[64] === "4") { prevSn = new Figure('Q', 1);}
+        if (gameArr[64] === "5") { prevSn = new Figure('K', 1);}
+        if (gameArr[64] === "6") { prevSn = new Figure('p', 1);}
+        if (gameArr[64] === "a") { prevSn = new Figure('v', 0);}
+        if (gameArr[64] === "b") { prevSn = new Figure('k', 0);}
+        if (gameArr[64] === "c") { prevSn = new Figure('s', 0);}
+        if (gameArr[64] === "d") { prevSn = new Figure('Q', 0);}
+        if (gameArr[64] === "e") { prevSn = new Figure('K', 0);}
+        if (gameArr[64] === "f") { prevSn = new Figure('p', 0);}
 
-        this.refreshGame([...reverseGA], parseInt(gameArr[65]), parseInt(gameArr[66]), parseInt(gameArr[68]), parseInt(gameArr[69]), parseInt(gameArr[70]), parseInt(gameArr[71]));
+        if (gameArr[67] === "n") { prevSn = null;}
+        if (gameArr[67] === "1") { prevSn = new Figure('v', 1);}
+        if (gameArr[67] === "2") { prevSn = new Figure('k', 1);}
+        if (gameArr[67] === "3") { prevSn = new Figure('s', 1);}
+        if (gameArr[67] === "4") { prevSn = new Figure('Q', 1);}
+        if (gameArr[67] === "5") { prevSn = new Figure('K', 1);}
+        if (gameArr[67] === "6") { prevSn = new Figure('p', 1);}
+        if (gameArr[67] === "a") { prevSn = new Figure('v', 0);}
+        if (gameArr[67] === "b") { prevSn = new Figure('k', 0);}
+        if (gameArr[67] === "c") { prevSn = new Figure('s', 0);}
+        if (gameArr[67] === "d") { prevSn = new Figure('Q', 0);}
+        if (gameArr[67] === "e") { prevSn = new Figure('K', 0);}
+        if (gameArr[67] === "f") { prevSn = new Figure('p', 0);}
+
+        this.refreshGame([...reverseGA], prevSn, parseInt(gameArr[65]), parseInt(gameArr[66]), prevDn, parseInt(gameArr[68]), parseInt(gameArr[69]), parseInt(gameArr[70]), parseInt(gameArr[71]));
         // this.potvrdTah();
       });
   }
