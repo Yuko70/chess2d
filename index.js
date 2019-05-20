@@ -329,23 +329,16 @@ class Canvas extends React.Component {
           <input id="potvrdTah" type='button' value="Potvrď ŤAH" onClick={this.potvrdTah.bind(this)} />
           <input id="odznacTah" type='button' value="Odznač ŤAH" onClick={this.odznacTah.bind(this)} />
 
-
         </div>
         <div id="logreg">
           <input id="logreg-btn" type='button' value="Prihlásenie / Registrácia" onClick={this.mainpage.bind(this)} />
         </div>
 
         <div id="control2">
-        <input id="save" type='button' value="Ulož meno" onClick={this.saveName.bind(this)} />
-          <input id="load" type='button' value="Načítaj meno" onClick={this.loadName.bind(this)} />
-
-          Meno jedneho z hráčov:<input type="text" id="player1" value=""/>
-          Heslo:<input type="text" id="password" value=""/>
-          <input id="login" type='button' value="Prihlás" onClick={this.registration.bind(this)} />
           <input id="newGame" type='button' value="Nová HRA" onClick={this.newGame.bind(this)} />
           Názov hry:<input type="text" id="player1" value=""/>
           <input id="login" type='button' value="Uložit hru" onClick={this.registration.bind(this)} />
-          <select>
+          <select id="savedGames">
             <option value="volvo">hra1...</option>
             <option value="saab">hra2...</option>
           </select>
