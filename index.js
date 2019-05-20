@@ -14,12 +14,6 @@ import { database } from "./config";
 
 
 let mouse = null;
-// let canvasRef = null;
-
-// registracia uzivatela
-// prihlasenie uzivatela
-// nasledne si vylistuje podla mena svoje rozohrate partie a vyberie si partiu ktoru bude hrat - cize nacitanie a ulozenie partie plus nejaky dizajn(responyiv)
-
 
 class Canvas extends React.Component {
 
@@ -69,13 +63,6 @@ class Canvas extends React.Component {
     this.fieldR.src = this.imageAdress + 'redgb.png';
 
     requestAnimationFrame(() => {this.updateCanvas()});
-
-    // this.db1 = database
-    //   .collection("names")
-    //   .doc('data').onSnapshot((snapshot) => {
-    //     this.Data = snapshot.data().names;
-    //   })
-
   }
 
   updateCanvas() {
@@ -172,8 +159,6 @@ class Canvas extends React.Component {
         if ( item !== null ) { item.draw(this.ctx, X, Y); }
       }
     }
-
-
     requestAnimationFrame(() => {this.updateCanvas()});
   }
 
@@ -189,7 +174,6 @@ class Canvas extends React.Component {
       this.move = 0;
       this.lastM = [...this.board.arr];
     }
-    
   }
 
 
@@ -213,29 +197,10 @@ class Canvas extends React.Component {
     this.player = 0;
   }
 
-
-
-
-  saveName() {
-    let c = {
-    name1: document.getElementById("player1").value,
-    name2: document.getElementById("player2").value,
-  };
-  database.collection('names').doc('data').update({
-    'gameName': 'test'
-
-  }).then(() => {
-    //console.log("Data pushed to DB");
-  }).catch((err) => {
-    console.log(err);
-  });
-  }
-
   saveGame() {
     console.log(this.board);
 
     let gameArr = "";
-
 
     for (let i=0; i<8; i++) {
       for (let j=0; j<8; j++) {
@@ -291,17 +256,8 @@ class Canvas extends React.Component {
     }
     gameArr+= this.player;
 
-    // console.log("gameArr",gameArr, gameArr.length);
-
-
-
-    // console.log("reverseGA", reverseGA);
-
-    // let database = firebase.database();
     let user = firebase.auth().currentUser.email;
     let gameName = document.getElementById("gameName").value;
-
-    // console.log("save game", user, gameName, user.toString());
 
     let gameData = {
       prevS: this.prevS,
@@ -315,63 +271,12 @@ class Canvas extends React.Component {
     };
 
 
-
-    // let dbData = {
-    //   User: user.toString(),
-    //   Game: {GameName: gameName.toString(),
-    //          GameData: gameData },
-    // };
-
     let dbData = {
       user: {
              GameData: gameData,
              GameName: gameName.toString(),
              User: user.toString() },
     };
-
-    // let key = database.ref(user);
-
-
-    // if (firebase.auth().currentUser !== null && gameName !== "") {
-    //   database.collection('chess/1').doc('data').update({
-    //   'chessData': 0
-    // })
-    // .then(() => {
-    //   //console.log("Data pushed to DB");
-    // })
-    // .catch((err) => {
-    //   console.log(err);
-    // });
-
-    // }
-
-    // firebase.database().ref("/user/1/").set({
-    //   userID: 0
-    // }).then(() => console.log('Set existing user done'))
-    //   .catch((error) => console.log(error.message))
-
-    
-
-
-    // database.collection('names').doc('data').update({
-    //   'names': firebase.firestore.FieldValue.arrayUnion(c)
-    // })
-    // .then(() => {
-    //   //console.log("Data pushed to DB");
-    // })
-    // .catch((err) => {
-    //   console.log(err);
-    // });
-
-    // function writeUserData(userId, email) {
-    //   firebase.database().ref('users/' + userId).set({
-    //     username: name,
-    //     email: email,
-    //     profile_picture : imageUrl
-    //   });
-
-
-
 
   }
 
@@ -407,7 +312,7 @@ class Canvas extends React.Component {
   }
 
   loadSavedGames() {
-
+    //nedokoncene nataha udaje
   }
 
   loadName() {
@@ -494,10 +399,6 @@ class Canvas extends React.Component {
   showRegistration() {
     document.getElementById("registration-form").style.display = "block";
   }
-
-
-
-
 
 
   render() {
