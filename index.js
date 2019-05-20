@@ -230,13 +230,96 @@ class Canvas extends React.Component {
   }
 
   saveGame() {
+    console.log(this.board);
+
+    let gameArr = "";
+
+
+    for (let i=0; i<8; i++) {
+      for (let j=0; j<8; j++) {
+        if (this.board.arr[i][j] !== null) {
+          console.log(this.board.arr[i][j].type, this.board.arr[i][j].color);
+          console.log();
+          if (this.board.arr[i][j].color === 1) {
+            if (this.board.arr[i][j].type === "v") {
+              gameArr += "1";
+            }
+            if (this.board.arr[i][j].type === "k") {
+              gameArr += "2";
+            }
+            if (this.board.arr[i][j].type === "s") {
+              gameArr += "3";
+            }
+            if (this.board.arr[i][j].type === "Q") {
+              gameArr += "4";
+            }
+            if (this.board.arr[i][j].type === "K") {
+              gameArr += "5";
+            }
+            if (this.board.arr[i][j].type === "p") {
+              gameArr += "6";
+            }
+
+          }
+          else {
+            if (this.board.arr[i][j].type === "v") {
+              gameArr += "a";
+            }
+            if (this.board.arr[i][j].type === "k") {
+              gameArr += "b";
+            }
+            if (this.board.arr[i][j].type === "s") {
+              gameArr += "c";
+            }
+            if (this.board.arr[i][j].type === "Q") {
+              gameArr += "d";
+            }
+            if (this.board.arr[i][j].type === "K") {
+              gameArr += "e";
+            }
+            if (this.board.arr[i][j].type === "p") {
+              gameArr += "f";
+            }
+          }
+        }
+        else {
+          gameArr += "0";
+        }
+      }
+    }
+
+    console.log("gameArr",gameArr);
+
+    let reverseGA = [];
+    let riadokGA = [];
+    for (let i=0; i<64; i++) {
+      if (gameArr === "0") { riadokGA.push([0]);}
+      if (gameArr === "1") { riadokGA.push([1]);}
+      if (gameArr === "2") { riadokGA.push([2]);}
+      if (gameArr === "3") { riadokGA.push([3]);}
+      if (gameArr === "4") { riadokGA.push([4]);}
+      if (gameArr === "5") { riadokGA.push([5]);}
+      if (gameArr === "6") { riadokGA.push([6]);}
+      if (gameArr === "a") { riadokGA.push("a");}
+      if (gameArr === "b") { riadokGA.push("b");}
+      if (gameArr === "c") { riadokGA.push("c");}
+      if (gameArr === "d") { riadokGA.push("d");}
+      if (gameArr === "e") { riadokGA.push("e");}
+      if (gameArr === "f") { riadokGA.push("f");}
+      
+      if (i%7===0) {
+        reverseGA.push([...riadokGA]);
+        // riadokGA = [];
+      }
+    }
+
+    console.log("reverseGA", reverseGA);
+
     // let database = firebase.database();
     let user = firebase.auth().currentUser.email;
     let gameName = document.getElementById("gameName").value
 
     console.log("save game", user, gameName, user.toString());
-
-
 
     let gameData = {
       prevS: this.prevS,
@@ -248,6 +331,8 @@ class Canvas extends React.Component {
       move: this.move,
       player: this.player,
     };
+
+
 
     // let dbData = {
     //   User: user.toString(),
