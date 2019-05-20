@@ -269,14 +269,15 @@ class Canvas extends React.Component {
     // };
 
     let dbData = {
-      Game: {
+      user: {
              GameData: gameData,
+             GameName: gameName.toString(),
              User: user.toString() },
     };
 
 
     if (firebase.auth().currentUser !== null && gameName !== "") {
-      database.collection('chess').doc('data').update({
+      database.collection('chess').doc('data').s({
       'chessData': dbData
     })
     .then(() => {
