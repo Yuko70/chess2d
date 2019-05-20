@@ -229,26 +229,21 @@ class Canvas extends React.Component {
   }
 
   loadName() {
-    console.log(this.Data[0]);
     document.getElementById("player1").value = this.Data[0].name1;
     document.getElementById("player2").value = this.Data[0].name2;
   }
 
   registration() {
-    console.log('button work');
     let userEmail = document.getElementById("email-reg").value;
     let userPass = document.getElementById("password-reg").value;
 
- 
-
-    firebase.auth().createUserWithEmailAndPassword(userEmail, userPass).catch(function(error) {
-      // Handle Errors here.
+    firebase.auth().createUserWithEmailAndPassword(userEmail, userPass)
+    .then(() => this.updateLogIn())
+    .catch(function(error) {
       let errorCode = error.code;
       let errorMessage = error.message;
       window.alert("Error: " + errorCode + "\n"  + errorMessage);
     });
-    
-
   }
 
   login() {
@@ -257,7 +252,7 @@ class Canvas extends React.Component {
     let userPass = document.getElementById("password-log").value;
 
     firebase.auth().signInWithEmailAndPassword(userEmail, userPass)
-      .then(user => this.updateLogIn())
+      .then(() => this.updateLogIn())
       .catch(() => this.updateLogOut())
 
     firebase.auth().signInWithEmailAndPassword(userEmail, userPass).catch(function(error) {
@@ -266,44 +261,36 @@ class Canvas extends React.Component {
       let errorMessage = error.message;
       window.alert("Error: " + errorCode + "\n"  + errorMessage);
     });
-
-
   }
 
   logout() {
-    firebase.auth().signOut();
-    firebase.auth().signOut().then(function() {
-      console.log("odhlasenie ok");
-      
-    }).catch(function(error) {
+    firebase.auth().signOut()
+    .then(() => this.updateLogOut())
+    .catch(function(error) {
       console.log("odhlasenie zlyhalo");
-
     });
-    this.updateLogOut();
   }
 
   updateLogIn() {
-
-
     document.getElementById("canvas").style.display = "block";
     document.getElementById("control").style.display = "block";
     document.getElementById("logout-form").style.display = "block";
     document.getElementById("login-form").style.display = "none";
+    document.getElementById("registration-form").style.display = "none";
 
     let user = firebase.auth().currentUser;
-
     let emailID= "";
     if (user != null) {
       emailID = user.email;
     }
-    console.log("currentUser emailID: ",emailID);
+
   }
 
   updateLogOut() {
     document.getElementById("canvas").style.display = "none";
     document.getElementById("control").style.display = "none";
     document.getElementById("logout-form").style.display = "none";
-    document.getElementById("registration-form").style.display = "block";
+    document.getElementById("login-form").style.display = "block";
   }
 
   host() {
@@ -342,7 +329,7 @@ class Canvas extends React.Component {
           <input id="potvrdTah" type='button' value="Potvrď ŤAH" onClick={this.potvrdTah.bind(this)} />
           <input id="odznacTah" type='button' value="Odznač ŤAH" onClick={this.odznacTah.bind(this)} />
 
-          
+
         </div>
         <div id="logreg">
           <input id="logreg-btn" type='button' value="Prihlásenie / Registrácia" onClick={this.mainpage.bind(this)} />
@@ -365,12 +352,10 @@ class Canvas extends React.Component {
            <input id="login" type='button' value="Načítaj hru" onClick={this.registration.bind(this)} />
         </div>
 
-
-        
         <div id="login-form">
           <h1>ŠACH 2D</h1>
           <h3>Vitajte na stránke</h3>
-          <p>Pre pokracovanie do hry sa prosím prihláste.</p>
+          <p>Pre pokračovanie do hry sa prosím prihláste.</p>
           <p>Prihlásenie</p>
           Email:<input type="email" id="email-log" placeholder="email..."/>
           Heslo:<input type="password" id="password-log" placeholder="password..."/>
@@ -387,10 +372,10 @@ class Canvas extends React.Component {
           <input id="register-btn" type='button' value="Registruj" onClick={this.registration.bind(this)} />
         </div>
 
-
         <div id="logout-form">
           <input id="logout-btn" type='button' value="Odhlásenie" onClick={this.logout.bind(this)} />
         </div>
+
       </div>
     )
   }
