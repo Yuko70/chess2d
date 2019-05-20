@@ -248,9 +248,9 @@ class Canvas extends React.Component {
 
     console.log('login button work');
     let userEmail = document.getElementById("email-log").value;
-    console.log(userEmail);
+    // console.log(userEmail);
     let userPass = document.getElementById("password-log").value;
-    console.log(userPass);
+    // console.log(userPass);
 
     // firebase.auth().signInWithEmailAndPassword(userEmail, userPass).catch(function(error) {
     //   // Handle Errors here.
@@ -273,17 +273,28 @@ class Canvas extends React.Component {
     //   .catch(() => loginUserFailed(dispatch))
 
     firebase.auth().signInWithEmailAndPassword(userEmail, userPass)
-      .then(user => this.updateSucces())
-      .catch(() => this.updateFailed())
+      .then(user => this.updateLogIn())
+      .catch(() => this.updateLogOut())
+
+    
     
 
     // this.update();
   }
 
-  updateSucces() {
-    console.log("elem", document.getElementById("control").style);
+  logout() {
+    firebase.auth().signOut().then(function() {
+      this.updateLogOut();
+    }).catch(function(error) {
+      // An error happened.
+    });
+  }
+
+  updateLogIn() {
+    // console.log("elem", document.getElementById("control").style);
     document.getElementById("canvas").style.display = "block";
     document.getElementById("control").style.display = "block";
+    document.getElementById("logout-form").style.display = "block";
     // document.getElementById("canvas").style.display = "block";
     // document.getElementById("control").style.display = block;
     // console.log(firebase.auth());
@@ -296,11 +307,19 @@ class Canvas extends React.Component {
   //     document.getElementById("control").style.display = "none";
   //   }
   // });
+    let user = firebase.auth().currentUser;
+    // console.log("currentUser", user);
+    let emailID= "";
+    if (user != null) {
+      emailID = user.email;
+    }
+    console.log("currentUser emailID: ",emailID);
   }
 
-  updateFailed() {
+  updateLogOut() {
     document.getElementById("canvas").style.display = "none";
     document.getElementById("control").style.display = "none";
+    document.getElementById("logout-form").style.display = "none";
   }
 
   // firebase.auth().onAuthStateChanged(function(user) {
@@ -368,6 +387,9 @@ class Canvas extends React.Component {
             <option value="saab">hra2...</option>
           </select>
            <input id="login" type='button' value="Načítaj hru" onClick={this.registration.bind(this)} />
+        </div>
+        <div id="logout-form">
+          <input id="logout-btn" type='button' value="Odhlásenie" onClick={this.logout.bind(this)} />
         </div>
       </div>
     )

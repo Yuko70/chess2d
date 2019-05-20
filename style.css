@@ -11,6 +11,10 @@ h1, p {
   display: none;
 }
 
+#logout-form {
+  display: none;
+}
+
 /* #root {
   display: block;
 } */
