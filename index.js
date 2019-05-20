@@ -289,6 +289,7 @@ class Canvas extends React.Component {
         }
       }
     }
+    gameArr+= this.player;
 
     console.log("gameArr",gameArr, gameArr.length);
 
@@ -316,6 +317,7 @@ class Canvas extends React.Component {
       }
     }
     this.board.arr = [...reverseGA];
+    this.player = reverseGA[65];
 
     console.log("reverseGA", reverseGA);
 
