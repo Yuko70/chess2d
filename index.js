@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { render } from 'react-dom';
 import './style.css';
 import * as firebase from 'firebase/app';
-import 'firebase/auth'
+// import 'firebase/auth'
+require('firebase/auth')
 
 import Board from './board.js';
 
@@ -251,27 +252,76 @@ class Canvas extends React.Component {
     let userPass = document.getElementById("password-log").value;
     console.log(userPass);
 
-    firebase.auth().signInWithEmailAndPassword(userEmail, userPass).catch(function(error) {
-      // Handle Errors here.
-      let errorCode = error.code;
-      let errorMessage = error.message;
-      window.alert("Error: " + errorCode + " " + errorMessage);
-      // ...
-    });
+    // firebase.auth().signInWithEmailAndPassword(userEmail, userPass).catch(function(error) {
+    //   // Handle Errors here.
+    //   let errorCode = error.code;
+    //   let errorMessage = error.message;
+    //   window.alert("Error: " + errorCode + " " + errorMessage);
+    //   // ...
+    // });
 
+    // firebase.auth().signInWithEmailAndPassword(userEmail, userPass).catch(function(error) {
+    //   // Handle Errors here.
+    //   let errorCode = error.code;
+    //   let errorMessage = error.message;
+    //   window.alert("Error: " + errorCode + " " + errorMessage);
+    //   // ...
+    // });
 
+    // firebase.auth().signInWithEmailAndPassword(userEmail, userPass)
+    //   .then(user => loginUserSuccess(dispatch, user))
+    //   .catch(() => loginUserFailed(dispatch))
+
+    firebase.auth().signInWithEmailAndPassword(userEmail, userPass)
+      .then(user => this.updateSucces())
+      .catch(() => this.updateFailed())
+    
+
+    // this.update();
   }
 
-  update() {
-    firebase.auth().onAuthStateChanged(function(user) {
-    if (user) {
-      // User is signed in.
-    } else {
-      // No user is signed in.
-    }
-  });
+  updateSucces() {
+    console.log("elem", document.getElementById("control").style);
+    document.getElementById("canvas").style.display = "block";
+    document.getElementById("control").style.display = "block";
+    // document.getElementById("canvas").style.display = "block";
+    // document.getElementById("control").style.display = block;
+    // console.log(firebase.auth());
+  //   firebase.auth().onAuthStateChanged(function(user) {
+  //   if (user) {
+  //     document.getElementById("canvas").style.display = "block";
+  //     document.getElementById("control").style.display = "block";
+  //   } else {
+  //     document.getElementById("canvas").style.display = "none";
+  //     document.getElementById("control").style.display = "none";
+  //   }
+  // });
   }
 
+  updateFailed() {
+    document.getElementById("canvas").style.display = "none";
+    document.getElementById("control").style.display = "none";
+  }
+
+  // firebase.auth().onAuthStateChanged(function(user) {
+  //   if (user) {
+  //     document.getElementById("canvas").style.display = "block";
+  //     document.getElementById("control").style.display = "block";
+  //   } else {
+  //     document.getElementById("canvas").style.display = "none";
+  //     document.getElementById("control").style.display = "none";
+  //   }
+  // });
+
+//   componentDidMount() {
+//     firebase.auth().onAuthStateChanged(user => {
+//       if (user) {
+//         console.log("logged in QW");
+//       } else {
+//         console.log("not logged in QW");
+//       }
+//     });
+// }
 
 
 
