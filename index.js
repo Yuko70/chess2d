@@ -12,7 +12,6 @@ import Figure from './figure.js';
 import  firebase  from "./config";
 
 
-
 let mouse = null;
 
 class Canvas extends React.Component {
@@ -47,7 +46,7 @@ class Canvas extends React.Component {
   }
 
   click(e){
-    console.log(e);
+    // console.log(e);
   }
 
   componentDidMount() {
@@ -78,18 +77,15 @@ class Canvas extends React.Component {
       let mx = Math.floor(mouse.x / 60);
       let my = Math.floor(mouse.y / 60);
       
-
       if ( mx >= 0 && mx <= 7 && my >= 0 && my <= 7 ) {
         let X = mx;
         let Y = my;
         if ( this.player ) { X = 7-X; Y = 7-Y; }
 
-
         if ( this.click === null && this.board.arr[Y][X] !== null && this.board.arr[Y][X].color === this.player  && this.move !== 1){
           this.click = {x: X, y: Y};
           this.selected = this.board.arr[Y][X];
           this.selected.options( this.board.arr, X, Y );
-
         }
         else if ( this.click !== null && X === this.click.x && Y === this.click.y ) {
           this.click = null;
@@ -106,7 +102,6 @@ class Canvas extends React.Component {
             this.prevDx = X;
             this.prevDy = Y;
 
-
             this.board.arr[Y][X] = this.board.arr[this.click.y][this.click.x];
             this.board.arr[this.click.y][this.click.x] = null;
             this.click = null;
@@ -115,7 +110,6 @@ class Canvas extends React.Component {
            }
         }
       }
-      
       mouse = null; 
     }
 
@@ -123,7 +117,6 @@ class Canvas extends React.Component {
       let X = this.click.x;
       let Y = this.click.y;
       if ( this.player) { X = 7-X; Y = 7-Y; }
-
       this.ctx.drawImage(this.fieldB, 60*X, 60*Y);
     }
 
@@ -208,14 +201,11 @@ class Canvas extends React.Component {
   }
 
   saveGame() {
-    // console.log(this.board);
-
     let gameArr = "";
 
     for (let i=0; i<8; i++) {
       for (let j=0; j<8; j++) {
         if (this.board.arr[i][j] !== null) {
-          // console.log(this.board.arr[i][j].type, this.board.arr[i][j].color);
           if (this.board.arr[i][j].color === 1) {
             if (this.board.arr[i][j].type === "v") {
               gameArr += "1";
@@ -323,10 +313,6 @@ class Canvas extends React.Component {
     if (gameName !== "") {
       firebase.database().ref('users/' + userID).set(dbData);
     }
-    
-    console.log("save", this.board);
-    console.log("save", this.board.arr);
-    console.log(gameArr);
   }
 
   loadGame() {
@@ -334,21 +320,16 @@ class Canvas extends React.Component {
     const userID = firebase.auth().currentUser.uid;
 
     let incomingData = {};
-    console.log("vonku");
+
     firebase.database().ref('users/' + userID).once('value')
       .then((snapshot) => {
-        console.log("vnutri");
+
         if (!snapshot.val()) return null;
-        console.log("vnutri preslo");
+
         return snapshot.val();
       })
       .then((incomingData) => {
         if (!incomingData) return;
-
-        // console.log("data:");
-        console.log(incomingData);
-        // console.log(incomingData.GameData);
-        
 
         let gameArr = incomingData.GameData; 
         let reverseGA = [];
@@ -373,19 +354,6 @@ class Canvas extends React.Component {
             riadokGA = [];
           }
         }
-        // this.board.arr = [...reverseGA];
-        // this.player = parseInt(reverseGA[65]);
-        // console.log('load', [...reverseGA]);
-        // console.log(reverseGA);
-
-        // console.log('number',gameArr[64]);
-        // console.log('number',gameArr[65]);
-        // console.log('number',gameArr[66]);
-        // console.log('number',gameArr[67]);
-        // console.log('number',gameArr[68]);
-        // console.log('number',gameArr[69]);
-        // console.log('number',gameArr[70]);
-        // console.log('number',gameArr[71]);
 
         let prevSn = null;
         let prevDn = null;
@@ -442,7 +410,6 @@ class Canvas extends React.Component {
   }
 
   login() {
-    console.log('login button work');
     let userEmail = document.getElementById("email-log").value;
     let userPass = document.getElementById("password-log").value;
 
@@ -462,7 +429,6 @@ class Canvas extends React.Component {
     firebase.auth().signOut()
     .then(() => this.updateLogOut())
     .catch(function(error) {
-      console.log("odhlasenie zlyhalo");
     });
   }
 
