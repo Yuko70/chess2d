@@ -345,12 +345,12 @@ class Canvas extends React.Component {
       .then((incomingData) => {
         if (!incomingData) return;
 
-        console.log("data:");
+        // console.log("data:");
         console.log(incomingData);
-        console.log(incomingData.GameData);
+        // console.log(incomingData.GameData);
         
 
-        let gameArr = incomingData.GameData; //tu pridu info z db
+        let gameArr = incomingData.GameData; 
         let reverseGA = [];
         let riadokGA = [];
         for (let i=1; i<65; i++) {
@@ -375,17 +375,17 @@ class Canvas extends React.Component {
         }
         // this.board.arr = [...reverseGA];
         // this.player = parseInt(reverseGA[65]);
-        console.log('load', [...reverseGA]);
-        console.log(reverseGA);
+        // console.log('load', [...reverseGA]);
+        // console.log(reverseGA);
 
-        console.log('number',gameArr[64]);
-        console.log('number',gameArr[65]);
-        console.log('number',gameArr[66]);
-        console.log('number',gameArr[67]);
-        console.log('number',gameArr[68]);
-        console.log('number',gameArr[69]);
-        console.log('number',gameArr[70]);
-        console.log('number',gameArr[71]);
+        // console.log('number',gameArr[64]);
+        // console.log('number',gameArr[65]);
+        // console.log('number',gameArr[66]);
+        // console.log('number',gameArr[67]);
+        // console.log('number',gameArr[68]);
+        // console.log('number',gameArr[69]);
+        // console.log('number',gameArr[70]);
+        // console.log('number',gameArr[71]);
 
         let prevSn = null;
         let prevDn = null;
@@ -419,7 +419,7 @@ class Canvas extends React.Component {
         if (gameArr[67] === "f") { prevDn = new Figure('p', 0);}
 
         this.refreshGame([...reverseGA], prevSn, parseInt(gameArr[65]), parseInt(gameArr[66]), prevDn, parseInt(gameArr[68]), parseInt(gameArr[69]), parseInt(gameArr[70]), parseInt(gameArr[71]));
-        // this.potvrdTah();
+        document.getElementById("gameName").value = incomingData.GameName;
       });
   }
 
@@ -484,6 +484,7 @@ class Canvas extends React.Component {
   updateLogOut() {
     document.getElementById("canvas").style.display = "none";
     document.getElementById("control").style.display = "none";
+    document.getElementById("control2").style.display = "none";
     document.getElementById("logout-form").style.display = "none";
     document.getElementById("login-form").style.display = "block";
   }
@@ -509,7 +510,6 @@ class Canvas extends React.Component {
   showRegistration() {
     document.getElementById("registration-form").style.display = "block";
   }
-
 
   render() {
     return (
