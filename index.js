@@ -294,7 +294,7 @@ class Canvas extends React.Component {
       gameArr += 'n'
     }
     else {
-       if (this.prevS.color === 1) {
+       if (this.prevD.color === 1) {
             if (this.prevD.type === "v") {gameArr += "1";}
             if (this.prevD.type === "k") {gameArr += "2";}
             if (this.prevD.type === "s") {gameArr += "3";}
@@ -409,18 +409,18 @@ class Canvas extends React.Component {
         if (gameArr[64] === "e") { prevSn = new Figure('K', 0);}
         if (gameArr[64] === "f") { prevSn = new Figure('p', 0);}
 
-        if (gameArr[67] === "n") { prevSn = null;}
-        if (gameArr[67] === "1") { prevSn = new Figure('v', 1);}
-        if (gameArr[67] === "2") { prevSn = new Figure('k', 1);}
-        if (gameArr[67] === "3") { prevSn = new Figure('s', 1);}
-        if (gameArr[67] === "4") { prevSn = new Figure('Q', 1);}
-        if (gameArr[67] === "5") { prevSn = new Figure('K', 1);}
-        if (gameArr[67] === "6") { prevSn = new Figure('p', 1);}
-        if (gameArr[67] === "a") { prevSn = new Figure('v', 0);}
-        if (gameArr[67] === "b") { prevSn = new Figure('k', 0);}
-        if (gameArr[67] === "c") { prevSn = new Figure('s', 0);}
-        if (gameArr[67] === "d") { prevSn = new Figure('Q', 0);}
-        if (gameArr[67] === "e") { prevSn = new Figure('K', 0);}
+        if (gameArr[67] === "n") { prevDn = null;}
+        if (gameArr[67] === "1") { prevDn = new Figure('v', 1);}
+        if (gameArr[67] === "2") { prevDn = new Figure('k', 1);}
+        if (gameArr[67] === "3") { prevDn = new Figure('s', 1);}
+        if (gameArr[67] === "4") { prevDn = new Figure('Q', 1);}
+        if (gameArr[67] === "5") { prevDn = new Figure('K', 1);}
+        if (gameArr[67] === "6") { prevDn = new Figure('p', 1);}
+        if (gameArr[67] === "a") { prevDn = new Figure('v', 0);}
+        if (gameArr[67] === "b") { prevDn = new Figure('k', 0);}
+        if (gameArr[67] === "c") { prevDn = new Figure('s', 0);}
+        if (gameArr[67] === "d") { prevDn = new Figure('Q', 0);}
+        if (gameArr[67] === "e") { prevn = new Figure('K', 0);}
         if (gameArr[67] === "f") { prevSn = new Figure('p', 0);}
 
         this.refreshGame([...reverseGA], prevSn, parseInt(gameArr[65]), parseInt(gameArr[66]), prevDn, parseInt(gameArr[68]), parseInt(gameArr[69]), parseInt(gameArr[70]), parseInt(gameArr[71]));
