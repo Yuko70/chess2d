@@ -323,7 +323,7 @@ class Canvas extends React.Component {
 
     // let database = firebase.database();
     let user = firebase.auth().currentUser.email;
-    let gameName = document.getElementById("gameName").value
+    let gameName = document.getElementById("gameName").value;
 
     console.log("save game", user, gameName, user.toString());
 
@@ -357,8 +357,8 @@ class Canvas extends React.Component {
 
 
     // if (firebase.auth().currentUser !== null && gameName !== "") {
-    //   database.collection('chess').doc('data').update(key,{
-    //   'chessData': dbData
+    //   database.collection('chess/1').doc('data').update({
+    //   'chessData': 0
     // })
     // .then(() => {
     //   //console.log("Data pushed to DB");
@@ -367,9 +367,10 @@ class Canvas extends React.Component {
     //   console.log(err);
     // });
 
-    firebase.database().ref("/user/"+user).set({
-      userID: user,
-      GameName: gameName
+    // }
+
+    firebase.database.ref("/user/1/").set({
+      userID: 0
     }).then(() => console.log('Set existing user done'))
       .catch((error) => console.log(error.message))
 
