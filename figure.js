@@ -78,7 +78,7 @@ export default class Figure {
         for (let sxl = x-1; sxl > -1; sxl--) {
           if (sxl !== x) {
             if (arr[y][sxl] === null) {
-              console.log('sxl', sxl);
+              // console.log('sxl', sxl);
               this.opt.push({x:sxl, y:y});
             }
             else {
@@ -92,7 +92,7 @@ export default class Figure {
         for (let sxr = x+1; sxr < 8; sxr++) {
           if (sxr !== x) {
             if (arr[y][sxr] === null) {
-              console.log('sxr', sxr);
+              // console.log('sxr', sxr);
               this.opt.push({x:sxr, y:y});
             }
             else {
@@ -106,7 +106,7 @@ export default class Figure {
         for (let syu = y-1; syu > -1; syu--) {
           if (syu !== y) {
             if (arr[syu][x] === null) {
-              console.log('syu', syu);
+              // console.log('syu', syu);
               this.opt.push({x:x, y:syu});
             }
             else {
@@ -120,7 +120,7 @@ export default class Figure {
         for (let syd = y+1; syd < 8; syd++) {
           if (syd !== y) {
             if (arr[syd][x] === null) {
-              console.log('syd', syd);
+              // console.log('syd', syd);
               this.opt.push({x:x, y:syd});
             }
             else {
@@ -226,10 +226,10 @@ export default class Figure {
     }
 
     if ( this.type === 's' ) {
-      console.log(this.opt);
-      console.log(this.att);
-      console.log('color', this.color);
-      console.log(arr[x][y])
+      // console.log(this.opt);
+      // console.log(this.att);
+      // console.log('color', this.color);
+      // console.log(arr[x][y])
 
 // mouse sX: 2 rY: 4 
 // mouse sX: 1 rY: 3 
@@ -302,16 +302,16 @@ export default class Figure {
       
     }
     if ( this.type === 'Q' ) {
-      console.log(this.opt);
-      console.log(this.att);
-      console.log('color', this.color);
-      console.log(arr[x][y])
+      // console.log(this.opt);
+      // console.log(this.att);
+      // console.log('color', this.color);
+      // console.log(arr[x][y])
 
       if (true) { //this.color === 0 "zbytocne funguje aj pre cierne"
         for (let sxl = x-1; sxl > -1; sxl--) {
           if (sxl !== x) {
             if (arr[y][sxl] === null) {
-              console.log('sxl', sxl);
+              // console.log('sxl', sxl);
               this.opt.push({x:sxl, y:y});
             }
             else {
@@ -325,7 +325,7 @@ export default class Figure {
         for (let sxr = x+1; sxr < 8; sxr++) {
           if (sxr !== x) {
             if (arr[y][sxr] === null) {
-              console.log('sxr', sxr);
+              // console.log('sxr', sxr);
               this.opt.push({x:sxr, y:y});
             }
             else {
@@ -339,7 +339,7 @@ export default class Figure {
         for (let syu = y-1; syu > -1; syu--) {
           if (syu !== y) {
             if (arr[syu][x] === null) {
-              console.log('syu', syu);
+              // console.log('syu', syu);
               this.opt.push({x:x, y:syu});
             }
             else {
@@ -353,7 +353,7 @@ export default class Figure {
         for (let syd = y+1; syd < 8; syd++) {
           if (syd !== y) {
             if (arr[syd][x] === null) {
-              console.log('syd', syd);
+              // console.log('syd', syd);
               this.opt.push({x:x, y:syd});
             }
             else {
@@ -434,10 +434,10 @@ export default class Figure {
       
     }
     if ( this.type === 'K' ) {
-      console.log(this.opt);
-      console.log(this.att);
-      console.log('color', this.color);
-      console.log(arr[x][y])
+      // console.log(this.opt);
+      // console.log(this.att);
+      // console.log('color', this.color);
+      // console.log(arr[x][y])
 
 
 
