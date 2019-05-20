@@ -233,16 +233,14 @@ class Canvas extends React.Component {
 
   registration() {
     console.log('button work');
-    let userEmail = document.getElementById("email-log").value;
-    let userPass = document.getElementById("password-log").value;
+    let userEmail = document.getElementById("email-reg").value;
+    let userPass = document.getElementById("password-r").value;
 
-    firebase.auth().signInWithEmailAndPassword(userEmail, userPass)
-      .then(user => this.updateLogIn())
-      .catch(() => this.updateLogOut())
+ 
 
     firebase.auth().createUserWithEmailAndPassword(userEmail, userPass).catch(function(error) {
       // Handle Errors here.
-      le errorCode = error.code;
+      let errorCode = error.code;
       let errorMessage = error.message;
       window.alert("Error: " + errorCode + "\n"  + errorMessage);
     });
