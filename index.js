@@ -316,18 +316,18 @@ class Canvas extends React.Component {
     gameArr += this.move;
     gameArr += this.player;
 
-
     let userID = firebase.auth().currentUser.uid;
     let gameName = document.getElementById("gameName").value;
-
-
 
     const dbData = {
       GameData: gameArr,
       GameName: gameName.toString(),
     };
 
-    firebase.database().ref('users/' + userID).set(dbData);
+    if (gameName !== "") {
+      firebase.database().ref('users/' + userID).set(dbData);
+    }
+    
 
     console.log("save", this.board);
     console.log("save", this.board.arr);
@@ -420,16 +420,12 @@ class Canvas extends React.Component {
         if (gameArr[67] === "b") { prevDn = new Figure('k', 0);}
         if (gameArr[67] === "c") { prevDn = new Figure('s', 0);}
         if (gameArr[67] === "d") { prevDn = new Figure('Q', 0);}
-        if (gameArr[67] === "e") { prevn = new Figure('K', 0);}
-        if (gameArr[67] === "f") { prevSn = new Figure('p', 0);}
+        if (gameArr[67] === "e") { prevDn = new Figure('K', 0);}
+        if (gameArr[67] === "f") { prevDn = new Figure('p', 0);}
 
         this.refreshGame([...reverseGA], prevSn, parseInt(gameArr[65]), parseInt(gameArr[66]), prevDn, parseInt(gameArr[68]), parseInt(gameArr[69]), parseInt(gameArr[70]), parseInt(gameArr[71]));
         // this.potvrdTah();
       });
-  }
-
-  loadSavedGames() {
-    //nedokoncene nataha udaje
   }
 
   loadName() {
@@ -478,6 +474,7 @@ class Canvas extends React.Component {
   updateLogIn() {
     document.getElementById("canvas").style.display = "block";
     document.getElementById("control").style.display = "block";
+    document.getElementById("control2").style.display = "block";
     document.getElementById("logout-form").style.display = "block";
     document.getElementById("login-form").style.display = "none";
     document.getElementById("registration-form").style.display = "none";
@@ -487,7 +484,6 @@ class Canvas extends React.Component {
     if (user != null) {
       emailID = user.email;
     }
-
   }
 
   updateLogOut() {
@@ -500,6 +496,7 @@ class Canvas extends React.Component {
   host() {
     document.getElementById("canvas").style.display = "block";
     document.getElementById("control").style.display = "block";
+    document.getElementById("control2").style.display = "none";
     document.getElementById("login-form").style.display = "none";
     document.getElementById("logreg").style.display = "block";
     document.getElementById("registration-form").style.display = "none";
@@ -508,6 +505,7 @@ class Canvas extends React.Component {
   mainpage() {
     document.getElementById("canvas").style.display = "none";
     document.getElementById("control").style.display = "none";
+    document.getElementById("control2").style.display = "none";
     document.getElementById("login-form").style.display = "block";
     document.getElementById("logreg").style.display = "none";
     document.getElementById("registration-form").style.display = "none";
@@ -538,10 +536,6 @@ class Canvas extends React.Component {
           <input id="newGame" type='button' value="Nová HRA" onClick={this.newGame.bind(this)} />
           Názov hry:<input type="text" id="gameName" placeholder="nazov hry..."/>
           <input id="login" type='button' value="Uložit hru" onClick={this.saveGame.bind(this)} />
-          <select id="savedGames">
-            <option value="volvo">hra1...</option>
-            <option value="saab">hra2...</option>
-          </select>
            <input id="login" type='button' value="Načítaj hru" onClick={this.loadGame.bind(this)} />
         </div>
 

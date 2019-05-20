@@ -12,7 +12,7 @@ h1, p {
 }
 
 #control2 {
-  display: block;
+  display: none;
 }
 
 #logout-form {
