@@ -234,7 +234,7 @@ class Canvas extends React.Component {
   registration() {
     console.log('button work');
     let userEmail = document.getElementById("email-reg").value;
-    let userPass = document.getElementById("password-r").value;
+    let userPass = document.getElementById("password-reg").value;
 
  
 
@@ -297,6 +297,17 @@ class Canvas extends React.Component {
     document.getElementById("logout-form").style.display = "none";
   }
 
+  host() {
+    document.getElementById("canvas").style.display = "block";
+    document.getElementById("control").style.display = "block";
+    document.getElementById("registration-form").style.display = "none";
+
+  }
+
+  showRegistration() {
+
+  }
+
 
 
 
@@ -312,24 +323,12 @@ class Canvas extends React.Component {
         <div id="control">
           <input id="potvrdTah" type='button' value="Potvrď ŤAH" onClick={this.potvrdTah.bind(this)} />
           <input id="odznacTah" type='button' value="Odznač ŤAH" onClick={this.odznacTah.bind(this)} />
+
+          
         </div>
 
-        <div id="register-form">
-        <p>Registrácia</p>
-          Email:<input type="email" id="email-reg" placeholder="email..."/>
-          Heslo:<input type="password" id="password-reg" placeholder="password..."/>
-          <input id="register-btn" type='button' value="Registruj" onClick={this.registration.bind(this)} />
-        </div>
-        
-        <div id="login-form">
-          <p>Prihlásenie</p>
-          Email:<input type="email" id="email-log" placeholder="email..."/>
-          Heslo:<input type="password" id="password-log" placeholder="password..."/>
-          <input id="login-btn" type='button' value="Prihlásenie" onClick={this.login.bind(this)} />
-
-
-
-          <input id="save" type='button' value="Ulož meno" onClick={this.saveName.bind(this)} />
+        <div id="control2">
+        <input id="save" type='button' value="Ulož meno" onClick={this.saveName.bind(this)} />
           <input id="load" type='button' value="Načítaj meno" onClick={this.loadName.bind(this)} />
 
           Meno jedneho z hráčov:<input type="text" id="player1" value=""/>
@@ -343,6 +342,30 @@ class Canvas extends React.Component {
             <option value="saab">hra2...</option>
           </select>
            <input id="login" type='button' value="Načítaj hru" onClick={this.registration.bind(this)} />
+        </div>
+
+        <div id="registration-form">
+        <p>Registrácia</p>
+          Email:<input type="email" id="email-reg" placeholder="email..."/>
+          Heslo:<input type="password" id="password-reg" placeholder="password..."/>
+          <input id="register-btn" type='button' value="Registruj" onClick={this.registration.bind(this)} />
+        </div>
+        
+        <div id="login-form">
+          <h1>ŠACH 2D</h1>
+          <h3>Vitajte na stránke</h3>
+          <p>Pre pokracovanie do hry sa prosím prihláste.</p>
+          <p>Prihlásenie</p>
+          Email:<input type="email" id="email-log" placeholder="email..."/>
+          Heslo:<input type="password" id="password-log" placeholder="password..."/>
+          <input id="login-btn" type='button' value="Prihlásenie" onClick={this.login.bind(this)} />
+           <p>Ak nie ste registrovaný, môžete hrať ako HOSŤ alebo sa registrovať</p>
+          <input id="host-btn" type='button' value="HOSŤ" onClick={this.host.bind(this)} />
+          <input id="registration-show-btn" type='button' value="Zaregistrovať" onClick={this.showRegistration.bind(this)} />
+
+
+
+
         </div>
         <div id="logout-form">
           <input id="logout-btn" type='button' value="Odhlásenie" onClick={this.logout.bind(this)} />
