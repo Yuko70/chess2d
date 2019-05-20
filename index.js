@@ -231,18 +231,49 @@ class Canvas extends React.Component {
 
   saveGame() {
     // let database = firebase.database();
-    let user = firebase.auth().currentUser;
+    let user = firebase.auth().currentUser.email;
     let gameName = document.getElementById("gameName").value
 
-    console.log("save game", user, gameName);
+    console.log("save game", user, gameName, user.toString());
 
-    let dbData = {
-      nameOfGame: gameName,
-      test: "bla bla",
+    // let dbData = {
+    //   nameOfGame: gameName,
+    //   test: "bla bla",
+    // };
+
+    // this.board = new Board();
+    // this.prevS = null;
+    // this.prevSx = null;
+    // this.prevSy = null;
+    // this.prevD = null;
+    // this.prevDx = null;
+    // this.prevDy = null;
+    // this.move = 0;
+    // this.player = 0;
+
+    let gameData = {
+      prevS: this.prevS,
+      prevSx: this.prevSx,
+      prevSy: this.prevSy,
+      prevD: this.prevD,
+      prevDx: this.prevDx,
+      prevDy: this.prevDy,
+      move: this.move,
+      player: this.player,
     };
 
+    // let dbData = {
+    //   User: user.toString(),
+    //   Game: {GameName: gameName.toString(),
+    //          GameData: gameData },
+    // };
 
-    
+    let dbData = {
+      Game: {
+             GameData: gameData,
+             User: user.toString() },
+    };
+
 
     if (firebase.auth().currentUser !== null && gameName !== "") {
       database.collection('chess').doc('data').update({
