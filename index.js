@@ -148,7 +148,6 @@ class Canvas extends React.Component {
       }
     }
 
-
     // figurky
     for ( let y = 0; y < 8; y++ ) {
       for ( let x = 0; x < 8; x++ ) {
@@ -162,7 +161,6 @@ class Canvas extends React.Component {
     requestAnimationFrame(() => {this.updateCanvas()});
   }
 
-
   potvrdTah() {
     if (this.move === 1) {
       if (this.player === 0 ) {
@@ -175,7 +173,6 @@ class Canvas extends React.Component {
       this.lastM = [...this.board.arr];
     }
   }
-
 
   odznacTah() {
     if (this.move === 1) {
@@ -219,7 +216,6 @@ class Canvas extends React.Component {
       for (let j=0; j<8; j++) {
         if (this.board.arr[i][j] !== null) {
           // console.log(this.board.arr[i][j].type, this.board.arr[i][j].color);
-
           if (this.board.arr[i][j].color === 1) {
             if (this.board.arr[i][j].type === "v") {
               gameArr += "1";
@@ -328,7 +324,6 @@ class Canvas extends React.Component {
       firebase.database().ref('users/' + userID).set(dbData);
     }
     
-
     console.log("save", this.board);
     console.log("save", this.board.arr);
     console.log(gameArr);
@@ -569,4 +564,3 @@ class Canvas extends React.Component {
 }
 
 render(<Canvas />, document.getElementById('root'));
-
