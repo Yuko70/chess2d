@@ -11,6 +11,16 @@ const firebaseConfig = {
   appId: "1:475892835159:web:60b49026a3f07c5a"
 };
 
+// const firebaseConfig = {
+//   apiKey: "AIzaSyBAuebg1GyQj_41yh-ktEi5oet_VfzWxG4",
+//   authDomain: "chessdb2.firebaseapp.com",
+//   databaseURL: "https://chessdb2.firebaseio.com",
+//   projectId: "chessdb2",
+//   storageBucket: "chessdb2.appspot.com",
+//   messagingSenderId: "342386270090",
+//   appId: "1:342386270090:web:aca13321ec6631ff"
+// };
+
 // Initialize Firebase
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig)

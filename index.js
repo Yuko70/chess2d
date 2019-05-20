@@ -70,11 +70,11 @@ class Canvas extends React.Component {
 
     requestAnimationFrame(() => {this.updateCanvas()});
 
-    this.db1 = database
-      .collection("names")
-      .doc('data').onSnapshot((snapshot) => {
-        this.Data = snapshot.data().names;
-      })
+    // this.db1 = database
+    //   .collection("names")
+    //   .doc('data').onSnapshot((snapshot) => {
+    //     this.Data = snapshot.data().names;
+    //   })
 
   }
 
@@ -345,10 +345,10 @@ class Canvas extends React.Component {
 
     // }
 
-    firebase.database().ref("/user/1/").set({
-      userID: 0
-    }).then(() => console.log('Set existing user done'))
-      .catch((error) => console.log(error.message))
+    // firebase.database().ref("/user/1/").set({
+    //   userID: 0
+    // }).then(() => console.log('Set existing user done'))
+    //   .catch((error) => console.log(error.message))
 
     
 
