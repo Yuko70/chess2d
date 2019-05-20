@@ -241,7 +241,7 @@ class Canvas extends React.Component {
       for (let j=0; j<8; j++) {
         if (this.board.arr[i][j] !== null) {
           console.log(this.board.arr[i][j].type, this.board.arr[i][j].color);
-          console.log();
+
           if (this.board.arr[i][j].color === 1) {
             if (this.board.arr[i][j].type === "v") {
               gameArr += "1";
@@ -291,41 +291,17 @@ class Canvas extends React.Component {
     }
     gameArr+= this.player;
 
-    console.log("gameArr",gameArr, gameArr.length);
+    // console.log("gameArr",gameArr, gameArr.length);
 
-    let reverseGA = [];
-    let riadokGA = [];
-    for (let i=1; i<65; i++) {
-      if (gameArr[i-1] === "0") { riadokGA.push(null);}
-      if (gameArr[i-1] === "1") { riadokGA.push(new Figure('v', 1));}
-      if (gameArr[i-1] === "2") { riadokGA.push(new Figure('k', 1));}
-      if (gameArr[i-1] === "3") { riadokGA.push(new Figure('s', 1));}
-      if (gameArr[i-1] === "4") { riadokGA.push(new Figure('Q', 1));}
-      if (gameArr[i-1] === "5") { riadokGA.push(new Figure('K', 1));}
-      if (gameArr[i-1] === "6") { riadokGA.push(new Figure('p', 1));}
-      if (gameArr[i-1] === "a") { riadokGA.push(new Figure('v', 0));}
-      if (gameArr[i-1] === "b") { riadokGA.push(new Figure('k', 0));}
-      if (gameArr[i-1] === "c") { riadokGA.push(new Figure('s', 0));}
-      if (gameArr[i-1] === "d") { riadokGA.push(new Figure('Q', 0));}
-      if (gameArr[i-1] === "e") { riadokGA.push(new Figure('K', 0));}
-      if (gameArr[i-1] === "f") { riadokGA.push(new Figure('p', 0));}
-      
-      if (i%8===0) {
-        console.log(riadokGA);
-        reverseGA.push([...riadokGA]);
-        riadokGA = [];
-      }
-    }
-    this.board.arr = [...reverseGA];
-    this.player = reverseGA[65];
 
-    console.log("reverseGA", reverseGA);
+
+    // console.log("reverseGA", reverseGA);
 
     // let database = firebase.database();
     let user = firebase.auth().currentUser.email;
     let gameName = document.getElementById("gameName").value;
 
-    console.log("save game", user, gameName, user.toString());
+    // console.log("save game", user, gameName, user.toString());
 
     let gameData = {
       prevS: this.prevS,
@@ -369,7 +345,7 @@ class Canvas extends React.Component {
 
     // }
 
-    firebase.database.ref("/user/1/").set({
+    firebase.database().ref("/user/1/").set({
       userID: 0
     }).then(() => console.log('Set existing user done'))
       .catch((error) => console.log(error.message))
@@ -400,6 +376,33 @@ class Canvas extends React.Component {
   }
 
   loadGame() {
+
+    let gameArr = ""; //tu pridu info z db
+    let reverseGA = [];
+    let riadokGA = [];
+    for (let i=1; i<65; i++) {
+      if (gameArr[i-1] === "0") { riadokGA.push(null);}
+      if (gameArr[i-1] === "1") { riadokGA.push(new Figure('v', 1));}
+      if (gameArr[i-1] === "2") { riadokGA.push(new Figure('k', 1));}
+      if (gameArr[i-1] === "3") { riadokGA.push(new Figure('s', 1));}
+      if (gameArr[i-1] === "4") { riadokGA.push(new Figure('Q', 1));}
+      if (gameArr[i-1] === "5") { riadokGA.push(new Figure('K', 1));}
+      if (gameArr[i-1] === "6") { riadokGA.push(new Figure('p', 1));}
+      if (gameArr[i-1] === "a") { riadokGA.push(new Figure('v', 0));}
+      if (gameArr[i-1] === "b") { riadokGA.push(new Figure('k', 0));}
+      if (gameArr[i-1] === "c") { riadokGA.push(new Figure('s', 0));}
+      if (gameArr[i-1] === "d") { riadokGA.push(new Figure('Q', 0));}
+      if (gameArr[i-1] === "e") { riadokGA.push(new Figure('K', 0));}
+      if (gameArr[i-1] === "f") { riadokGA.push(new Figure('p', 0));}
+      
+      if (i%8===0) {
+        console.log(riadokGA);
+        reverseGA.push([...riadokGA]);
+        riadokGA = [];
+      }
+    }
+    this.board.arr = [...reverseGA];
+    this.player = reverseGA[65];
 
   }
 
