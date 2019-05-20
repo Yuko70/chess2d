@@ -211,6 +211,9 @@ class Canvas extends React.Component {
     this.player = 0;
   }
 
+
+
+
   saveName() {
     let c = {
     name1: document.getElementById("player1").value,
@@ -268,11 +271,15 @@ class Canvas extends React.Component {
   }
 
   logout() {
+    firebase.auth().signOut();
     firebase.auth().signOut().then(function() {
-      this.updateLogOut();
+      console.log("odhlasenie ok");
+      
     }).catch(function(error) {
-      // An error happened.
+      console.log("odhlasenie zlyhalo");
+
     });
+    this.updateLogOut();
   }
 
   updateLogIn() {
@@ -281,6 +288,7 @@ class Canvas extends React.Component {
     document.getElementById("canvas").style.display = "block";
     document.getElementById("control").style.display = "block";
     document.getElementById("logout-form").style.display = "block";
+    document.getElementById("login-form").style.display = "none";
 
     let user = firebase.auth().currentUser;
 
@@ -295,6 +303,7 @@ class Canvas extends React.Component {
     document.getElementById("canvas").style.display = "none";
     document.getElementById("control").style.display = "none";
     document.getElementById("logout-form").style.display = "none";
+    document.getElementById("registration-form").style.display = "block";
   }
 
   host() {
@@ -302,7 +311,7 @@ class Canvas extends React.Component {
     document.getElementById("control").style.display = "block";
     document.getElementById("login-form").style.display = "none";
     document.getElementById("logreg").style.display = "block";
-    document.getElementById("registration-form").style.display = "n";
+    document.getElementById("registration-form").style.display = "none";
   }
 
   mainpage() {
