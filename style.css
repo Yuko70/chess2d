@@ -23,6 +23,10 @@ h1, p {
   display: none;
 }
 
+#logreg {
+  display: none;
+}
+
 /* #root {
   display: block;
 } */

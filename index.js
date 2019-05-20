@@ -300,12 +300,21 @@ class Canvas extends React.Component {
   host() {
     document.getElementById("canvas").style.display = "block";
     document.getElementById("control").style.display = "block";
-    document.getElementById("registration-form").style.display = "none";
+    document.getElementById("login-form").style.display = "none";
+    document.getElementById("logreg").style.display = "block";
+    document.getElementById("registration-form").style.display = "n";
+  }
 
+  mainpage() {
+    document.getElementById("canvas").style.display = "none";
+    document.getElementById("control").style.display = "none";
+    document.getElementById("login-form").style.display = "block";
+    document.getElementById("logreg").style.display = "none";
+    document.getElementById("registration-form").style.display = "none";
   }
 
   showRegistration() {
-
+    document.getElementById("registration-form").style.display = "block";
   }
 
 
@@ -326,6 +335,9 @@ class Canvas extends React.Component {
 
           
         </div>
+        <div id="logreg">
+          <input id="logreg-btn" type='button' value="Prihlásenie / Registrácia" onClick={this.mainpage.bind(this)} />
+        </div>
 
         <div id="control2">
         <input id="save" type='button' value="Ulož meno" onClick={this.saveName.bind(this)} />
@@ -344,12 +356,7 @@ class Canvas extends React.Component {
            <input id="login" type='button' value="Načítaj hru" onClick={this.registration.bind(this)} />
         </div>
 
-        <div id="registration-form">
-        <p>Registrácia</p>
-          Email:<input type="email" id="email-reg" placeholder="email..."/>
-          Heslo:<input type="password" id="password-reg" placeholder="password..."/>
-          <input id="register-btn" type='button' value="Registruj" onClick={this.registration.bind(this)} />
-        </div>
+
         
         <div id="login-form">
           <h1>ŠACH 2D</h1>
@@ -362,11 +369,16 @@ class Canvas extends React.Component {
            <p>Ak nie ste registrovaný, môžete hrať ako HOSŤ alebo sa registrovať</p>
           <input id="host-btn" type='button' value="HOSŤ" onClick={this.host.bind(this)} />
           <input id="registration-show-btn" type='button' value="Zaregistrovať" onClick={this.showRegistration.bind(this)} />
-
-
-
-
         </div>
+
+        <div id="registration-form">
+        <p>Registrácia</p>
+          Email:<input type="email" id="email-reg" placeholder="email..."/>
+          Heslo:<input type="password" id="password-reg" placeholder="password..."/>
+          <input id="register-btn" type='button' value="Registruj" onClick={this.registration.bind(this)} />
+        </div>
+
+
         <div id="logout-form">
           <input id="logout-btn" type='button' value="Odhlásenie" onClick={this.logout.bind(this)} />
         </div>
