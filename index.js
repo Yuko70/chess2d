@@ -232,15 +232,8 @@ class Canvas extends React.Component {
   }
 
   registration() {
-
     console.log('button work');
 
-    // firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
-    //   // Handle Errors here.
-    //   var errorCode = error.code;
-    //   var errorMessage = error.message;
-    //   // ...
-    // });
 
   }
 
@@ -248,38 +241,13 @@ class Canvas extends React.Component {
 
     console.log('login button work');
     let userEmail = document.getElementById("email-log").value;
-    // console.log(userEmail);
     let userPass = document.getElementById("password-log").value;
-    // console.log(userPass);
 
-    // firebase.auth().signInWithEmailAndPassword(userEmail, userPass).catch(function(error) {
-    //   // Handle Errors here.
-    //   let errorCode = error.code;
-    //   let errorMessage = error.message;
-    //   window.alert("Error: " + errorCode + " " + errorMessage);
-    //   // ...
-    // });
-
-    // firebase.auth().signInWithEmailAndPassword(userEmail, userPass).catch(function(error) {
-    //   // Handle Errors here.
-    //   let errorCode = error.code;
-    //   let errorMessage = error.message;
-    //   window.alert("Error: " + errorCode + " " + errorMessage);
-    //   // ...
-    // });
-
-    // firebase.auth().signInWithEmailAndPassword(userEmail, userPass)
-    //   .then(user => loginUserSuccess(dispatch, user))
-    //   .catch(() => loginUserFailed(dispatch))
 
     firebase.auth().signInWithEmailAndPassword(userEmail, userPass)
       .then(user => this.updateLogIn())
       .catch(() => this.updateLogOut())
 
-    
-    
-
-    // this.update();
   }
 
   logout() {
@@ -291,24 +259,12 @@ class Canvas extends React.Component {
   }
 
   updateLogIn() {
-    // console.log("elem", document.getElementById("control").style);
     document.getElementById("canvas").style.display = "block";
     document.getElementById("control").style.display = "block";
     document.getElementById("logout-form").style.display = "block";
-    // document.getElementById("canvas").style.display = "block";
-    // document.getElementById("control").style.display = block;
-    // console.log(firebase.auth());
-  //   firebase.auth().onAuthStateChanged(function(user) {
-  //   if (user) {
-  //     document.getElementById("canvas").style.display = "block";
-  //     document.getElementById("control").style.display = "block";
-  //   } else {
-  //     document.getElementById("canvas").style.display = "none";
-  //     document.getElementById("control").style.display = "none";
-  //   }
-  // });
+
     let user = firebase.auth().currentUser;
-    // console.log("currentUser", user);
+
     let emailID= "";
     if (user != null) {
       emailID = user.email;
@@ -322,25 +278,6 @@ class Canvas extends React.Component {
     document.getElementById("logout-form").style.display = "none";
   }
 
-  // firebase.auth().onAuthStateChanged(function(user) {
-  //   if (user) {
-  //     document.getElementById("canvas").style.display = "block";
-  //     document.getElementById("control").style.display = "block";
-  //   } else {
-  //     document.getElementById("canvas").style.display = "none";
-  //     document.getElementById("control").style.display = "none";
-  //   }
-  // });
-
-//   componentDidMount() {
-//     firebase.auth().onAuthStateChanged(user => {
-//       if (user) {
-//         console.log("logged in QW");
-//       } else {
-//         console.log("not logged in QW");
-//       }
-//     });
-// }
 
 
 
