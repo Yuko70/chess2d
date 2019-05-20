@@ -7,6 +7,8 @@ require('firebase/auth')
 
 import Board from './board.js';
 
+import Figure from './figure.js';
+
 import { database } from "./config";
 
 
@@ -288,28 +290,29 @@ class Canvas extends React.Component {
       }
     }
 
-    console.log("gameArr",gameArr);
+    console.log("gameArr",gameArr, gameArr.length);
 
     let reverseGA = [];
     let riadokGA = [];
-    for (let i=0; i<64; i++) {
-      if (gameArr === "0") { riadokGA.push([0]);}
-      if (gameArr === "1") { riadokGA.push([1]);}
-      if (gameArr === "2") { riadokGA.push([2]);}
-      if (gameArr === "3") { riadokGA.push([3]);}
-      if (gameArr === "4") { riadokGA.push([4]);}
-      if (gameArr === "5") { riadokGA.push([5]);}
-      if (gameArr === "6") { riadokGA.push([6]);}
-      if (gameArr === "a") { riadokGA.push("a");}
-      if (gameArr === "b") { riadokGA.push("b");}
-      if (gameArr === "c") { riadokGA.push("c");}
-      if (gameArr === "d") { riadokGA.push("d");}
-      if (gameArr === "e") { riadokGA.push("e");}
-      if (gameArr === "f") { riadokGA.push("f");}
+    for (let i=1; i<65; i++) {
+      if (gameArr === "0") { riadokGA.push(null);}
+      if (gameArr === "1") { riadokGA.push(new Figure('v', 1));}
+      if (gameArr === "2") { riadokGA.push(new Figure('k', 1));}
+      if (gameArr === "3") { riadokGA.push(new Figure('s', 1));}
+      if (gameArr === "4") { riadokGA.push(new Figure('Q', 1));}
+      if (gameArr === "5") { riadokGA.push(new Figure('K', 1));}
+      if (gameArr === "6") { riadokGA.push(new Figure('p', 1));}
+      if (gameArr === "a") { riadokGA.push(new Figure('v', 0));}
+      if (gameArr === "b") { riadokGA.push(new Figure('k', 0));}
+      if (gameArr === "c") { riadokGA.push(new Figure('s', 0));}
+      if (gameArr === "d") { riadokGA.push(new Figure('Q', 0));}
+      if (gameArr === "e") { riadokGA.push(new Figure('K', 0));}
+      if (gameArr === "f") { riadokGA.push(new Figure('p', 0));}
       
-      if (i%7===0) {
+      if (i%8===0) {
+        console.log(riadokGA);
         reverseGA.push([...riadokGA]);
-        // riadokGA = [];
+        riadokGA = [];
       }
     }
 
