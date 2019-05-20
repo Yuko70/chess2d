@@ -374,7 +374,6 @@ class Canvas extends React.Component {
           if (gameArr[i-1] === "f") { riadokGA.push(new Figure('p', 0));}
           
           if (i%8===0) {
-            // console.log(riadokGA);
             reverseGA.push([...riadokGA]);
             riadokGA = [];
           }
@@ -383,12 +382,34 @@ class Canvas extends React.Component {
         // this.player = parseInt(reverseGA[65]);
         console.log('load', [...reverseGA]);
         console.log(reverseGA);
-        console.log('number',gameArr[62]);
-        console.log('number',gameArr[63]);
+
         console.log('number',gameArr[64]);
         console.log('number',gameArr[65]);
         console.log('number',gameArr[66]);
-        this.refreshGame([...reverseGA], parseInt(gameArr[64]), parseInt(gameArr[65]));
+        console.log('number',gameArr[67]);
+        console.log('number',gameArr[68]);
+        console.log('number',gameArr[69]);
+        console.log('number',gameArr[70]);
+        console.log('number',gameArr[71]);
+
+        let prevSn = null;
+        let prevDn = null;
+
+        if (gameArr[64] === "n") { riadokGA.push(null);}
+        if (gameArr[64] === "1") { riadokGA.push(new Figure('v', 1));}
+        if (gameArr[64] === "2") { riadokGA.push(new Figure('k', 1));}
+        if (gameArr[64] === "3") { riadokGA.push(new Figure('s', 1));}
+        if (gameArr[64] === "4") { riadokGA.push(new Figure('Q', 1));}
+        if (gameArr[64] === "5") { riadokGA.push(new Figure('K', 1));}
+        if (gameArr[64] === "6") { riadokGA.push(new Figure('p', 1));}
+        if (gameArr[64] === "a") { riadokGA.push(new Figure('v', 0));}
+        if (gameArr[64] === "b") { riadokGA.push(new Figure('k', 0));}
+        if (gameArr[64] === "c") { riadokGA.push(new Figure('s', 0));}
+        if (gameArr[64] === "d") { riadokGA.push(new Figure('Q', 0));}
+        if (gameArr[64] === "e") { riadokGA.push(new Figure('K', 0));}
+        if (gameArr[64] === "f") { riadokGA.push(new Figure('p', 0));}
+
+        this.refreshGame([...reverseGA], parseInt(gameArr[65]), parseInt(gameArr[66]), parseInt(gameArr[68]), parseInt(gameArr[69]), parseInt(gameArr[70]), parseInt(gameArr[71]));
         // this.potvrdTah();
       });
   }
